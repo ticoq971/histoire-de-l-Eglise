@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.getElementById('modalClose');
     const resetFiltersBtn = document.getElementById('resetFilters');
     const resultsCount = document.getElementById('resultsCount');
+    const toggleFiltersBtn = document.getElementById('toggleFilters');
+    const filtersNav = document.getElementById('filtersNav');
     
     // État des filtres
     let currentFilters = {
@@ -377,6 +379,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.querySelectorAll('.event, .period-marker').forEach(element => {
             observer.observe(element);
+        });
+    }
+    
+    // =====================================================
+    // TOGGLE FILTRES (RÉDUIRE/DÉVELOPPER)
+    // =====================================================
+    if (toggleFiltersBtn && filtersNav) {
+        toggleFiltersBtn.addEventListener('click', () => {
+            const isCollapsed = filtersNav.classList.toggle('collapsed');
+            const btnText = toggleFiltersBtn.querySelector('span');
+            if (btnText) {
+                btnText.textContent = isCollapsed ? 'Afficher les filtres' : 'Masquer les filtres';
+            }
         });
     }
     

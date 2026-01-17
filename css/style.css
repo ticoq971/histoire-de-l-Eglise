@@ -105,6 +105,62 @@ body {
     top: 0;
     z-index: 100;
     box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+}
+
+/* Bouton toggle pour réduire/développer les filtres */
+.toggle-filters-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 20px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-dark) 100%);
+    border: 1px solid var(--color-bg-dark);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: all 0.3s ease;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toggle-filters-btn:hover {
+    background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+    color: white;
+    border-color: var(--color-navy);
+}
+
+.toggle-filters-btn i {
+    transition: transform 0.3s ease;
+    color: var(--color-gold);
+}
+
+.toggle-filters-btn:hover i {
+    color: var(--color-gold-light);
+}
+
+/* État réduit des filtres */
+.filters-nav.collapsed .toggle-filters-btn i {
+    transform: rotate(180deg);
+}
+
+.filters-nav.collapsed .filter-section,
+.filters-nav.collapsed .filter-results {
+    display: none;
+}
+
+.filters-nav.collapsed {
+    padding: 10px 20px;
+}
+
+.filters-nav.collapsed .toggle-filters-btn {
+    margin-bottom: 0;
 }
 
 .filter-section {
@@ -1016,6 +1072,13 @@ body {
         gap: 10px;
         text-align: center;
     }
+    
+    /* Toggle button responsive */
+    .toggle-filters-btn {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+        max-width: 200px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1038,6 +1101,10 @@ body {
     
     .filters-nav {
         padding: 15px 10px;
+    }
+    
+    .filters-nav.collapsed {
+        padding: 8px 10px;
     }
     
     .period-nav {
@@ -1097,6 +1164,26 @@ body {
     
     .modal-body {
         padding: 20px;
+    }
+    
+    /* Toggle button mobile */
+    .toggle-filters-btn {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        max-width: 180px;
+        margin-bottom: 10px;
+    }
+    
+    .toggle-filters-btn span {
+        display: none;
+    }
+    
+    .toggle-filters-btn::after {
+        content: 'Filtres';
+    }
+    
+    .filters-nav.collapsed .toggle-filters-btn::after {
+        content: 'Filtres';
     }
 }
 
