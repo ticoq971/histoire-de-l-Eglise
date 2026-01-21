@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histoire de l'Église - Frise Chronologique</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -16,7 +20,16 @@
                 <i class="fas fa-church"></i>
             </div>
             <h1>Histoire de l'Église</h1>
-            <p class="subtitle">2000 ans de christianisme à travers les siècles</p>
+            <p class="subtitle">2000 ans de christianisme </p>
+
+            <div class="view-switcher">
+                <button class="view-btn active" data-source="church" title="Histoire de l'Église Catholique">
+                    <i class="fas fa-church"></i> Catholicisme
+                </button>
+                <button class="view-btn" data-source="protestant" title="Histoire du Protestantisme">
+                    <i class="fas fa-bible"></i> Protestantisme
+                </button>
+            </div>
         </div>
     </header>
 
@@ -29,7 +42,8 @@
         <!-- Filtres par période -->
         <div class="filter-section">
             <h3 class="filter-title"><i class="fas fa-clock"></i> Par Période</h3>
-            <div class="filter-buttons">
+            <div class="filter-buttons" id="periodFilters">
+                <!-- Généré dynamiquement -->
                 <button class="filter-btn period-btn active" data-period="all">Toutes</button>
                 <button class="filter-btn period-btn" data-period="ancient">Église Primitive (30-313)</button>
                 <button class="filter-btn period-btn" data-period="imperial">Église Impériale (313-476)</button>
@@ -39,41 +53,22 @@
                 <button class="filter-btn period-btn" data-period="contemporary">Contemporain (1962-)</button>
             </div>
         </div>
-        
+
         <!-- Filtres par thème/type -->
         <div class="filter-section">
             <h3 class="filter-title"><i class="fas fa-tags"></i> Par Thème</h3>
-            <div class="filter-buttons theme-filters">
+            <div class="filter-buttons theme-filters" id="typeFilters">
+                <!-- Généré dynamiquement -->
                 <button class="filter-btn type-btn active" data-type="all">
                     <i class="fas fa-globe"></i> Tous
                 </button>
                 <button class="filter-btn type-btn" data-type="major" style="--btn-color: #c9a227;">
                     <i class="fas fa-star"></i> Événements majeurs
                 </button>
-                <button class="filter-btn type-btn" data-type="council" style="--btn-color: #1e3a5f;">
-                    <i class="fas fa-landmark"></i> Conciles
-                </button>
-                <button class="filter-btn type-btn" data-type="apostle" style="--btn-color: #8B0000;">
-                    <i class="fas fa-cross"></i> Apôtres
-                </button>
-                <button class="filter-btn type-btn" data-type="father" style="--btn-color: #4a6741;">
-                    <i class="fas fa-scroll"></i> Pères de l'Église
-                </button>
-                <button class="filter-btn type-btn" data-type="doctor" style="--btn-color: #704214;">
-                    <i class="fas fa-book"></i> Docteurs de l'Église
-                </button>
-                <button class="filter-btn type-btn" data-type="saint" style="--btn-color: #2d5a4a;">
-                    <i class="fas fa-pray"></i> Saints
-                </button>
-                <button class="filter-btn type-btn" data-type="schism" style="--btn-color: #6b2d2d;">
-                    <i class="fas fa-divide"></i> Schismes
-                </button>
-                <button class="filter-btn type-btn" data-type="movement" style="--btn-color: #4a3a6b;">
-                    <i class="fas fa-users"></i> Ordres & Mouvements
-                </button>
+                <!-- D'autres boutons seront générés ici -->
             </div>
         </div>
-        
+
         <!-- Compteur de résultats -->
         <div class="filter-results">
             <span id="resultsCount">0</span> événement(s) affiché(s)
@@ -84,39 +79,8 @@
     </nav>
 
     <!-- Légende compacte -->
-    <div class="legend">
-        <div class="legend-item" data-type="major">
-            <span class="legend-color" style="background: #c9a227;"></span>
-            <span>Majeurs</span>
-        </div>
-        <div class="legend-item" data-type="council">
-            <span class="legend-color" style="background: #1e3a5f;"></span>
-            <span>Conciles</span>
-        </div>
-        <div class="legend-item" data-type="apostle">
-            <span class="legend-color" style="background: #8B0000;"></span>
-            <span>Apôtres</span>
-        </div>
-        <div class="legend-item" data-type="father">
-            <span class="legend-color" style="background: #4a6741;"></span>
-            <span>Pères</span>
-        </div>
-        <div class="legend-item" data-type="doctor">
-            <span class="legend-color" style="background: #704214;"></span>
-            <span>Docteurs</span>
-        </div>
-        <div class="legend-item" data-type="saint">
-            <span class="legend-color" style="background: #2d5a4a;"></span>
-            <span>Saints</span>
-        </div>
-        <div class="legend-item" data-type="schism">
-            <span class="legend-color" style="background: #6b2d2d;"></span>
-            <span>Schismes</span>
-        </div>
-        <div class="legend-item" data-type="movement">
-            <span class="legend-color" style="background: #4a3a6b;"></span>
-            <span>Ordres</span>
-        </div>
+    <div class="legend" id="legendContainer">
+        <!-- Généré dynamiquement -->
     </div>
 
     <!-- Timeline principale -->
@@ -150,6 +114,8 @@
     </footer>
 
     <script src="js/data.js"></script>
+    <script src="js/protestant-data.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

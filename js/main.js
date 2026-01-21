@@ -2,35 +2,205 @@
 // HISTOIRE DE L'ÉGLISE - SCRIPT PRINCIPAL
 // =====================================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const timeline = document.querySelector('.timeline');
-    const periodButtons = document.querySelectorAll('.period-btn');
-    const typeButtons = document.querySelectorAll('.type-btn');
     const modal = document.getElementById('eventModal');
     const modalClose = document.getElementById('modalClose');
     const resetFiltersBtn = document.getElementById('resetFilters');
     const resultsCount = document.getElementById('resultsCount');
     const toggleFiltersBtn = document.getElementById('toggleFilters');
     const filtersNav = document.getElementById('filtersNav');
-    
-    // État des filtres
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const periodFiltersContainer = document.getElementById('periodFilters');
+    const typeFiltersContainer = document.getElementById('typeFilters');
+    const legendContainer = document.getElementById('legendContainer');
+
+    // État de l'application
+    let currentData = churchHistory; // Par défaut
     let currentFilters = {
         period: 'all',
         type: 'all'
     };
-    
-    // Labels pour les types d'événements
-    const typeLabels = {
-        'major': 'Événement majeur',
-        'council': 'Concile',
-        'schism': 'Schisme',
-        'saint': 'Saint',
-        'movement': 'Ordre/Mouvement',
-        'apostle': 'Apôtre',
-        'father': 'Père de l\'Église',
-        'doctor': 'Docteur de l\'Église'
-    };
-    
+
+    // =====================================================
+    // GESTION DU CHANGEMENT DE VUE (Source de données)
+    // =====================================================
+    function switchView(source) {
+        // Mettre à jour les boutons de vue
+        viewButtons.forEach(btn => {
+            if (btn.dataset.source === source) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Changer la source de données
+        if (source === 'protestant') {
+            currentData = protestantHistory;
+        } else {
+            currentData = churchHistory;
+        }
+
+        // Réinitialiser les filtres
+        currentFilters = { period: 'all', type: 'all' };
+
+        // Régénérer l'interface
+        generateFilters();
+        generateLegend();
+        generateTimeline();
+    }
+
+    // Écouteurs pour les boutons de vue
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const source = btn.dataset.source;
+            switchView(source);
+        });
+    });
+
+    // =====================================================
+    // GÉNÉRATION DYNAMIQUE DES FILTRES & LÉGENDE
+    // =====================================================
+    function generateFilters() {
+        // 1. Filtres par Période
+        periodFiltersContainer.innerHTML = '';
+
+        // Bouton "Toutes"
+        const allPeriodsBtn = document.createElement('button');
+        allPeriodsBtn.className = 'filter-btn period-btn active';
+        allPeriodsBtn.dataset.period = 'all';
+        allPeriodsBtn.textContent = 'Toutes';
+        allPeriodsBtn.addEventListener('click', () => setPeriodFilter('all'));
+        periodFiltersContainer.appendChild(allPeriodsBtn);
+
+        // Autres périodes
+        currentData.periods.forEach(period => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn period-btn';
+            btn.dataset.period = period.id;
+            btn.textContent = `${period.name} (${period.years.replace(' - ', '-')})`;
+            btn.addEventListener('click', () => setPeriodFilter(period.id));
+            periodFiltersContainer.appendChild(btn);
+        });
+
+        // 2. Filtres par Type
+        typeFiltersContainer.innerHTML = '';
+
+        // Bouton "Tous"
+        const allTypesBtn = document.createElement('button');
+        allTypesBtn.className = 'filter-btn type-btn active';
+        allTypesBtn.dataset.type = 'all';
+        allTypesBtn.innerHTML = '<i class="fas fa-globe"></i> Tous';
+        allTypesBtn.addEventListener('click', () => setTypeFilter('all'));
+        typeFiltersContainer.appendChild(allTypesBtn);
+
+        // Générer les types disponibles
+        // Si currentData a une propriété 'types' (comme protestantHistory), on l'utilise
+        // Sinon, on déduit les types des événements ou on utilise une liste par défaut (churchHistory)
+
+        let typesToDisplay = [];
+
+        if (currentData.types) {
+            // Convertir l'objet types en tableau pour itération
+            typesToDisplay = Object.entries(currentData.types).map(([key, value]) => ({
+                id: key,
+                ...value
+            }));
+        } else {
+            // Fallback pour churchHistory (hardcodé pour conserver l'ordre et les styles spécifiques)
+            typesToDisplay = [
+                { id: 'major', label: 'Événements majeurs', icon: 'fa-star', color: '#c9a227' },
+                { id: 'council', label: 'Conciles', icon: 'fa-landmark', color: '#1e3a5f' },
+                { id: 'apostle', label: 'Apôtres', icon: 'fa-cross', color: '#8B0000' },
+                { id: 'father', label: 'Pères de l\'Église', icon: 'fa-scroll', color: '#4a6741' },
+                { id: 'doctor', label: 'Docteurs de l\'Église', icon: 'fa-book', color: '#704214' },
+                { id: 'saint', label: 'Saints', icon: 'fa-pray', color: '#2d5a4a' },
+                { id: 'schism', label: 'Schismes', icon: 'fa-divide', color: '#6b2d2d' },
+                { id: 'movement', label: 'Ordres & Mouvements', icon: 'fa-users', color: '#4a3a6b' }
+            ];
+        }
+
+        typesToDisplay.forEach(type => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn type-btn';
+            btn.dataset.type = type.id;
+            // Appliquer la couleur personnalisée via CSS variable
+            btn.style.setProperty('--btn-color', type.color);
+            btn.innerHTML = `<i class="fas ${type.icon}"></i> ${type.label}`;
+            btn.addEventListener('click', () => setTypeFilter(type.id));
+            typeFiltersContainer.appendChild(btn);
+        });
+    }
+
+    function generateLegend() {
+        legendContainer.innerHTML = '';
+
+        let typesToDisplay = [];
+        if (currentData.types) {
+            typesToDisplay = Object.entries(currentData.types).map(([key, value]) => ({
+                id: key,
+                ...value
+            }));
+        } else {
+            typesToDisplay = [
+                { id: 'major', label: 'Majeurs', color: '#c9a227' },
+                { id: 'council', label: 'Conciles', color: '#1e3a5f' },
+                { id: 'apostle', label: 'Apôtres', color: '#8B0000' },
+                { id: 'father', label: 'Pères', color: '#4a6741' },
+                { id: 'doctor', label: 'Docteurs', color: '#704214' },
+                { id: 'saint', label: 'Saints', color: '#2d5a4a' },
+                { id: 'schism', label: 'Schismes', color: '#6b2d2d' },
+                { id: 'movement', label: 'Ordres', color: '#4a3a6b' }
+            ];
+        }
+
+        typesToDisplay.forEach(type => {
+            const item = document.createElement('div');
+            item.className = 'legend-item';
+            item.dataset.type = type.id;
+            item.style.cursor = 'pointer';
+            item.innerHTML = `
+                <span class="legend-color" style="background: ${type.color};"></span>
+                <span>${currentData.types ? type.label : (type.label || type.id)}</span>
+            `;
+            item.addEventListener('click', () => {
+                setTypeFilter(type.id);
+                // Scroll vers la timeline
+                const timelineContainer = document.querySelector('.timeline-container');
+                if (timelineContainer) {
+                    timelineContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+            legendContainer.appendChild(item);
+        });
+    }
+
+    // Helpers pour changer les filtres
+    function setPeriodFilter(periodId) {
+        currentFilters.period = periodId;
+
+        // Mettre à jour l'état visuel des boutons
+        document.querySelectorAll('.period-btn').forEach(btn => {
+            if (btn.dataset.period === periodId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+
+        applyFilters();
+    }
+
+    function setTypeFilter(typeId) {
+        currentFilters.type = typeId;
+
+        // Mettre à jour l'état visuel des boutons
+        document.querySelectorAll('.type-btn').forEach(btn => {
+            if (btn.dataset.type === typeId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+
+        applyFilters();
+    }
+
     // =====================================================
     // GÉNÉRATION DE LA TIMELINE
     // =====================================================
@@ -38,48 +208,59 @@ document.addEventListener('DOMContentLoaded', function() {
         timeline.innerHTML = '';
         let currentPeriod = null;
         let isLeft = true;
-        
+
         // Trier les événements par année
-        const sortedEvents = [...churchHistory.events].sort((a, b) => {
-            const yearA = parseInt(a.year.replace(/[^0-9-]/g, '')) || 0;
-            const yearB = parseInt(b.year.replace(/[^0-9-]/g, '')) || 0;
-            return yearA - yearB;
+        const sortedEvents = [...currentData.events].sort((a, b) => {
+            // Extraction robuste de l'année (gestion de 'vers 30', '30-33', etc.)
+            const getYear = (str) => {
+                if (!str) return 0;
+                // Enlever le tilde ~
+                const clean = str.toString().replace('~', '').trim();
+                // Prendre le premier nombre trouvé
+                const match = clean.match(/-?\d+/);
+                return match ? parseInt(match[0]) : 0;
+            };
+
+            const yearA = getYear(a.year);
+            const yearB = getYear(b.year);
+
+            if (yearA !== yearB) return yearA - yearB;
+            return (a.id < b.id) ? -1 : 1; // Tri stable par ID si même année
         });
-        
+
         sortedEvents.forEach((event, index) => {
-            // Ajouter un marqueur de période si on change de période
+            // Vérifier que l'événement appartient bien à une période définie
+            // Si on change de période (ou au début)
             if (event.period !== currentPeriod) {
                 currentPeriod = event.period;
-                const periodData = churchHistory.periods.find(p => p.id === currentPeriod);
+                const periodData = currentData.periods.find(p => p.id === currentPeriod);
                 if (periodData) {
                     const periodMarker = createPeriodMarker(periodData);
                     timeline.appendChild(periodMarker);
                 }
-                isLeft = true; // Reset alternance pour chaque période
+                isLeft = true; // Reset alternance pour chaque nouvelle période
             }
-            
+
             // Créer l'événement
             const eventElement = createEventElement(event, isLeft);
             timeline.appendChild(eventElement);
-            
+
             // Alterner gauche/droite
             isLeft = !isLeft;
         });
-        
+
         // Ajouter le clearfix à la fin
         const clearfix = document.createElement('div');
         clearfix.style.clear = 'both';
         timeline.appendChild(clearfix);
-        
-        // Initialiser les animations au scroll
+
+        // Initialiser les animations et mettre à jour le compteur
         initScrollAnimations();
-        
-        // Mettre à jour le compteur
         updateResultsCount();
     }
-    
+
     // =====================================================
-    // CRÉATION DES ÉLÉMENTS
+    // CRÉATION DES ÉLÉMENTS UI
     // =====================================================
     function createPeriodMarker(period) {
         const marker = document.createElement('div');
@@ -93,25 +274,32 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         return marker;
     }
-    
+
     function createEventElement(event, isLeft) {
         const eventDiv = document.createElement('div');
         eventDiv.className = `event ${isLeft ? 'left' : 'right'}`;
         eventDiv.dataset.type = event.type;
         eventDiv.dataset.period = event.period;
         eventDiv.dataset.id = event.id;
-        
+
+        // Appliquer la couleur spécifique si disponible (pour protestantHistory)
+        if (currentData.types && currentData.types[event.type]) {
+            const typeInfo = currentData.types[event.type];
+            eventDiv.style.setProperty('--event-color', typeInfo.color);
+            // On ajoute une classe spéciale pour appliquer ces variables css inline
+            eventDiv.classList.add('custom-color-event');
+        }
+
         // Créer la citation courte si disponible
         let quoteHtml = '';
         if (event.quote) {
-            // Extraire une version courte de la citation (max 80 caractères)
             let shortQuote = event.quote.replace(/^«\s*|\s*»$/g, '');
             if (shortQuote.length > 80) {
                 shortQuote = shortQuote.substring(0, 77) + '...';
             }
             quoteHtml = `<p class="event-quote">${shortQuote}</p>`;
         }
-        
+
         eventDiv.innerHTML = `
             <i class="fas ${event.icon} event-icon"></i>
             <span class="event-date">${event.date}</span>
@@ -119,26 +307,46 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="event-summary">${event.summary}</p>
             ${quoteHtml}
         `;
-        
-        // Ajouter l'événement click
+
         eventDiv.addEventListener('click', () => openModal(event));
-        
+
         return eventDiv;
     }
-    
+
     // =====================================================
     // MODAL
     // =====================================================
     function openModal(event) {
         const modalDate = modal.querySelector('.modal-date');
         const modalTitle = modal.querySelector('.modal-title');
-        
+
         modalDate.textContent = event.date;
         modalTitle.textContent = event.title;
-        
+
+        // Récupérer les infos du type
+        let typeLabel = event.type;
+        let typeClass = event.type;
+
+        if (currentData.types && currentData.types[event.type]) {
+            typeLabel = currentData.types[event.type].label;
+        } else {
+            // Fallback labels hardcodés (pour churchHistory)
+            const fallbackLabels = {
+                'major': 'Événement majeur',
+                'council': 'Concile',
+                'schism': 'Schisme',
+                'saint': 'Saint',
+                'movement': 'Ordre/Mouvement',
+                'apostle': 'Apôtre',
+                'father': 'Père de l\'Église',
+                'doctor': 'Docteur de l\'Église'
+            };
+            typeLabel = fallbackLabels[event.type] || event.type;
+        }
+
         // Générer le badge de type
-        const typeBadge = `<span class="modal-type-badge ${event.type}">${typeLabels[event.type] || event.type}</span>`;
-        
+        const typeBadge = `<span class="modal-type-badge ${typeClass}">${typeLabel}</span>`;
+
         // Générer la citation si disponible
         let quoteHtml = '';
         if (event.quote) {
@@ -148,8 +356,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }
-        
-        // Générer les canons si disponibles (pour les conciles)
+
+        // Générer les canons (spécifique Conciles)
         let canonsHtml = '';
         if (event.canons && event.canons.length > 0) {
             canonsHtml = `
@@ -157,20 +365,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4><i class="fas fa-scroll"></i> Canons et Décrets Principaux</h4>
                     <ul>
                         ${event.canons.map(canon => {
-                            // Ajouter une classe spéciale pour les titres de section (commençant par ===)
-                            if (canon.startsWith('===')) {
-                                const title = canon.replace(/===/g, '').trim();
-                                return `<li class="canon-section-title"><strong>${title}</strong></li>`;
-                            }
-                            // Mettre en évidence les mots en MAJUSCULES
-                            const highlightedCanon = canon.replace(/\b([A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]{2,}(?:\s+[A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]+)*)\b/g, '<strong>$1</strong>');
-                            return `<li><i class="fas fa-gavel"></i> ${highlightedCanon}</li>`;
-                        }).join('')}
+                if (canon.startsWith('===')) {
+                    const title = canon.replace(/===/g, '').trim();
+                    return `<li class="canon-section-title"><strong>${title}</strong></li>`;
+                }
+                const highlightedCanon = canon.replace(/\b([A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]{2,}(?:\s+[A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]+)*)\b/g, '<strong>$1</strong>');
+                return `<li><i class="fas fa-gavel"></i> ${highlightedCanon}</li>`;
+            }).join('')}
                     </ul>
                 </div>
             `;
         }
-        
+
         // Générer les détails
         let detailsHtml = '';
         if (event.details && event.details.length > 0) {
@@ -185,7 +391,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }
-        
+
+        // Générer les infos de la dénomination/mouvement (pour Protestant timeline)
+        let denominationHtml = '';
+        if (currentData.types && currentData.types[event.type] && currentData.types[event.type].birth) {
+            const denom = currentData.types[event.type];
+            denominationHtml = `
+                <div class="modal-denomination">
+                    <h4><i class="fas ${denom.icon}"></i> À propos du ${denom.label}</h4>
+                    <div class="denom-info">
+                        <p><strong><i class="fas fa-calendar-alt"></i> Naissance :</strong> ${denom.birth}</p>
+                        <p><strong><i class="fas fa-user"></i> Fondateur(s) :</strong> ${denom.founder}</p>
+                    </div>
+                    <div class="denom-doctrines">
+                        <p><strong><i class="fas fa-book"></i> Doctrines principales :</strong></p>
+                        <ul>
+                            ${denom.doctrines.map(doc => `<li>${doc}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="denom-history">
+                        <p><strong><i class="fas fa-history"></i> Histoire :</strong></p>
+                        <p class="history-text">${denom.history}</p>
+                    </div>
+                </div>
+            `;
+        }
+
         // Assembler le contenu du modal body
         const modalBody = modal.querySelector('.modal-body');
         modalBody.innerHTML = `
@@ -194,63 +425,51 @@ document.addEventListener('DOMContentLoaded', function() {
             ${quoteHtml}
             ${canonsHtml}
             ${detailsHtml}
+            ${denominationHtml}
         `;
-        
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-    
+
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
-    
+
     modalClose.addEventListener('click', closeModal);
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-    
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
     // =====================================================
-    // FILTRAGE COMBINÉ (PÉRIODE + TYPE)
+    // FILTRAGE
     // =====================================================
     function applyFilters() {
         const events = document.querySelectorAll('.event');
         const markers = document.querySelectorAll('.period-marker');
         const { period, type } = currentFilters;
-        
-        // Déterminer quels marqueurs de période ont des événements visibles
+
         const visiblePeriods = new Set();
-        
+        let count = 0;
+
         events.forEach(event => {
             const matchesPeriod = period === 'all' || event.dataset.period === period;
             const matchesType = type === 'all' || event.dataset.type === type;
-            
+
             if (matchesPeriod && matchesType) {
                 event.classList.remove('hidden');
                 visiblePeriods.add(event.dataset.period);
-                // Réanimer l'élément
                 event.classList.remove('visible');
                 setTimeout(() => {
-                    if (!event.classList.contains('hidden')) {
-                        event.classList.add('visible');
-                    }
+                    if (!event.classList.contains('hidden')) event.classList.add('visible');
                 }, 50);
+                count++;
             } else {
                 event.classList.add('hidden');
                 event.classList.remove('visible');
             }
         });
-        
-        // Afficher/masquer les marqueurs de période
+
         markers.forEach(marker => {
             if (visiblePeriods.has(marker.dataset.period)) {
                 marker.classList.remove('hidden');
@@ -260,115 +479,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 marker.classList.remove('visible');
             }
         });
-        
-        // Mettre à jour le compteur
-        updateResultsCount();
+
+        if (resultsCount) resultsCount.textContent = count;
     }
-    
+
     function updateResultsCount() {
         const visibleEvents = document.querySelectorAll('.event:not(.hidden)');
-        if (resultsCount) {
-            resultsCount.textContent = visibleEvents.length;
-        }
+        if (resultsCount) resultsCount.textContent = visibleEvents.length;
     }
-    
-    // =====================================================
-    // GESTION DES BOUTONS DE FILTRE PAR PÉRIODE
-    // =====================================================
-    periodButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Mettre à jour l'état actif
-            periodButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Mettre à jour le filtre
-            currentFilters.period = button.dataset.period;
-            
-            // Appliquer les filtres
-            applyFilters();
-        });
-    });
-    
-    // =====================================================
-    // GESTION DES BOUTONS DE FILTRE PAR TYPE
-    // =====================================================
-    typeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Mettre à jour l'état actif
-            typeButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Mettre à jour le filtre
-            currentFilters.type = button.dataset.type;
-            
-            // Appliquer les filtres
-            applyFilters();
-        });
-    });
-    
-    // =====================================================
-    // RÉINITIALISATION DES FILTRES
-    // =====================================================
+
     if (resetFiltersBtn) {
         resetFiltersBtn.addEventListener('click', () => {
-            // Réinitialiser l'état des filtres
-            currentFilters = {
-                period: 'all',
-                type: 'all'
-            };
-            
-            // Réinitialiser les boutons actifs
-            periodButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.period === 'all');
-            });
-            
-            typeButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.type === 'all');
-            });
-            
-            // Appliquer les filtres
+            currentFilters = { period: 'all', type: 'all' };
+
+            document.querySelectorAll('.period-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.period === 'all'));
+            document.querySelectorAll('.type-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.type === 'all'));
+
             applyFilters();
         });
     }
-    
-    // =====================================================
-    // LÉGENDE CLIQUABLE (raccourci vers les filtres par type)
-    // =====================================================
-    const legendItems = document.querySelectorAll('.legend-item[data-type]');
-    legendItems.forEach(item => {
-        item.style.cursor = 'pointer';
-        item.addEventListener('click', () => {
-            const type = item.dataset.type;
-            
-            // Activer le bouton de type correspondant
-            typeButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.type === type);
-            });
-            
-            // Mettre à jour le filtre
-            currentFilters.type = type;
-            
-            // Appliquer les filtres
-            applyFilters();
-            
-            // Scroll vers la timeline
-            const timelineContainer = document.querySelector('.timeline-container');
-            if (timelineContainer) {
-                timelineContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-    
+
     // =====================================================
     // ANIMATIONS AU SCROLL
     // =====================================================
     function initScrollAnimations() {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.classList.contains('hidden')) {
@@ -376,31 +511,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }, observerOptions);
-        
-        document.querySelectorAll('.event, .period-marker').forEach(element => {
-            observer.observe(element);
-        });
+
+        document.querySelectorAll('.event, .period-marker').forEach(element => observer.observe(element));
     }
-    
+
     // =====================================================
-    // TOGGLE FILTRES (RÉDUIRE/DÉVELOPPER)
+    // TOGGLE FILTRES
     // =====================================================
     if (toggleFiltersBtn && filtersNav) {
         toggleFiltersBtn.addEventListener('click', () => {
             const isCollapsed = filtersNav.classList.toggle('collapsed');
             const btnText = toggleFiltersBtn.querySelector('span');
-            if (btnText) {
-                btnText.textContent = isCollapsed ? 'Afficher les filtres' : 'Masquer les filtres';
-            }
+            if (btnText) btnText.textContent = isCollapsed ? 'Afficher les filtres' : 'Masquer les filtres';
         });
     }
-    
+
     // =====================================================
-    // INITIALISATION
+    // INITIALISATION INITIALE
     // =====================================================
+    generateFilters();
+    generateLegend();
     generateTimeline();
-    
-    // Animation initiale du header
+
+    // Animation header
     const header = document.querySelector('.header');
     header.style.opacity = '0';
     header.style.transform = 'translateY(-20px)';
