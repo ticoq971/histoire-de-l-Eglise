@@ -2666,12 +2666,12 @@ const churchHistory = {
         
         {
             id: 500,
-            year: "~1100",
-            date: "XIe-XXIe siècle",
+            year: "529",
+            date: "VIe-XXIe siècle",
             title: "🏛️ Les Communautés Ecclésiales Catholiques",
             summary: "Panorama des grandes familles spirituelles : ordres, congrégations, instituts et fraternités.",
             description: "L'Église catholique compte une grande diversité de communautés ecclésiales : ordres religieux anciens (bénédictins, franciscains, dominicains), congrégations modernes, instituts séculiers, sociétés de vie apostolique, et mouvements traditionalistes. Chacune possède son charisme propre, sa spiritualité, sa liturgie et son rapport à l'autorité romaine. Cette diversité reflète la richesse de la vie spirituelle catholique.",
-            period: "contemporary",
+            period: "medieval",
             type: "community",
             icon: "fa-church",
             details: [
@@ -3174,8 +3174,8 @@ const churchHistory = {
         },
         {
             id: 513,
-            year: "1943",
-            date: "1943",
+            year: "1972",
+            date: "1972",
             title: "🏛️ Communauté de l'Emmanuel",
             summary: "Communauté charismatique catholique d'évangélisation et d'adoration.",
             description: "La Communauté de l'Emmanuel est née du Renouveau charismatique catholique. Elle rassemble laïcs (couples, célibataires), prêtres et consacrés autour de l'adoration eucharistique, l'évangélisation et la compassion. Elle organise les sessions de Paray-le-Monial et participe aux JMJ. Approche moderne et missionnaire.",
@@ -4126,7 +4126,7 @@ const churchHistory = {
         // ==================== HÉRÉSIES MODERNES ====================
         {
             id: 723,
-            year: "~1640",
+            year: "~1650",
             date: "XVIIe siècle",
             title: "⚠️ Jansénisme",
             summary: "Grâce irrésistible, prédestination, rigorisme moral extrême.",
