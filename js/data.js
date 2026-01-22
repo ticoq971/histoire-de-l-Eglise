@@ -2657,6 +2657,967 @@ const churchHistory = {
                 "Indulgence plénière",
                 "Appel à l'espérance et à la réconciliation"
             ]
+        },
+
+        // =====================================================
+        // COMMUNAUTÉS ECCLÉSIALES CATHOLIQUES
+        // Les grandes familles spirituelles de l'Église
+        // =====================================================
+        
+        {
+            id: 500,
+            year: "~1100",
+            date: "XIe-XXIe siècle",
+            title: "🏛️ Les Communautés Ecclésiales Catholiques",
+            summary: "Panorama des grandes familles spirituelles : ordres, congrégations, instituts et fraternités.",
+            description: "L'Église catholique compte une grande diversité de communautés ecclésiales : ordres religieux anciens (bénédictins, franciscains, dominicains), congrégations modernes, instituts séculiers, sociétés de vie apostolique, et mouvements traditionalistes. Chacune possède son charisme propre, sa spiritualité, sa liturgie et son rapport à l'autorité romaine. Cette diversité reflète la richesse de la vie spirituelle catholique.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-church",
+            details: [
+                "Ordres monastiques contemplatifs (Bénédictins, Cisterciens, Chartreux)",
+                "Ordres mendiants (Franciscains, Dominicains, Carmes, Augustins)",
+                "Clercs réguliers (Jésuites, Théatins, Barnabites)",
+                "Congrégations apostoliques modernes",
+                "Instituts séculiers et sociétés de vie apostolique",
+                "Communautés traditionalistes (FSSP, FSSPX, IBP)"
+            ]
+        },
+
+        // ==================== ORDRES MONASTIQUES CONTEMPLATIFS ====================
+        {
+            id: 501,
+            year: "529",
+            date: "529",
+            title: "🏛️ Ordre de Saint-Benoît (OSB) - Bénédictins",
+            summary: "Le plus ancien ordre monastique occidental, fondé sur la Règle de saint Benoît.",
+            description: "Les Bénédictins suivent la Règle de saint Benoît (« Ora et labora ») établie au Mont-Cassin. Moines contemplatifs vivant en communauté stable, ils ont préservé la culture antique et évangélisé l'Europe. Chaque abbaye est autonome sous la direction d'un abbé élu à vie. La liturgie des Heures structure leur journée.",
+            period: "medieval",
+            type: "community",
+            icon: "fa-cross",
+            details: [
+                "Fondateur : Saint Benoît de Nursie (~480-547)",
+                "Charisme : « Ora et labora » (Prie et travaille)",
+                "Spiritualité : Lectio divina, Office divin (7 heures liturgiques)",
+                "Structure : Abbayes autonomes, fédérées en congrégations",
+                "Liturgie : Forme ordinaire ou extraordinaire selon les abbayes",
+                "Habit : Coule noire sur habit blanc/noir",
+                "Grandes abbayes : Solesmes, Fontgombault, Le Barroux, Maria Laach"
+            ],
+            communityInfo: {
+                type: "Ordre monastique contemplatif",
+                founded: "529 (Mont-Cassin)",
+                founder: "Saint Benoît de Nursie",
+                rule: "Règle de saint Benoît",
+                spirituality: "Contemplative, liturgique, centrée sur l'Office divin",
+                liturgy: "Forme ordinaire ou extraordinaire selon les abbayes",
+                governance: "Abbé élu à vie, abbayes autonomes",
+                vows: "Stabilité, conversion des mœurs, obéissance",
+                habit: "Coule noire sur habit blanc ou noir",
+                members: "~7 500 moines (Confédération bénédictine)",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Cisterciens : Moins austères, abbatiales souvent ornées, Office moins long",
+                    "vs Chartreux : Vie cénobitique (communautaire), pas érémitique",
+                    "vs Franciscains : Contemplatifs stables, pas mendiants itinérants",
+                    "vs Jésuites : Ordre monastique ancien vs clercs réguliers modernes"
+                ]
+            }
+        },
+        {
+            id: 502,
+            year: "1098",
+            date: "1098",
+            title: "🏛️ Ordre Cistercien (O.Cist / OCSO) - Cisterciens",
+            summary: "Réforme bénédictine de stricte observance, fondée à Cîteaux par saint Robert.",
+            description: "Les Cisterciens (« moines blancs ») sont nés d'une réforme visant à revenir à la pureté de la Règle bénédictine. Saint Bernard de Clairvaux leur donne un essor considérable. Les Trappistes (OCSO) sont une branche de stricte observance. Vie très austère, silence, travail manuel, architecture dépouillée.",
+            period: "schism",
+            type: "community",
+            icon: "fa-leaf",
+            details: [
+                "Fondateurs : Saints Robert, Albéric et Étienne (Cîteaux)",
+                "Figure majeure : Saint Bernard de Clairvaux",
+                "Charisme : Retour à la pureté de la Règle de saint Benoît",
+                "Spiritualité : Austérité, silence, travail manuel",
+                "Branches : O.Cist (commune observance), OCSO (Trappistes)",
+                "Liturgie : Forme ordinaire, parfois grégorienne",
+                "Habit : Coule blanche, scapulaire noir (Trappistes : brun)",
+                "Grandes abbayes : Cîteaux, Sept-Fons, Aiguebelle, Tamié"
+            ],
+            communityInfo: {
+                type: "Ordre monastique contemplatif",
+                founded: "1098 (Cîteaux, Bourgogne)",
+                founder: "Saints Robert de Molesme, Albéric et Étienne Harding",
+                rule: "Règle de saint Benoît (interprétation stricte)",
+                spirituality: "Austère, silencieuse, centrée sur le travail et la prière",
+                liturgy: "Forme ordinaire, chant grégorien fréquent",
+                governance: "Abbé élu, Chapitre général, Ordre centralisé",
+                vows: "Stabilité, conversion des mœurs, obéissance",
+                habit: "Coule blanche (d'où 'moines blancs')",
+                members: "~3 000 moines et moniales (OCSO)",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Bénédictins : Plus austères, architecture dépouillée, horaire plus strict",
+                    "vs Chartreux : Vie communautaire, pas de cellules individuelles",
+                    "vs Dominicains : Purement contemplatifs, pas de prédication",
+                    "Trappistes vs O.Cist : Observance encore plus stricte, silence absolu"
+                ]
+            }
+        },
+        {
+            id: 503,
+            year: "1084",
+            date: "1084",
+            title: "🏛️ Ordre des Chartreux (O.Cart)",
+            summary: "Ordre semi-érémitique de stricte contemplation, fondé par saint Bruno.",
+            description: "Les Chartreux combinent vie érémitique et cénobitique : chaque moine vit seul dans sa « cellule » (petite maison avec jardin) mais participe à certains offices en commun. Silence quasi-absolu, jeûne strict, jamais réformés car « jamais déformés ». La Grande Chartreuse, près de Grenoble, est la maison-mère.",
+            period: "schism",
+            type: "community",
+            icon: "fa-mountain",
+            details: [
+                "Fondateur : Saint Bruno (~1030-1101)",
+                "Charisme : « Stat crux dum volvitur orbis »",
+                "Spiritualité : Solitude contemplative, silence quasi-absolu",
+                "Mode de vie : Semi-érémitique (cellules individuelles)",
+                "Austérité : Jamais de viande, jeûne fréquent, peu de sorties",
+                "Devise : « Nunquam reformata quia nunquam deformata »",
+                "Liturgie : Rite cartusien propre, forme extraordinaire",
+                "Maison-mère : Grande Chartreuse (Isère, France)"
+            ],
+            communityInfo: {
+                type: "Ordre semi-érémitique contemplatif",
+                founded: "1084 (Grande Chartreuse)",
+                founder: "Saint Bruno de Cologne",
+                rule: "Statuts de Guigues (coutumier propre)",
+                spirituality: "Érémitique, silence, solitude absolue avec Dieu",
+                liturgy: "Rite cartusien propre (latin), matines à minuit",
+                governance: "Prieur (pas abbé), Chapitre général",
+                vows: "Stabilité, obéissance, conversion",
+                habit: "Robe blanche, scapulaire avec bande (cuculle)",
+                members: "~370 moines, ~75 moniales",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Bénédictins/Cisterciens : Semi-érémitiques, pas cénobitiques",
+                    "vs Carmes : Plus solitaires, pas d'apostolat du tout",
+                    "vs Tous : Jamais réformés (« nunquam deformata »)",
+                    "Seul ordre avec rite liturgique propre encore en usage"
+                ]
+            }
+        },
+
+        // ==================== ORDRES MENDIANTS ====================
+        {
+            id: 504,
+            year: "1209",
+            date: "1209",
+            title: "🏛️ Ordre des Frères Mineurs (OFM) - Franciscains",
+            summary: "Ordre mendiant fondé par saint François d'Assise, voué à la pauvreté évangélique.",
+            description: "Les Franciscains (Frères Mineurs) vivent la pauvreté radicale selon l'exemple de saint François. Ordre mendiant itinérant, ils prêchent, servent les pauvres et témoignent de la joie évangélique. L'ordre s'est divisé en trois branches : OFM (Observants), OFM Conv (Conventuels) et OFM Cap (Capucins), selon l'interprétation de la pauvreté.",
+            period: "schism",
+            type: "community",
+            icon: "fa-dove",
+            details: [
+                "Fondateur : Saint François d'Assise (1181/82-1226)",
+                "Charisme : Pauvreté évangélique, joie, fraternité",
+                "Spiritualité : Simplicité, pauvreté, amour de la création",
+                "Branches : OFM (Observants), OFM Conv, OFM Cap (Capucins)",
+                "Apostolat : Prédication, missions, service des pauvres",
+                "Liturgie : Forme ordinaire (Capucins parfois forme extraordinaire)",
+                "Habit : Bure brune (OFM/Cap) ou grise (Conv), cordon à 3 nœuds",
+                "Saints célèbres : Antoine de Padoue, Bonaventure, Padre Pio"
+            ],
+            communityInfo: {
+                type: "Ordre mendiant",
+                founded: "1209 (Assise, Italie)",
+                founder: "Saint François d'Assise",
+                rule: "Règle de saint François (1223)",
+                spirituality: "Pauvreté radicale, joie évangélique, amour de la création",
+                liturgy: "Forme ordinaire du rite romain",
+                governance: "Ministre général, chapitres, fraternités",
+                vows: "Pauvreté, chasteté, obéissance",
+                habit: "Bure brune avec capuce et corde à 3 nœuds",
+                members: "~33 000 frères (toutes branches confondues)",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Dominicains : Pauvreté plus radicale, moins intellectuels, plus affectifs",
+                    "vs Bénédictins : Itinérants et mendiants, pas de stabilité monastique",
+                    "vs Jésuites : Plus simples, moins structurés, spiritualité du cœur",
+                    "OFM vs Capucins : Capucins plus austères, barbe obligatoire, retrait du monde"
+                ]
+            }
+        },
+        {
+            id: 505,
+            year: "1216",
+            date: "1216",
+            title: "🏛️ Ordre des Prêcheurs (OP) - Dominicains",
+            summary: "Ordre mendiant fondé par saint Dominique, voué à la prédication et à l'étude.",
+            description: "Les Dominicains (« chiens du Seigneur », Domini canes) combinent vie contemplative et prédication savante. Fondés pour combattre l'hérésie cathare par l'enseignement, ils ont donné à l'Église de grands théologiens (Thomas d'Aquin, Albert le Grand). Étude intellectuelle rigoureuse et prédication sont au cœur de leur charisme.",
+            period: "schism",
+            type: "community",
+            icon: "fa-book-open",
+            details: [
+                "Fondateur : Saint Dominique de Guzmán (1170-1221)",
+                "Charisme : « Contemplare et contemplata aliis tradere »",
+                "Spiritualité : Étude, contemplation, prédication",
+                "Apostolat : Enseignement, prédication, Inquisition (historique)",
+                "Liturgie : Rite dominicain propre (rare), forme ordinaire",
+                "Habit : Robe blanche, scapulaire et chape noirs",
+                "Saints célèbres : Thomas d'Aquin, Catherine de Sienne, Martin de Porrès",
+                "Grandes figures : Meister Eckhart, Lacordaire, Congar"
+            ],
+            communityInfo: {
+                type: "Ordre mendiant",
+                founded: "1216 (Toulouse, France)",
+                founder: "Saint Dominique de Guzmán",
+                rule: "Règle de saint Augustin + Constitutions propres",
+                spirituality: "Contemplative et apostolique, centrée sur la Vérité",
+                liturgy: "Forme ordinaire (rite dominicain presque disparu)",
+                governance: "Maître de l'Ordre élu, chapitres, provinces",
+                vows: "Pauvreté, chasteté, obéissance",
+                habit: "Robe blanche, scapulaire noir, chape noire",
+                members: "~5 700 frères",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Franciscains : Plus intellectuels, étude systématique, moins affectifs",
+                    "vs Jésuites : Vie communautaire structurée, Office divin en commun",
+                    "vs Bénédictins : Apostolat actif, pas de stabilité monastique",
+                    "vs Carmes : Moins mystiques, plus scolastiques et prédicateurs"
+                ]
+            }
+        },
+        {
+            id: 506,
+            year: "1247",
+            date: "1247",
+            title: "🏛️ Ordre du Carmel (O.Carm / OCD) - Carmes",
+            summary: "Ordre mendiant contemplatif, réformé par sainte Thérèse d'Ávila.",
+            description: "Les Carmes, nés sur le Mont Carmel en Terre Sainte, sont un ordre mendiant à forte dimension contemplative. Sainte Thérèse d'Ávila et saint Jean de la Croix ont fondé les Carmes Déchaux (OCD) comme réforme de stricte observance. Leur spiritualité mystique (« nuit obscure », « château intérieur ») a profondément marqué l'Église.",
+            period: "schism",
+            type: "community",
+            icon: "fa-fire",
+            details: [
+                "Origine : Ermites du Mont Carmel (XIIe siècle)",
+                "Réformateurs : Sainte Thérèse d'Ávila, Saint Jean de la Croix",
+                "Charisme : Contemplation, vie d'oraison, spiritualité mariale",
+                "Branches : O.Carm (Grands Carmes), OCD (Carmes Déchaux)",
+                "Spiritualité : Mystique (Nuit obscure, Château intérieur)",
+                "Liturgie : Forme ordinaire",
+                "Habit : Brun (O.Carm) ou brun avec manteau blanc (OCD)",
+                "Saints célèbres : Thérèse d'Ávila, Jean de la Croix, Thérèse de Lisieux"
+            ],
+            communityInfo: {
+                type: "Ordre mendiant contemplatif",
+                founded: "~1155 (Mont Carmel) / 1562 (réforme thérésienne)",
+                founder: "Ermites du Carmel / Saints Thérèse et Jean de la Croix",
+                rule: "Règle de saint Albert de Jérusalem",
+                spirituality: "Mystique, oraison silencieuse, dévotion mariale",
+                liturgy: "Forme ordinaire du rite romain",
+                governance: "Préposé général, provinces",
+                vows: "Pauvreté, chasteté, obéissance",
+                habit: "Brun avec scapulaire et manteau blanc (OCD)",
+                members: "~4 000 frères (OCD), ~12 000 moniales",
+                status: "Pleine communion avec Rome",
+                differences: [
+                    "vs Dominicains : Plus mystiques, moins scolastiques, oraison silencieuse",
+                    "vs Franciscains : Plus contemplatifs, moins de service direct aux pauvres",
+                    "vs Chartreux : Ordre mendiant, pas érémitique strict",
+                    "O.Carm vs OCD : Déchaux plus austères, pieds nus, clôture stricte"
+                ]
+            }
+        },
+
+        // ==================== CLERCS RÉGULIERS ====================
+        {
+            id: 507,
+            year: "1540",
+            date: "1540",
+            title: "🏛️ Compagnie de Jésus (SJ) - Jésuites",
+            summary: "Ordre fondé par saint Ignace de Loyola, fer de lance de la Contre-Réforme.",
+            description: "Les Jésuites sont un ordre de clercs réguliers fondé pour la défense de la foi et l'éducation. Leur spiritualité (Exercices spirituels), leur obéissance spéciale au pape (4e vœu), leurs collèges et leurs missions mondiales en font l'ordre le plus influent de l'époque moderne. Supprimés en 1773, rétablis en 1814, ils restent controversés et admirés.",
+            period: "schism",
+            type: "community",
+            icon: "fa-graduation-cap",
+            details: [
+                "Fondateur : Saint Ignace de Loyola (1491-1556)",
+                "Charisme : « Ad maiorem Dei gloriam » (AMDG)",
+                "Spiritualité : Exercices spirituels, discernement ignatien",
+                "Apostolat : Éducation, missions, retraites, intellectuels",
+                "Vœu spécial : 4e vœu d'obéissance au pape pour les missions",
+                "Liturgie : Forme ordinaire",
+                "Habit : Soutane noire (pas d'habit distinctif)",
+                "Figures célèbres : François Xavier, Matteo Ricci, Teilhard de Chardin"
+            ],
+            communityInfo: {
+                type: "Clercs réguliers (société de vie apostolique)",
+                founded: "1540 (Rome)",
+                founder: "Saint Ignace de Loyola",
+                rule: "Constitutions de la Compagnie de Jésus",
+                spirituality: "Ignatienne : Exercices spirituels, discernement, consolation/désolation",
+                liturgy: "Forme ordinaire, pas d'Office divin en commun obligatoire",
+                governance: "Préposé général (« pape noir »), très hiérarchisé",
+                vows: "Pauvreté, chasteté, obéissance + 4e vœu au pape (profès)",
+                habit: "Soutane noire simple (souvent costume civil)",
+                members: "~14 500 membres (plus grand ordre masculin)",
+                status: "Pleine communion avec Rome (pape François est jésuite)",
+                differences: [
+                    "vs Dominicains/Franciscains : Pas d'Office divin en commun, plus souple",
+                    "vs Bénédictins : Pas de stabilité, mobilité totale pour les missions",
+                    "vs Tous les ordres : 4e vœu spécial au pape, formation très longue (10-15 ans)",
+                    "vs Traditionalistes : Généralement progressistes, liturgie moderne exclusive"
+                ]
+            }
+        },
+
+        // ==================== COMMUNAUTÉS TRADITIONALISTES ====================
+        {
+            id: 508,
+            year: "1970",
+            date: "1970",
+            title: "🏛️ Fraternité Saint-Pie X (FSSPX)",
+            summary: "Fraternité sacerdotale traditionaliste fondée par Mgr Lefebvre, en situation canonique irrégulière.",
+            description: "La FSSPX, fondée par Mgr Marcel Lefebvre, rejette certaines réformes de Vatican II (liberté religieuse, œcuménisme) et célèbre exclusivement la messe tridentine. Les sacres épiscopaux de 1988 sans mandat romain ont entraîné une excommunication (levée en 2009). Des discussions doctrinales continuent avec Rome pour une régularisation canonique complète.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-cross",
+            details: [
+                "Fondateur : Mgr Marcel Lefebvre (1905-1991)",
+                "Fondation : 1970 (Écône, Suisse)",
+                "Position : Rejet de Vatican II (liberté religieuse, œcuménisme)",
+                "Liturgie : Messe tridentine exclusive (Missel de 1962)",
+                "Situation canonique : Irrégulière (pas d'excommunication depuis 2009)",
+                "Supérieur actuel : Abbé Davide Pagliarani",
+                "Implantation : ~700 prêtres, 6 séminaires, présence mondiale",
+                "Relations avec Rome : Dialogue en cours, pas de reconnaissance pleine"
+            ],
+            communityInfo: {
+                type: "Fraternité sacerdotale traditionaliste",
+                founded: "1970 (Écône, Suisse)",
+                founder: "Mgr Marcel Lefebvre",
+                rule: "Constitutions propres inspirées des Spiritains",
+                spirituality: "Traditionaliste, anti-moderniste, sacerdotale",
+                liturgy: "Messe tridentine EXCLUSIVE (Missel 1962)",
+                governance: "Supérieur général, districts",
+                vows: "Pas de vœux religieux (fraternité sacerdotale)",
+                habit: "Soutane noire avec rabat",
+                members: "~700 prêtres, ~200 séminaristes",
+                status: "IRRÉGULIER - Dialogue avec Rome, pas de pleine communion",
+                differences: [
+                    "vs FSSP/IBP : Pas en pleine communion avec Rome, critique Vatican II",
+                    "vs Ordres classiques : Rejette les réformes conciliaires",
+                    "vs Église conciliaire : Refuse liberté religieuse et œcuménisme de Vatican II",
+                    "Sacres de 1988 : Excommunication levée en 2009, situation régularisée partiellement"
+                ]
+            }
+        },
+        {
+            id: 509,
+            year: "1988",
+            date: "1988",
+            title: "🏛️ Fraternité Saint-Pierre (FSSP)",
+            summary: "Fraternité sacerdotale traditionaliste en pleine communion avec Rome.",
+            description: "La FSSP a été fondée par d'anciens membres de la FSSPX qui ont refusé les sacres de 1988 et souhaitaient rester en communion avec Rome. Érigée par le pape Jean-Paul II, elle célèbre exclusivement la liturgie traditionnelle (messe tridentine) dans le plein respect de l'autorité romaine.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-key",
+            details: [
+                "Fondation : 18 juillet 1988 (après les sacres de Mgr Lefebvre)",
+                "Érection : Commission Ecclesia Dei (Jean-Paul II)",
+                "Position : Attachement à la tradition DANS la communion romaine",
+                "Liturgie : Messe tridentine exclusive (Missel de 1962)",
+                "Situation canonique : Pleine communion avec Rome",
+                "Implantation : ~350 prêtres, 2 séminaires (USA, Allemagne)",
+                "Apostolat : Paroisses, aumôneries, formation sacerdotale",
+                "Charisme : Liturgie traditionnelle au service de l'Église"
+            ],
+            communityInfo: {
+                type: "Société de vie apostolique de droit pontifical",
+                founded: "1988 (Hauterive, Suisse)",
+                founder: "12 prêtres issus de la FSSPX",
+                rule: "Constitutions approuvées par Rome",
+                spirituality: "Traditionaliste, thomiste, liturgique",
+                liturgy: "Messe tridentine EXCLUSIVE (Missel 1962)",
+                governance: "Supérieur général élu, chapitres",
+                vows: "Promesses (pas vœux religieux)",
+                habit: "Soutane noire",
+                members: "~350 prêtres, ~180 séminaristes",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs FSSPX : En communion avec Rome, accepte Vatican II (interprété traditionnellement)",
+                    "vs Diocésains : Liturgie exclusivement traditionnelle",
+                    "vs IBP : Similaires, mais fondations et spiritualités légèrement différentes",
+                    "Motu proprio Traditionis Custodes (2021) : Impact limité grâce au statut pontifical"
+                ]
+            }
+        },
+        {
+            id: 510,
+            year: "1990",
+            date: "1990",
+            title: "🏛️ Institut du Bon Pasteur (IBP)",
+            summary: "Institut traditionaliste issu de la FSSPX, réconcilié avec Rome en 2006.",
+            description: "L'IBP a été fondé par des prêtres de la FSSPX souhaitant une réconciliation avec Rome. Érigé canoniquement en 2006 par Benoît XVI, il célèbre exclusivement la messe tridentine et peut exprimer des « critiques constructives » de Vatican II selon ses statuts. Il se distingue par son approche intellectuelle et son travail d'édition.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-book",
+            details: [
+                "Fondation officielle : 2006 (réconciliation avec Rome)",
+                "Origine : Prêtres issus de la FSSPX",
+                "Érection : Motu proprio de Benoît XVI",
+                "Liturgie : Messe tridentine exclusive",
+                "Particularité : Peut émettre des « critiques constructives » de Vatican II",
+                "Apostolat : Paroisses, formation, éditions (Via Romana)",
+                "Implantation : France principalement, ~50 prêtres",
+                "Maison-mère : Courtalain (Eure-et-Loir)"
+            ],
+            communityInfo: {
+                type: "Société de vie apostolique de droit pontifical",
+                founded: "2006 (érection canonique)",
+                founder: "Abbé Philippe Laguérie et prêtres ex-FSSPX",
+                rule: "Statuts approuvés par Rome",
+                spirituality: "Traditionaliste, intellectuelle, sacerdotale",
+                liturgy: "Messe tridentine EXCLUSIVE",
+                governance: "Supérieur général, conseil",
+                vows: "Promesses sacerdotales",
+                habit: "Soutane noire",
+                members: "~50 prêtres",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs FSSPX : Réconcilié avec Rome depuis 2006",
+                    "vs FSSP : Peut critiquer constructivement Vatican II (statuts)",
+                    "vs Diocésains : Liturgie traditionnelle exclusive, approche intégriste assumée",
+                    "Travail intellectuel : Éditions Via Romana, revue Sedes Sapientiæ"
+                ]
+            }
+        },
+        {
+            id: 511,
+            year: "2003",
+            date: "2003",
+            title: "🏛️ Institut du Christ Roi Souverain Prêtre (ICRSP)",
+            summary: "Institut traditionaliste de spiritualité française, célébrant la messe tridentine.",
+            description: "L'ICRSP, fondé par le chanoine Gilles Wach, est un institut de vie canoniale. De spiritualité française et romaine, il célèbre exclusivement la messe tridentine avec un soin particulier pour la beauté liturgique (chasubles, chant grégorien). Présent surtout aux États-Unis et en Europe, il gère des sanctuaires et des écoles.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-crown",
+            details: [
+                "Fondateur : Chanoine Gilles Wach (1991, érection 2003)",
+                "Charisme : Royauté du Christ, beauté liturgique",
+                "Spiritualité : Française, salésienne, romaine",
+                "Liturgie : Messe tridentine exclusive avec grande solennité",
+                "Particularité : Chanoines (pas prêtres réguliers)",
+                "Habit : Soutane amarante (rouge-violet), camail",
+                "Implantation : USA, Europe, ~100 prêtres",
+                "Maison-mère : Gricigliano (Florence, Italie)"
+            ],
+            communityInfo: {
+                type: "Société de vie apostolique de droit pontifical",
+                founded: "1990 (fondation) / 2003 (érection pontificale)",
+                founder: "Chanoine Gilles Wach",
+                rule: "Constitutions propres, inspiration canoniale",
+                spirituality: "Salésienne, royauté du Christ, beauté liturgique",
+                liturgy: "Messe tridentine EXCLUSIVE, très solennelle",
+                governance: "Prieur général, chapitres",
+                vows: "Promesses canoniales",
+                habit: "Soutane AMARANTE distinctive, camail bleu",
+                members: "~100 prêtres et séminaristes",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs FSSP/IBP : Institut canonial (pas fraternité), spiritualité française",
+                    "vs FSSPX : Pleinement réconcilié avec Rome",
+                    "vs Tous : Habit distinctif amarante, esthétique liturgique très soignée",
+                    "Apostolat : Sanctuaires historiques, écoles, chant sacré"
+                ]
+            }
+        },
+
+        // ==================== MOUVEMENTS ECCLÉSIAUX MODERNES ====================
+        {
+            id: 512,
+            year: "1928",
+            date: "1928",
+            title: "🏛️ Opus Dei - Prélature de la Sainte-Croix",
+            summary: "Prélature personnelle fondée par saint Josémaria Escrivá, sanctification dans le travail.",
+            description: "L'Opus Dei (« Œuvre de Dieu ») est une prélature personnelle qui promeut la sanctification par le travail ordinaire. Fondée par saint Josémaria Escrivá, elle compte des laïcs (majorité), des prêtres et des numéraires vivant le célibat. Son influence dans les milieux dirigeants et son fonctionnement parfois critiqué en font un mouvement controversé mais reconnu.",
+            period: "modern",
+            type: "community",
+            icon: "fa-briefcase",
+            details: [
+                "Fondateur : Saint Josémaria Escrivá (1902-1975)",
+                "Charisme : Sanctification du travail ordinaire",
+                "Membres : Laïcs (90%), prêtres, numéraires",
+                "Statut : Prélature personnelle (depuis 1982)",
+                "Spiritualité : Filiation divine, travail comme chemin de sainteté",
+                "Liturgie : Forme ordinaire",
+                "Implantation : Mondiale, ~90 000 membres",
+                "Siège : Rome"
+            ],
+            communityInfo: {
+                type: "Prélature personnelle de droit pontifical",
+                founded: "1928 (Madrid, Espagne)",
+                founder: "Saint Josémaria Escrivá",
+                rule: "Statuts de la prélature",
+                spirituality: "Sanctification du travail, vie ordinaire, filiation divine",
+                liturgy: "Forme ordinaire",
+                governance: "Prélat (évêque), conseil",
+                vows: "Pas de vœux (engagements)",
+                habit: "Pas d'habit (vie civile)",
+                members: "~90 000 membres (laïcs majoritaires)",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs Ordres religieux : Pas de vœux, vie dans le monde",
+                    "vs Mouvements : Prélature personnelle (structure juridique unique)",
+                    "vs Traditionalistes : Liturgie moderne, pas d'attachement à la tradition",
+                    "Controverses : Critiques sur méthodes, influence, opacité"
+                ]
+            }
+        },
+        {
+            id: 513,
+            year: "1943",
+            date: "1943",
+            title: "🏛️ Communauté de l'Emmanuel",
+            summary: "Communauté charismatique catholique d'évangélisation et d'adoration.",
+            description: "La Communauté de l'Emmanuel est née du Renouveau charismatique catholique. Elle rassemble laïcs (couples, célibataires), prêtres et consacrés autour de l'adoration eucharistique, l'évangélisation et la compassion. Elle organise les sessions de Paray-le-Monial et participe aux JMJ. Approche moderne et missionnaire.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-hands-praying",
+            details: [
+                "Fondateur : Pierre Goursat (1914-1991)",
+                "Fondation : 1972 (reconnaissance 1992)",
+                "Charisme : Adoration, Compassion, Évangélisation (ACE)",
+                "Membres : Laïcs (majoritaires), prêtres, consacrés",
+                "Spiritualité : Charismatique, eucharistique",
+                "Liturgie : Forme ordinaire avec expression charismatique",
+                "Sessions : Paray-le-Monial (été)",
+                "Implantation : 67 pays, ~12 000 membres"
+            ],
+            communityInfo: {
+                type: "Association publique de fidèles",
+                founded: "1972 / 1992 (approbation pontificale)",
+                founder: "Pierre Goursat",
+                rule: "Statuts approuvés par Rome",
+                spirituality: "Charismatique, eucharistique, missionnaire",
+                liturgy: "Forme ordinaire avec louange charismatique",
+                governance: "Modérateur, conseil",
+                vows: "Engagements divers selon les états de vie",
+                habit: "Pas d'habit (vie civile ou col romain pour prêtres)",
+                members: "~12 000 membres",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs Traditionalistes : Charismatique, liturgie moderne",
+                    "vs Ordres anciens : Association de fidèles, pas d'ordre religieux",
+                    "vs Opus Dei : Plus populaire, moins élitiste, charismatique",
+                    "Expression : Louange, glossolalie, dons de l'Esprit"
+                ]
+            }
+        },
+        {
+            id: 514,
+            year: "1975",
+            date: "1975",
+            title: "🏛️ Communauté Saint-Martin",
+            summary: "Communauté de prêtres diocésains vivant en commun, liturgie soignée.",
+            description: "La Communauté Saint-Martin rassemble des prêtres diocésains vivant en communauté fraternelle. Elle se distingue par une liturgie soignée (forme ordinaire célébrée avec soin, en latin et en français), un esprit missionnaire et un accueil des vocations. Elle dessert de nombreuses paroisses en France et à l'étranger.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-users",
+            details: [
+                "Fondateur : Abbé Jean-François Guérin",
+                "Fondation : 1976 (reconnaissance 1998)",
+                "Charisme : Vie fraternelle sacerdotale, liturgie soignée",
+                "Liturgie : Forme ordinaire « ad orientem », latin et français",
+                "Particularité : Prêtres diocésains en communauté",
+                "Implantation : France, Europe, 140+ prêtres",
+                "Maison-mère : Évron (Mayenne)",
+                "Formation : Séminaire propre"
+            ],
+            communityInfo: {
+                type: "Association publique cléricale de droit pontifical",
+                founded: "1976 (reconnaissance 1998/2020)",
+                founder: "Abbé Jean-François Guérin",
+                rule: "Statuts approuvés par Rome",
+                spirituality: "Sacerdotale, liturgique, fraternelle",
+                liturgy: "Forme ORDINAIRE soignée (latin/français, ad orientem)",
+                governance: "Modérateur général, conseil",
+                vows: "Promesses de vie commune",
+                habit: "Soutane noire avec ceinture bleue",
+                members: "~140 prêtres, ~120 séminaristes",
+                status: "PLEINE COMMUNION avec Rome",
+                differences: [
+                    "vs FSSP/ICRSP : Forme ordinaire (pas extraordinaire)",
+                    "vs Diocésains classiques : Vie fraternelle obligatoire",
+                    "vs Emmanuel : Plus liturgique, moins charismatique",
+                    "Position : « Via media » entre tradition et modernité"
+                ]
+            }
+        },
+
+        // ==================== TABLEAU RÉCAPITULATIF ====================
+        {
+            id: 599,
+            year: "2024",
+            date: "Synthèse",
+            title: "📊 Tableau Comparatif des Communautés Catholiques",
+            summary: "Les grandes différences entre ordres, instituts et fraternités de l'Église catholique.",
+            description: "Ce tableau synthétise les principales différences entre les communautés ecclésiales catholiques : leur rapport à la tradition et à Vatican II, leur liturgie, leur spiritualité et leur statut canonique. Cette diversité reflète la richesse de l'Église catholique, de la contemplation monastique à l'action missionnaire, de la liturgie traditionnelle au renouveau charismatique.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-table",
+            details: [
+                "CONTEMPLATIFS : Bénédictins (stabilité), Cisterciens (austérité), Chartreux (solitude)",
+                "MENDIANTS : Franciscains (pauvreté), Dominicains (étude), Carmes (mystique)",
+                "CLERCS RÉGULIERS : Jésuites (missions, éducation, souplesse)",
+                "TRADITIONALISTES EN COMMUNION : FSSP, IBP, ICRSP (messe traditionnelle, pleine communion)",
+                "TRADITIONALISTES IRRÉGULIERS : FSSPX (messe traditionnelle, dialogue avec Rome)",
+                "MOUVEMENTS MODERNES : Opus Dei (travail), Emmanuel (charismatique), Saint-Martin (liturgie soignée)"
+            ],
+            communityInfo: {
+                type: "Synthèse comparative",
+                liturgy: "Variable selon les communautés",
+                differences: [
+                    "LITURGIE : Traditionnelle exclusive (FSSPX, FSSP, IBP, ICRSP) vs Ordinaire (autres)",
+                    "VATICAN II : Rejet (FSSPX) vs Acceptation traditionnelle (FSSP) vs Pleine adhésion (Jésuites, Emmanuel)",
+                    "SPIRITUALITÉ : Contemplative (moines) vs Active (mendiants, Jésuites) vs Mixte (Carmes)",
+                    "VIE : Cloîtrée (Chartreux, Carmélites) vs Semi-cloîtrée vs Dans le monde (Opus Dei)",
+                    "HABIT : Distinctif (Franciscains, Dominicains) vs Soutane (FSSP) vs Civil (Jésuites, Opus Dei)",
+                    "STATUT : Ordres anciens vs Congrégations vs Sociétés de vie apostolique vs Prélatures"
+                ]
+            }
+        },
+
+        // =====================================================
+        // LES GRANDES DIFFÉRENCES ENTRE COMMUNAUTÉS ECCLÉSIALES
+        // Analyse approfondie et comparative
+        // =====================================================
+        {
+            id: 600,
+            year: "2024",
+            date: "Guide comparatif",
+            title: "⚖️ Les Grandes Différences entre Communautés Ecclésiales",
+            summary: "Comprendre ce qui distingue fondamentalement chaque famille spirituelle de l'Église catholique.",
+            description: "Au sein de l'Église catholique, une extraordinaire diversité de communautés coexiste, chacune avec son charisme propre, sa spiritualité, sa liturgie et son rapport à Rome. Des moines contemplatifs aux fraternités traditionalistes, des ordres mendiants aux mouvements charismatiques, comprendre leurs différences permet de saisir la richesse et parfois les tensions de la vie ecclésiale catholique. Ce guide détaille les points fondamentaux qui distinguent ces communautés.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-balance-scale",
+            details: [
+                "=== 1. LA LITURGIE : LE CŒUR DES DIFFÉRENCES ===",
+                "MESSE TRIDENTINE EXCLUSIVE : FSSPX, FSSP, IBP, ICRSP - Missel de 1962, latin, ad orientem",
+                "FORME ORDINAIRE SOIGNÉE : Communauté Saint-Martin, certains Bénédictins - Vatican II mais célébré avec solennité",
+                "FORME ORDINAIRE STANDARD : Jésuites, Dominicains, Franciscains, Emmanuel - Réforme liturgique pleinement adoptée",
+                "RITE PROPRE : Chartreux (rite cartusien), Dominicains (rite dominicain - rare aujourd'hui)",
+                "",
+                "=== 2. RAPPORT À VATICAN II ===",
+                "REJET PARTIEL : FSSPX - Critique la liberté religieuse, l'œcuménisme, la collégialité",
+                "HERMÉNEUTIQUE DE CONTINUITÉ : FSSP, IBP, ICRSP - Acceptent Vatican II interprété selon la Tradition",
+                "ADHÉSION PLEINE : Jésuites, Dominicains, Emmanuel - Vatican II comme renouveau providentiel",
+                "",
+                "=== 3. VIE COMMUNAUTAIRE ===",
+                "CLÔTURE STRICTE : Chartreux, Carmélites - Séparation quasi-totale du monde",
+                "VIE MONASTIQUE : Bénédictins, Cisterciens - Stabilité, Office divin, vie régulière",
+                "VIE APOSTOLIQUE : Dominicains, Franciscains - Communauté + missions/prédication",
+                "VIE DANS LE MONDE : Opus Dei, Emmanuel - Pas de vie commune, sanctification du quotidien",
+                "",
+                "=== 4. SPIRITUALITÉ ===",
+                "CONTEMPLATIVE PURE : Chartreux (solitude avec Dieu), Cisterciens (austérité et silence)",
+                "INTELLECTUELLE : Dominicains (vérité), Jésuites (discernement ignatien)",
+                "AFFECTIVE : Franciscains (pauvreté et joie), Carmes (mystique et oraison)",
+                "CHARISMATIQUE : Emmanuel (dons de l'Esprit, louange, glossolalie)",
+                "SACERDOTALE : FSSP, Saint-Martin (beauté liturgique, formation sacerdotale)"
+            ],
+            communityInfo: {
+                type: "Guide explicatif détaillé",
+                liturgy: "Voir comparaison ci-dessous",
+                differences: [
+                    "=== FRANCISCAINS vs DOMINICAINS ===",
+                    "Franciscains : Spiritualité du cœur, pauvreté radicale, simplicité, joie, service des pauvres",
+                    "Dominicains : Spiritualité de l'intelligence, étude approfondie, prédication savante, combat de l'hérésie",
+                    "Devise franciscaine : « Paix et Bien » - Devise dominicaine : « Veritas » (Vérité)",
+                    "",
+                    "=== BÉNÉDICTINS vs CISTERCIENS vs CHARTREUX ===",
+                    "Bénédictins : Équilibre prière/travail, abbayes souvent ornées, ouverture aux hôtes",
+                    "Cisterciens : Même règle mais plus austère, architecture dépouillée, silence renforcé",
+                    "Chartreux : Semi-érémitiques, cellules individuelles, silence quasi-absolu, jamais réformés",
+                    "",
+                    "=== TRADITIONALISTES : FSSPX vs FSSP vs IBP vs ICRSP ===",
+                    "FSSPX : Hors communion pleine, critique Vatican II, dialogue difficile avec Rome, ~700 prêtres",
+                    "FSSP : Pleine communion, messe tridentine exclusive, fondée par ex-FSSPX fidèles à Rome, ~350 prêtres",
+                    "IBP : Pleine communion, peut critiquer Vatican II, approche plus intellectuelle, ~50 prêtres",
+                    "ICRSP : Pleine communion, spiritualité française, habit amarante distinctif, liturgie très solennelle",
+                    "Point commun : Tous célèbrent exclusivement la messe tridentine (Missel 1962)",
+                    "Différence clé : Rapport à Rome et à Vatican II",
+                    "",
+                    "=== JÉSUITES vs ORDRES ANCIENS ===",
+                    "Jésuites : Pas d'Office divin en commun, grande mobilité, formation très longue (10-15 ans)",
+                    "Jésuites : 4e vœu d'obéissance spéciale au pape, souplesse apostolique",
+                    "Ordres anciens : Stabilité, vie communautaire structurée, Office divin obligatoire",
+                    "Jésuites : Souvent en habit civil, intégrés dans le monde séculier",
+                    "",
+                    "=== OPUS DEI vs EMMANUEL vs SAINT-MARTIN ===",
+                    "Opus Dei : Prélature personnelle, laïcs majoritaires, sanctification du travail, discrétion",
+                    "Emmanuel : Charismatique, louange expressive, évangélisation directe, sessions Paray-le-Monial",
+                    "Saint-Martin : Prêtres en communauté, liturgie ordinaire mais soignée, « via media »",
+                    "",
+                    "=== STATUT CANONIQUE EXPLIQUÉ ===",
+                    "ORDRE : Structure ancienne avec vœux solennels (Bénédictins, Dominicains, Franciscains)",
+                    "CONGRÉGATION : Vœux simples, structure plus souple (Rédemptoristes, Salésiens)",
+                    "SOCIÉTÉ DE VIE APOSTOLIQUE : Pas de vœux mais engagements (FSSP, Oratoriens)",
+                    "PRÉLATURE PERSONNELLE : Rattachement direct au prélat, pas territorial (Opus Dei uniquement)",
+                    "ASSOCIATION DE FIDÈLES : Structure légère pour laïcs et clercs (Emmanuel, Chemin Néocatéchuménal)"
+                ]
+            }
+        },
+
+        // =====================================================
+        // FOCUS : COMPRENDRE LES TRADITIONALISTES
+        // =====================================================
+        {
+            id: 601,
+            year: "2024",
+            date: "Focus thématique",
+            title: "🔍 Focus : Comprendre le monde traditionaliste catholique",
+            summary: "FSSPX, FSSP, IBP, ICRSP... Qui sont-ils ? Quelles différences ? Quel rapport à Rome ?",
+            description: "Le monde traditionaliste catholique est souvent mal compris. Tous ces groupes célèbrent la messe tridentine (forme extraordinaire), mais leurs rapports avec Rome et leur position sur Vatican II diffèrent profondément. Ce focus explique les nuances essentielles entre ces communautés, leur histoire et leurs spécificités.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-church",
+            details: [
+                "=== ORIGINE COMMUNE : LA CRISE POST-CONCILIAIRE ===",
+                "Après Vatican II (1962-1965), la réforme liturgique de 1969-1970 remplace la messe tridentine",
+                "Mgr Marcel Lefebvre refuse la réforme et fonde la FSSPX (1970) pour préserver la Tradition",
+                "En 1988, Mgr Lefebvre sacre 4 évêques sans autorisation romaine → excommunication",
+                "Certains prêtres FSSPX refusent les sacres et fondent la FSSP (1988) en communion avec Rome",
+                "D'autres groupes se forment progressivement : IBP (2006), ICRSP (1990/2003)",
+                "",
+                "=== LA FSSPX : LA PLUS CONNUE ET LA PLUS CONTROVERSÉE ===",
+                "Position : Critique les « erreurs » de Vatican II (liberté religieuse, œcuménisme)",
+                "Liturgie : Messe tridentine EXCLUSIVE, rejet de la réforme liturgique",
+                "Statut : IRRÉGULIER mais pas schismatique (excommunications levées en 2009)",
+                "Relations avec Rome : Dialogue difficile, pas de pleine communion",
+                "Implantation : ~700 prêtres, 6 séminaires, présence mondiale",
+                "Fidèles : Environ 600 000 dans le monde",
+                "",
+                "=== LA FSSP : LES TRADITIONALISTES « ROMAINS » ===",
+                "Position : Attachement à la Tradition DANS la pleine communion romaine",
+                "Différence avec FSSPX : Accepte l'autorité du pape et Vatican II (lu traditionnellement)",
+                "Liturgie : Messe tridentine EXCLUSIVE (Missel 1962)",
+                "Statut : Pleine communion, société de vie apostolique de droit pontifical",
+                "Implantation : ~350 prêtres, 2 séminaires (USA, Allemagne)",
+                "Fondation : 1988, par 12 prêtres refusant les sacres de Mgr Lefebvre",
+                "",
+                "=== IBP : L'APPROCHE INTELLECTUELLE ===",
+                "Origine : Prêtres FSSPX réconciliés avec Rome en 2006",
+                "Particularité : Statuts permettant des « critiques constructives » de Vatican II",
+                "Apostolat : Paroisses, formation, éditions (Via Romana)",
+                "Style : Plus intellectuel, travail d'édition et de réflexion théologique",
+                "Implantation : France principalement, ~50 prêtres",
+                "",
+                "=== ICRSP : L'ESTHÉTIQUE LITURGIQUE ===",
+                "Origine : Fondé par le chanoine Gilles Wach (1990, érection 2003)",
+                "Particularité : Institut CANONIAL (pas fraternité), spiritualité française",
+                "Habit : Soutane AMARANTE distinctive (rouge-violet), très reconnaissable",
+                "Liturgie : Très solennelle, grand soin des ornements et du chant",
+                "Apostolat : Sanctuaires historiques, écoles, formation musicale",
+                "Implantation : USA et Europe, ~100 prêtres"
+            ],
+            communityInfo: {
+                type: "Focus explicatif sur le traditionalisme",
+                liturgy: "Messe tridentine (Missel 1962) pour tous",
+                differences: [
+                    "=== CE QUI LES UNIT ===",
+                    "Attachement exclusif à la messe tridentine (Missel 1962)",
+                    "Refus de la réforme liturgique de 1969-1970",
+                    "Valorisation de la Tradition catholique pré-conciliaire",
+                    "Formation sacerdotale classique (thomisme, latin, soutane)",
+                    "Rejet du relativisme et du modernisme théologique",
+                    "",
+                    "=== CE QUI LES SÉPARE ===",
+                    "RAPPORT À ROME : FSSPX (tendu) vs FSSP/IBP/ICRSP (pleine communion)",
+                    "VATICAN II : FSSPX (critique frontale) vs FSSP (lecture traditionnelle) vs IBP (critique constructive)",
+                    "ORIGINE : FSSPX (fondation directe) vs FSSP/IBP (scissions de la FSSPX)",
+                    "ECCLÉSIOLOGIE : FSSPX (état de nécessité) vs Autres (obéissance normale)",
+                    "",
+                    "=== QUESTIONS FRÉQUENTES ===",
+                    "Q: Peut-on assister à la messe FSSPX ? R: Oui pour le devoir dominical (Rome 2017)",
+                    "Q: Les sacrements FSSPX sont-ils valides ? R: OUI, ils sont valides mais illicites",
+                    "Q: La FSSPX est-elle schismatique ? R: NON, situation irrégulière mais pas schisme formel",
+                    "Q: Pourquoi la FSSP et non la FSSPX ? R: Pour être en pleine communion ecclésiale",
+                    "",
+                    "=== IMPACT DE TRADITIONIS CUSTODES (2021) ===",
+                    "Le motu proprio de François restreint la messe tridentine dans les diocèses",
+                    "FSSP, IBP, ICRSP : Protégés par leur statut pontifical (décret 2022)",
+                    "FSSPX : Non concernée car hors du système diocésain",
+                    "Paroisses diocésaines : Restrictions importantes sur la forme extraordinaire"
+                ]
+            }
+        },
+
+        // =====================================================
+        // FOCUS : ORDRES CONTEMPLATIFS - LE CLOÎTRE
+        // =====================================================
+        {
+            id: 602,
+            year: "2024",
+            date: "Focus thématique",
+            title: "🙏 Focus : Les ordres contemplatifs - Vie cachée avec Dieu",
+            summary: "Bénédictins, Cisterciens, Chartreux, Carmes... La vie monastique et ses nuances.",
+            description: "La vie contemplative est le cœur battant de l'Église. Ces hommes et femmes qui ont choisi de se retirer du monde pour prier ne sont pas tous identiques. Du moine bénédictin accueillant les hôtes au chartreux vivant en quasi-ermite, les nuances sont profondes.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-pray",
+            details: [
+                "=== LA VIE MONASTIQUE BÉNÉDICTINE ===",
+                "Règle de saint Benoît (VIe siècle) : fondement de tout le monachisme occidental",
+                "Devise : « Ora et labora » (Prie et travaille)",
+                "Journée : 7 offices liturgiques (Vigiles, Laudes, Tierce, Sexte, None, Vêpres, Complies)",
+                "Stabilité : Le moine est attaché à son abbaye pour la vie",
+                "Accueil : Les abbayes bénédictines accueillent souvent des hôtes et retraitants",
+                "Diversité : Certaines abbayes sont « ordinaire », d'autres « extraordinaire »",
+                "Exemples : Solesmes, Fontgombault, Le Barroux, Maria Laach",
+                "",
+                "=== LES CISTERCIENS : LA RÉFORME AUSTÈRE ===",
+                "Origine : 1098, Cîteaux - retour à la pureté de la Règle de saint Benoît",
+                "Figure majeure : Saint Bernard de Clairvaux (XIIe siècle)",
+                "Différence avec Bénédictins : Plus austères, architecture dépouillée, moins d'ornements",
+                "Les « Trappistes » (OCSO) : Branche de stricte observance, silence presque absolu",
+                "Travail manuel : Agriculture, fromages, bières (source de revenus)",
+                "Exemples : Cîteaux, Sept-Fons, Aiguebelle, Tamié",
+                "",
+                "=== LES CHARTREUX : L'ABSOLU DE LA SOLITUDE ===",
+                "Fondateur : Saint Bruno (1084, Grande Chartreuse)",
+                "Mode de vie unique : Semi-érémitique (entre ermite et cénobite)",
+                "Cellule : Chaque moine vit seul dans une « cellule » (petite maison avec jardin)",
+                "Silence : Quasi-absolu, parole rare, communication par signes",
+                "Austérité : Jamais de viande, jeûnes fréquents, peu de sorties",
+                "Liturgie : Rite cartusien propre, Matines à minuit",
+                "Devise : « Stat crux dum volvitur orbis » (La croix demeure tandis que le monde tourne)",
+                "Fierté : « Nunquam reformata quia nunquam deformata » (Jamais réformés car jamais déformés)",
+                "",
+                "=== LES CARMES : LA MYSTIQUE DU CARMEL ===",
+                "Origine : Ermites du Mont Carmel (XIIe siècle, Terre Sainte)",
+                "Réforme : Sainte Thérèse d'Ávila et saint Jean de la Croix (XVIe siècle)",
+                "Branches : O.Carm (Grands Carmes) et OCD (Carmes Déchaux, réformés)",
+                "Spiritualité : Oraison silencieuse, « Nuit obscure », « Château intérieur »",
+                "Caractère : Ordre mendiant mais très contemplatif (pas vraiment itinérant)",
+                "Carmélites : Clôture stricte, parmi les plus austères des religieuses",
+                "Saintes célèbres : Thérèse d'Ávila, Jean de la Croix, Thérèse de Lisieux"
+            ],
+            communityInfo: {
+                type: "Focus sur la vie contemplative",
+                spirituality: "Prière, silence, séparation du monde",
+                differences: [
+                    "=== TABLEAU COMPARATIF CONTEMPLATIFS ===",
+                    "",
+                    "BÉNÉDICTINS : Vie cénobitique équilibrée, accueil des hôtes, liturgie solennelle",
+                    "CISTERCIENS : Plus austères que Bénédictins, architecture dépouillée, silence renforcé",
+                    "TRAPPISTES : Stricte observance cistercienne, silence quasi-absolu, travail agricole",
+                    "CHARTREUX : Semi-érémitiques, solitude maximale, rite propre, jamais de viande",
+                    "CARMES : Ordre mendiant contemplatif, mystique, Carmélites très cloîtrées",
+                    "",
+                    "=== INTENSITÉ DE LA CLÔTURE ===",
+                    "La plus stricte : Chartreux (cellule individuelle, sortie très rare)",
+                    "Très stricte : Carmélites déchausses (clôture papale)",
+                    "Stricte : Cisterciennes, Bénédictines de stricte observance",
+                    "Modérée : Bénédictines classiques (accueil possible)",
+                    "",
+                    "=== JOURNÉE TYPE D'UN MOINE ===",
+                    "3h00 : Vigiles (ou Matines) - office nocturne",
+                    "6h00 : Laudes - office du matin",
+                    "7h30 : Messe conventuelle",
+                    "9h00 : Tierce + travail",
+                    "12h00 : Sexte + repas (en silence avec lecture)",
+                    "14h00 : None + travail ou lectio divina",
+                    "17h30 : Vêpres",
+                    "19h30 : Complies + Grand Silence jusqu'à Laudes"
+                ]
+            }
+        },
+
+        // =====================================================
+        // FOCUS : ORDRES MENDIANTS - DANS LE MONDE
+        // =====================================================
+        {
+            id: 603,
+            year: "2024",
+            date: "Focus thématique",
+            title: "🚶 Focus : Les ordres mendiants - Pauvreté et prédication",
+            summary: "Franciscains, Dominicains, Carmes, Augustins... Vivre pauvre pour évangéliser.",
+            description: "Au XIIIe siècle, une révolution spirituelle secoue l'Église : des hommes renoncent à tout pour vivre comme les apôtres, mendiants et itinérants. Franciscains et Dominicains incarnent deux approches complémentaires de cet idéal.",
+            period: "contemporary",
+            type: "community",
+            icon: "fa-walking",
+            details: [
+                "=== QU'EST-CE QU'UN ORDRE MENDIANT ? ===",
+                "Naissance : XIIIe siècle, en réaction aux richesses de l'Église",
+                "Principe : Pas de propriété collective, vie d'aumônes (mendicité)",
+                "Différence avec moines : Pas de stabilité, vie itinérante, prédication dans le monde",
+                "Les 4 grands ordres mendiants : Franciscains, Dominicains, Carmes, Augustins",
+                "Aujourd'hui : La mendicité stricte a souvent été atténuée",
+                "",
+                "=== LES FRANCISCAINS : L'ÉVANGILE À LA LETTRE ===",
+                "Fondateur : Saint François d'Assise (1209)",
+                "Charisme : Pauvreté radicale, joie, fraternité, amour de la création",
+                "Spiritualité : Simplicité, humilité, service des pauvres",
+                "Branches actuelles :",
+                "  - OFM (Observants) : Branche principale",
+                "  - OFM Conv (Conventuels) : Interprétation plus souple de la pauvreté",
+                "  - OFM Cap (Capucins) : Réforme austère du XVIe siècle, barbe obligatoire",
+                "Habit : Bure brune (OFM/Capucins) ou grise (Conventuels), corde à 3 nœuds",
+                "Saints célèbres : Antoine de Padoue, Bonaventure, Padre Pio",
+                "",
+                "=== LES DOMINICAINS : PRÊCHER LA VÉRITÉ ===",
+                "Fondateur : Saint Dominique de Guzmán (1216)",
+                "Charisme : « Contemplare et contemplata aliis tradere » (Contempler et transmettre)",
+                "Origine : Combattre l'hérésie cathare par la prédication et l'exemple",
+                "Spiritualité : Étude rigoureuse, recherche de la vérité, prédication savante",
+                "Formation : Très intellectuelle, philosophie et théologie approfondies",
+                "Habit : Robe blanche, scapulaire noir, chape noire",
+                "Surnoms : « Frères Prêcheurs », « Domini canes » (Chiens du Seigneur)",
+                "Saints célèbres : Thomas d'Aquin, Albert le Grand, Catherine de Sienne",
+                "",
+                "=== FRANCISCAINS vs DOMINICAINS : LE CŒUR vs L'INTELLIGENCE ===",
+                "François : Approche affective, « sentir » Dieu, pauvreté vécue jusqu'au bout",
+                "Dominique : Approche intellectuelle, « comprendre » Dieu, étude comme prière",
+                "François : Simplicité, méfiance envers les études excessives",
+                "Dominique : Les couvents sont des centres d'étude, bibliothèques importantes",
+                "Complémentarité : L'Église a besoin des deux - le cœur ET l'intelligence"
+            ],
+            communityInfo: {
+                type: "Focus sur les ordres mendiants",
+                spirituality: "Pauvreté, itinérance, prédication",
+                differences: [
+                    "=== COMPARAISON DÉTAILLÉE ===",
+                    "",
+                    "PAUVRETÉ :",
+                    "Franciscains : Radicale, pas de chaussures (Capucins), vie très simple",
+                    "Dominicains : Pauvreté collective mais moyens pour l'étude acceptés",
+                    "",
+                    "ÉTUDE :",
+                    "Franciscains : Importante mais subordonnée à la prière et au service",
+                    "Dominicains : Centrale, « ne rien dire que l'on n'ait d'abord brûlé dans son cœur »",
+                    "",
+                    "PRÉDICATION :",
+                    "Franciscains : Populaire, simple, par l'exemple de vie surtout",
+                    "Dominicains : Savante, théologique, combat des erreurs",
+                    "",
+                    "APOSTOLAT :",
+                    "Franciscains : Service des pauvres, missions lointaines, présence simple",
+                    "Dominicains : Universités, formation du clergé, direction spirituelle",
+                    "",
+                    "HABIT :",
+                    "Franciscains : Bure brune ou grise, corde, sandales",
+                    "Dominicains : Blanc et noir (« pie » comme l'oiseau)",
+                    "",
+                    "=== LES BRANCHES FRANCISCAINES EXPLIQUÉES ===",
+                    "1209 : Fondation par saint François",
+                    "Après sa mort : Querelles sur l'interprétation de la pauvreté",
+                    "« Spirituels » : Pauvreté absolue, parfois hérétiques",
+                    "« Conventuels » : Interprétation plus souple, couvents établis",
+                    "« Observants » : Retour à la stricte observance (XVe siècle)",
+                    "« Capucins » : Réforme de 1528, vie très austère, barbe, capuce pointu",
+                    "Aujourd'hui : OFM (~13 000), OFM Conv (~4 000), OFM Cap (~10 500)"
+                ]
+            }
         }
     ]
 };

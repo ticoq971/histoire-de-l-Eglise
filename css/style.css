@@ -13,6 +13,7 @@
     --color-apostle: #8B0000;
     --color-father: #4a6741;
     --color-doctor: #704214;
+    --color-community: #5B3A8C;
     --color-bg: #f5f0e8;
     --color-bg-dark: #e8e0d4;
     --color-text: #2c2416;
@@ -586,6 +587,19 @@ body {
     background: var(--color-doctor);
 }
 
+.event[data-type="community"] {
+    border-left-color: var(--color-community);
+    background: linear-gradient(135deg, #fff 0%, #f8f5ff 100%);
+}
+
+.event[data-type="community"]::after {
+    border-color: var(--color-community);
+}
+
+.event[data-type="community"]::before {
+    background: var(--color-community);
+}
+
 /* Contenu de l'événement */
 .event-date {
     font-family: var(--font-title);
@@ -941,6 +955,125 @@ body {
 .modal-type-badge.movement {
     background: var(--color-purple);
     color: white;
+}
+
+.modal-type-badge.community {
+    background: var(--color-community);
+    color: white;
+}
+
+/* Infos sur les communautés ecclésiales */
+.modal-community-info {
+    background: linear-gradient(135deg, #f8f5ff 0%, #f0ebf9 100%);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    border: 1px solid rgba(91, 58, 140, 0.15);
+}
+
+.modal-community-info h4 {
+    font-family: var(--font-title);
+    color: var(--color-community);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-community-info h4 i {
+    color: var(--color-community);
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.community-item {
+    padding: 10px 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid var(--color-community);
+}
+
+.community-item strong {
+    color: var(--color-community);
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.community-item span {
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+.community-status {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.community-status.communion {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border: 1px solid #28a745;
+}
+
+.community-status.irregular {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+    color: #856404;
+    border: 1px solid #ffc107;
+}
+
+.community-differences {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(91, 58, 140, 0.2);
+}
+
+.community-differences h5 {
+    font-family: var(--font-title);
+    color: var(--color-community);
+    font-size: 1rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.community-differences ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.community-differences li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(91, 58, 140, 0.1);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.community-differences li:last-child {
+    border-bottom: none;
+}
+
+.community-differences li i {
+    color: var(--color-community);
+    margin-top: 3px;
+    flex-shrink: 0;
 }
 
 /* Event quote preview */
