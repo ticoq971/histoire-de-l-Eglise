@@ -108,7 +108,7 @@ Chaque concile œcuménique affiche désormais :
 
 ---
 
-## 🏛️ Communautés Ecclésiales Catholiques (NOUVEAU)
+## 🏛️ Communautés Ecclésiales Catholiques
 
 ### Les grandes familles spirituelles et leurs différences
 
@@ -131,6 +131,51 @@ Chaque concile œcuménique affiche désormais :
 | **Spiritualité** | Contemplative | Pauvreté, joie | Étude, prédication | Ignatienne | Traditionaliste | Traditionaliste |
 | **Habit** | Coule noire | Bure brune | Blanc/noir | Soutane/civil | Soutane | Soutane |
 | **Statut** | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ⚠️ Irrégulier |
+
+### 🆕 Guide détaillé des grandes différences (NOUVEAU)
+
+L'application inclut désormais **4 fiches thématiques approfondies** pour comprendre les différences entre communautés :
+
+#### ⚖️ Les Grandes Différences entre Communautés Ecclésiales
+- **Liturgie** : Tridentine exclusive vs Ordinaire soignée vs Ordinaire standard
+- **Rapport à Vatican II** : Rejet (FSSPX) vs Herméneutique de continuité (FSSP) vs Adhésion pleine
+- **Vie communautaire** : Clôture stricte vs Monastique vs Apostolique vs Dans le monde
+- **Spiritualité** : Contemplative vs Intellectuelle vs Affective vs Charismatique
+
+#### 🔍 Focus : Comprendre le monde traditionaliste
+| Communauté | Statut | Rapport à Vatican II | Prêtres |
+|------------|--------|---------------------|---------|
+| **FSSPX** | ⚠️ Irrégulier | Critique frontale | ~700 |
+| **FSSP** | ✅ Communion | Lecture traditionnelle | ~350 |
+| **IBP** | ✅ Communion | Critique constructive | ~50 |
+| **ICRSP** | ✅ Communion | Acceptation | ~100 |
+
+**Ce qui les unit** : Messe tridentine exclusive, formation classique, soutane
+**Ce qui les sépare** : Rapport à Rome et interprétation de Vatican II
+
+#### 🙏 Focus : Les ordres contemplatifs
+| Ordre | Fondation | Intensité clôture | Particularité |
+|-------|-----------|-------------------|---------------|
+| **Bénédictins** | 529 | Modérée | Accueil des hôtes, équilibre |
+| **Cisterciens** | 1098 | Stricte | Austérité, silence, travail manuel |
+| **Chartreux** | 1084 | Maximale | Semi-érémitique, cellules individuelles |
+| **Carmes** | 1247 | Très stricte (Carmélites) | Mystique, oraison silencieuse |
+
+#### 🚶 Focus : Les ordres mendiants - Franciscains vs Dominicains
+
+| Aspect | Franciscains | Dominicains |
+|--------|--------------|-------------|
+| **Approche** | Cœur, affective | Intelligence, intellectuelle |
+| **Devise** | « Paix et Bien » | « Veritas » (Vérité) |
+| **Pauvreté** | Radicale, vécue | Collective, pour l'étude |
+| **Prédication** | Populaire, par l'exemple | Savante, théologique |
+| **Habit** | Bure brune, corde | Blanc et noir |
+| **Saints** | François, Antoine, Padre Pio | Thomas d'Aquin, Catherine de Sienne |
+
+**Branches franciscaines** :
+- **OFM** (Observants) : Branche principale (~13 000)
+- **OFM Conv** (Conventuels) : Plus souple (~4 000)
+- **OFM Cap** (Capucins) : Très austère, barbe obligatoire (~10 500)
 
 ---
 
@@ -173,7 +218,16 @@ Chaque concile œcuménique affiche désormais :
 
 ## 🆕 Changelog
 
-### v3.0 - Ajout des Communautés Ecclésiales (NOUVEAU)
+### v3.1 - Guide des Grandes Différences entre Communautés (NOUVEAU)
+- **4 fiches thématiques approfondies** pour comprendre les différences
+- **Focus Traditionalistes** : FSSPX vs FSSP vs IBP vs ICRSP expliqué en détail
+- **Focus Contemplatifs** : Bénédictins vs Cisterciens vs Chartreux vs Carmes
+- **Focus Mendiants** : Franciscains vs Dominicains - Le cœur vs l'intelligence
+- **Tableaux comparatifs** enrichis avec rapport à Vatican II, liturgie, spiritualité
+- **Questions fréquentes** sur les traditionalistes (validité des sacrements, etc.)
+- **Impact de Traditionis Custodes** (2021) expliqué
+
+### v3.0 - Ajout des Communautés Ecclésiales
 - **15+ communautés ecclésiales** détaillées (ordres, congrégations, fraternités)
 - **Comparaison des différences** entre communautés (liturgie, spiritualité, statut)
 - **Moines contemplatifs** : Bénédictins, Cisterciens, Chartreux
