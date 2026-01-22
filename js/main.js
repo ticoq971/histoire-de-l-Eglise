@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 { id: 'father', label: 'Pères de l\'Église', icon: 'fa-scroll', color: '#4a6741' },
                 { id: 'doctor', label: 'Docteurs de l\'Église', icon: 'fa-book', color: '#704214' },
                 { id: 'saint', label: 'Saints', icon: 'fa-pray', color: '#2d5a4a' },
+                { id: 'heresy', label: 'Hérésies', icon: 'fa-exclamation-triangle', color: '#8B0000' },
                 { id: 'schism', label: 'Schismes', icon: 'fa-divide', color: '#6b2d2d' },
                 { id: 'movement', label: 'Ordres & Mouvements', icon: 'fa-users', color: '#4a3a6b' },
                 { id: 'community', label: 'Communautés', icon: 'fa-church', color: '#5B3A8C' }
@@ -151,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 { id: 'father', label: 'Pères', color: '#4a6741' },
                 { id: 'doctor', label: 'Docteurs', color: '#704214' },
                 { id: 'saint', label: 'Saints', color: '#2d5a4a' },
+                { id: 'heresy', label: 'Hérésies', color: '#8B0000' },
                 { id: 'schism', label: 'Schismes', color: '#6b2d2d' },
                 { id: 'movement', label: 'Ordres', color: '#4a3a6b' },
                 { id: 'community', label: 'Communautés', color: '#5B3A8C' }
@@ -342,7 +344,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 'apostle': 'Apôtre',
                 'father': 'Père de l\'Église',
                 'doctor': 'Docteur de l\'Église',
-                'community': 'Communauté Ecclésiale'
+                'community': 'Communauté Ecclésiale',
+                'heresy': 'Hérésie'
             };
             typeLabel = fallbackLabels[event.type] || event.type;
         }
