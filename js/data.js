@@ -3628,12 +3628,12 @@ const churchHistory = {
         // ==================== INTRODUCTION AUX HÉRÉSIES ====================
         {
             id: 700,
-            year: "30-2024",
+            year: "30",
             date: "Synthèse historique",
             title: "⚠️ Les Hérésies dans l'Histoire de l'Église",
             summary: "Panorama des erreurs doctrinales qui ont menacé la foi catholique au cours des siècles.",
             description: "Une hérésie (du grec hairesis, « choix ») est une doctrine qui contredit un dogme défini par l'Église. Contrairement à l'apostasie (abandon total de la foi) ou au schisme (rupture de communion), l'hérésie maintient une partie de la foi tout en niant une vérité essentielle. Les conciles œcuméniques ont souvent été convoqués pour condamner les hérésies et définir la vraie doctrine. Comprendre les hérésies permet de mieux saisir le développement du dogme catholique.",
-            period: "contemporary",
+            period: "ancient",
             type: "heresy",
             icon: "fa-exclamation-triangle",
             details: [
