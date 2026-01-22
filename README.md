@@ -108,6 +108,32 @@ Chaque concile œcuménique affiche désormais :
 
 ---
 
+## 🏛️ Communautés Ecclésiales Catholiques (NOUVEAU)
+
+### Les grandes familles spirituelles et leurs différences
+
+| Catégorie | Communautés | Caractéristiques principales |
+|-----------|-------------|------------------------------|
+| **Moines contemplatifs** | Bénédictins (OSB), Cisterciens (O.Cist/OCSO), Chartreux | Stabilité, Office divin, Ora et labora |
+| **Ordres mendiants** | Franciscains (OFM), Dominicains (OP), Carmes (O.Carm/OCD) | Pauvreté, itinérance, prédication |
+| **Clercs réguliers** | Jésuites (SJ) | Missions, éducation, obéissance au pape |
+| **Traditionalistes en communion** | FSSP, IBP, ICRSP | Messe tridentine, pleine communion romaine |
+| **Traditionalistes irréguliers** | FSSPX | Messe tridentine, dialogue avec Rome en cours |
+| **Mouvements modernes** | Opus Dei, Emmanuel, Saint-Martin | Formes variées de vie consacrée |
+
+### Tableau comparatif des principales différences
+
+| Aspect | Bénédictins | Franciscains | Dominicains | Jésuites | FSSP | FSSPX |
+|--------|-------------|--------------|-------------|----------|------|-------|
+| **Fondation** | 529 | 1209 | 1216 | 1540 | 1988 | 1970 |
+| **Vie** | Monastique | Itinérante | Communautaire | Apostolique | Sacerdotale | Sacerdotale |
+| **Liturgie** | Variable | Ordinaire | Ordinaire | Ordinaire | Tridentine | Tridentine |
+| **Spiritualité** | Contemplative | Pauvreté, joie | Étude, prédication | Ignatienne | Traditionaliste | Traditionaliste |
+| **Habit** | Coule noire | Bure brune | Blanc/noir | Soutane/civil | Soutane | Soutane |
+| **Statut** | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ⚠️ Irrégulier |
+
+---
+
 ## 📁 Structure du Projet
 
 ```
@@ -146,6 +172,16 @@ Chaque concile œcuménique affiche désormais :
 ---
 
 ## 🆕 Changelog
+
+### v3.0 - Ajout des Communautés Ecclésiales (NOUVEAU)
+- **15+ communautés ecclésiales** détaillées (ordres, congrégations, fraternités)
+- **Comparaison des différences** entre communautés (liturgie, spiritualité, statut)
+- **Moines contemplatifs** : Bénédictins, Cisterciens, Chartreux
+- **Ordres mendiants** : Franciscains, Dominicains, Carmes
+- **Clercs réguliers** : Jésuites
+- **Traditionalistes** : FSSP, IBP, ICRSP, FSSPX
+- **Mouvements modernes** : Opus Dei, Emmanuel, Saint-Martin
+- **Fiches détaillées** avec spiritualité, liturgie, gouvernance et statut canonique
 
 ### v2.0 - Ajout des Canons des Conciles
 - **21 conciles œcuméniques** avec canons et décrets détaillés

@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 { id: 'doctor', label: 'Docteurs de l\'Église', icon: 'fa-book', color: '#704214' },
                 { id: 'saint', label: 'Saints', icon: 'fa-pray', color: '#2d5a4a' },
                 { id: 'schism', label: 'Schismes', icon: 'fa-divide', color: '#6b2d2d' },
-                { id: 'movement', label: 'Ordres & Mouvements', icon: 'fa-users', color: '#4a3a6b' }
+                { id: 'movement', label: 'Ordres & Mouvements', icon: 'fa-users', color: '#4a3a6b' },
+                { id: 'community', label: 'Communautés', icon: 'fa-church', color: '#5B3A8C' }
             ];
         }
 
@@ -151,7 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 { id: 'doctor', label: 'Docteurs', color: '#704214' },
                 { id: 'saint', label: 'Saints', color: '#2d5a4a' },
                 { id: 'schism', label: 'Schismes', color: '#6b2d2d' },
-                { id: 'movement', label: 'Ordres', color: '#4a3a6b' }
+                { id: 'movement', label: 'Ordres', color: '#4a3a6b' },
+                { id: 'community', label: 'Communautés', color: '#5B3A8C' }
             ];
         }
 
@@ -339,7 +341,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 'movement': 'Ordre/Mouvement',
                 'apostle': 'Apôtre',
                 'father': 'Père de l\'Église',
-                'doctor': 'Docteur de l\'Église'
+                'doctor': 'Docteur de l\'Église',
+                'community': 'Communauté Ecclésiale'
             };
             typeLabel = fallbackLabels[event.type] || event.type;
         }
@@ -417,6 +420,63 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
         }
 
+        // Générer les infos de communauté ecclésiale (pour les types community)
+        let communityInfoHtml = '';
+        if (event.communityInfo) {
+            const info = event.communityInfo;
+            const statusClass = info.status && info.status.includes('PLEINE COMMUNION') ? 'communion' : 
+                               (info.status && info.status.includes('IRRÉGULIER') ? 'irregular' : '');
+            
+            communityInfoHtml = `
+                <div class="modal-community-info">
+                    <h4><i class="fas fa-church"></i> Informations sur la Communauté</h4>
+                    
+                    <div class="community-grid">
+                        ${info.type ? `<div class="community-item"><strong>Type</strong><span>${info.type}</span></div>` : ''}
+                        ${info.founded ? `<div class="community-item"><strong>Fondation</strong><span>${info.founded}</span></div>` : ''}
+                        ${info.founder ? `<div class="community-item"><strong>Fondateur</strong><span>${info.founder}</span></div>` : ''}
+                        ${info.members ? `<div class="community-item"><strong>Membres</strong><span>${info.members}</span></div>` : ''}
+                        ${info.rule ? `<div class="community-item"><strong>Règle</strong><span>${info.rule}</span></div>` : ''}
+                        ${info.vows ? `<div class="community-item"><strong>Vœux</strong><span>${info.vows}</span></div>` : ''}
+                        ${info.habit ? `<div class="community-item"><strong>Habit</strong><span>${info.habit}</span></div>` : ''}
+                        ${info.governance ? `<div class="community-item"><strong>Gouvernance</strong><span>${info.governance}</span></div>` : ''}
+                    </div>
+                    
+                    ${info.spirituality ? `
+                        <div class="community-item" style="margin-bottom: 15px;">
+                            <strong><i class="fas fa-pray"></i> Spiritualité</strong>
+                            <span>${info.spirituality}</span>
+                        </div>
+                    ` : ''}
+                    
+                    ${info.liturgy ? `
+                        <div class="community-item" style="margin-bottom: 15px;">
+                            <strong><i class="fas fa-book-bible"></i> Liturgie</strong>
+                            <span>${info.liturgy}</span>
+                        </div>
+                    ` : ''}
+                    
+                    ${info.status ? `
+                        <div class="community-status ${statusClass}">
+                            <i class="fas ${statusClass === 'communion' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                            Statut canonique : ${info.status}
+                        </div>
+                    ` : ''}
+                    
+                    ${info.differences && info.differences.length > 0 ? `
+                        <div class="community-differences">
+                            <h5><i class="fas fa-balance-scale"></i> Différences avec les autres communautés</h5>
+                            <ul>
+                                ${info.differences.map(diff => `
+                                    <li><i class="fas fa-angle-right"></i> ${diff}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
         // Assembler le contenu du modal body
         const modalBody = modal.querySelector('.modal-body');
         modalBody.innerHTML = `
@@ -424,6 +484,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <p class="modal-description">${event.description}</p>
             ${quoteHtml}
             ${canonsHtml}
+            ${communityInfoHtml}
             ${detailsHtml}
             ${denominationHtml}
         `;
