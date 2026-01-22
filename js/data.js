@@ -3618,6 +3618,611 @@ const churchHistory = {
                     "Aujourd'hui : OFM (~13 000), OFM Conv (~4 000), OFM Cap (~10 500)"
                 ]
             }
+        },
+
+        // =====================================================
+        // LES HÉRÉSIES AU COURS DE L'HISTOIRE
+        // Erreurs doctrinales condamnées par l'Église
+        // =====================================================
+
+        // ==================== INTRODUCTION AUX HÉRÉSIES ====================
+        {
+            id: 700,
+            year: "30-2024",
+            date: "Synthèse historique",
+            title: "⚠️ Les Hérésies dans l'Histoire de l'Église",
+            summary: "Panorama des erreurs doctrinales qui ont menacé la foi catholique au cours des siècles.",
+            description: "Une hérésie (du grec hairesis, « choix ») est une doctrine qui contredit un dogme défini par l'Église. Contrairement à l'apostasie (abandon total de la foi) ou au schisme (rupture de communion), l'hérésie maintient une partie de la foi tout en niant une vérité essentielle. Les conciles œcuméniques ont souvent été convoqués pour condamner les hérésies et définir la vraie doctrine. Comprendre les hérésies permet de mieux saisir le développement du dogme catholique.",
+            period: "contemporary",
+            type: "heresy",
+            icon: "fa-exclamation-triangle",
+            details: [
+                "=== QU'EST-CE QU'UNE HÉRÉSIE ? ===",
+                "Définition : Négation obstinée d'une vérité de foi définie par l'Église",
+                "Différence avec l'erreur : L'hérésie suppose la connaissance et le refus volontaire",
+                "Différence avec le schisme : Le schisme est une rupture de communion, pas de doctrine",
+                "Différence avec l'apostasie : L'apostasie est l'abandon total de la foi chrétienne",
+                "",
+                "=== GRANDES CATÉGORIES D'HÉRÉSIES ===",
+                "TRINITAIRES : Sur la nature de Dieu (arianisme, modalisme, subordinatianisme)",
+                "CHRISTOLOGIQUES : Sur la personne du Christ (nestorianisme, monophysisme)",
+                "SOTÉRIOLOGIQUES : Sur le salut (pélagianisme, semi-pélagianisme)",
+                "ECCLÉSIOLOGIQUES : Sur l'Église (donatisme, conciliarisme)",
+                "SACRAMENTELLES : Sur les sacrements (iconoclasme, protestantisme)",
+                "ESCHATOLOGIQUES : Sur la fin des temps (millénarisme, montanisme)",
+                "",
+                "=== CHRONOLOGIE DES PRINCIPALES HÉRÉSIES ===",
+                "Ier-IIe s. : Gnosticisme, Docétisme, Marcionisme",
+                "IIe-IIIe s. : Montanisme, Modalisme, Subordinatianisme",
+                "IVe s. : Arianisme (la plus grave), Macédonianisme, Apollinarisme",
+                "Ve s. : Nestorianisme, Monophysisme (Eutychianisme), Pélagianisme",
+                "VIe-VIIe s. : Monothélisme, Monoénergisme",
+                "VIIIe-IXe s. : Iconoclasme, Adoptianisme",
+                "XIe-XIIIe s. : Catharisme, Valdéisme (partiellement)",
+                "XIVe-XVe s. : Wycliffisme, Hussitisme",
+                "XVIe s. : Protestantisme (Luther, Calvin, Zwingli)",
+                "XVIIe-XVIIIe s. : Jansénisme, Quiétisme",
+                "XIXe-XXe s. : Modernisme"
+            ]
+        },
+
+        // ==================== HÉRÉSIES DE L'ÉGLISE PRIMITIVE (Ier-IIIe s.) ====================
+        {
+            id: 701,
+            year: "~50",
+            date: "Ier siècle",
+            title: "⚠️ Judaïsants",
+            summary: "Premiers hérétiques : chrétiens imposant la Loi mosaïque aux païens convertis.",
+            description: "Les judaïsants affirmaient que les païens convertis au christianisme devaient observer la Loi de Moïse (circoncision, règles alimentaires). Le Concile de Jérusalem (49) les condamna, affirmant que le salut vient par la foi en Christ, non par la Loi. Saint Paul combattit vigoureusement cette erreur dans ses épîtres (Galates).",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-exclamation-triangle",
+            details: [
+                "Erreur : Les païens doivent devenir juifs pour être chrétiens",
+                "Condamnation : Concile de Jérusalem (49)",
+                "Opposant principal : Saint Paul (Épître aux Galates)",
+                "Citation : « Si vous vous faites circoncire, Christ ne vous servira de rien » (Ga 5,2)",
+                "Conséquence : Universalité du christianisme affirmée"
+            ]
+        },
+        {
+            id: 702,
+            year: "~100",
+            date: "Ier-IIe siècle",
+            title: "⚠️ Docétisme",
+            summary: "Le Christ n'avait qu'une apparence humaine, son corps était illusoire.",
+            description: "Le docétisme (du grec dokein, « sembler ») niait la réalité de l'Incarnation : le Christ n'aurait eu qu'un corps apparent, fantomatique. Cette hérésie, influencée par le dualisme grec qui méprisait la matière, vidait la Rédemption de son sens. Saint Jean la combat dans ses épîtres : « Tout esprit qui confesse Jésus-Christ venu dans la chair est de Dieu » (1 Jn 4,2).",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-ghost",
+            details: [
+                "Erreur : Le corps du Christ était une illusion, une apparence",
+                "Origine : Dualisme grec méprisant la matière",
+                "Conséquence : La Passion et la Résurrection seraient des illusions",
+                "Opposants : Saint Jean, Saint Ignace d'Antioche",
+                "Condamnation : Implicite dans les écrits apostoliques",
+                "Citation : « Qui nie que Jésus-Christ est venu dans la chair est l'Antichrist » (2 Jn 7)"
+            ]
+        },
+        {
+            id: 703,
+            year: "~140",
+            date: "IIe siècle",
+            title: "⚠️ Gnosticisme",
+            summary: "Salut par la connaissance secrète (gnose), dualisme radical entre matière et esprit.",
+            description: "Le gnosticisme est un ensemble de doctrines affirmant que le salut vient d'une connaissance (gnosis) secrète réservée aux initiés. Il oppose radicalement le monde matériel (mauvais, créé par un démiurge inférieur) au monde spirituel (bon). Le Christ serait un éon venu révéler cette gnose. Cette hérésie fut combattue par saint Irénée dans « Contre les hérésies ».",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-eye",
+            details: [
+                "Erreur : Salut par la connaissance secrète, non par la foi",
+                "Dualisme : Matière = mal, Esprit = bien",
+                "Le Dieu créateur de l'AT serait inférieur au vrai Dieu",
+                "Principaux gnostiques : Valentin, Basilide, Marcion",
+                "Opposant principal : Saint Irénée de Lyon (« Adversus Haereses »)",
+                "Textes gnostiques : Évangile de Thomas, Évangile de Philippe",
+                "Condamnation : Par les Pères de l'Église (IIe siècle)"
+            ]
+        },
+        {
+            id: 704,
+            year: "~144",
+            date: "IIe siècle",
+            title: "⚠️ Marcionisme",
+            summary: "Rejet de l'Ancien Testament, opposition entre le Dieu cruel de l'AT et le Dieu d'amour du NT.",
+            description: "Marcion de Sinope opposait radicalement l'Ancien et le Nouveau Testament : le Dieu de l'AT (créateur, justicier) serait différent du Dieu du NT (Père de Jésus, Dieu d'amour). Il rejetait tout l'AT et ne conservait qu'un évangile de Luc expurgé et dix épîtres de Paul. Excommunié en 144, il fonda une Église rivale qui dura plusieurs siècles.",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-book-skull",
+            details: [
+                "Erreur : Deux dieux distincts (AT vs NT)",
+                "Rejet total de l'Ancien Testament",
+                "Canon restreint : Luc expurgé + 10 épîtres de Paul",
+                "Fondateur : Marcion de Sinope (~85-160)",
+                "Excommunication : Rome, 144",
+                "Opposants : Tertullien (« Contre Marcion »), Saint Irénée",
+                "Durée : Église marcionite jusqu'au Ve siècle"
+            ]
+        },
+        {
+            id: 705,
+            year: "~156",
+            date: "IIe siècle",
+            title: "⚠️ Montanisme",
+            summary: "Prophétisme exalté, attente imminente de la fin du monde, rigorisme moral extrême.",
+            description: "Montan de Phrygie se proclama prophète de l'Esprit Saint, annonçant la Jérusalem céleste imminente. Avec deux prophétesses (Priscille et Maximilla), il prêchait un rigorisme extrême : interdiction du remariage, jeûnes prolongés, martyre recherché. Tertullien lui-même rejoignit le montanisme vers 207, ce qui montre son attrait.",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-wind",
+            details: [
+                "Erreur : Nouvelle révélation de l'Esprit surpassant celle des apôtres",
+                "Fondateur : Montan de Phrygie (~156)",
+                "Prophétesses : Priscille et Maximilla",
+                "Caractéristiques : Prophétisme extatique, rigorisme, millénarisme",
+                "Célèbre converti : Tertullien (vers 207)",
+                "Condamnation : Conciles locaux (IIe-IIIe siècles)",
+                "Durée : Jusqu'au VIe siècle dans certaines régions"
+            ]
+        },
+        {
+            id: 706,
+            year: "~180",
+            date: "IIe-IIIe siècle",
+            title: "⚠️ Modalisme (Sabellianisme)",
+            summary: "Père, Fils et Esprit ne sont que trois « modes » d'un Dieu unique, pas trois personnes distinctes.",
+            description: "Le modalisme (ou sabellianisme, de Sabellius) niait la distinction réelle des trois Personnes divines : Père, Fils et Esprit ne seraient que trois « masques » (personae) ou modes successifs d'apparition d'un Dieu unique. Ainsi, c'est le Père lui-même qui aurait souffert sur la croix (« patripassianisme »). Cette hérésie fut condamnée comme supprimant la vraie Trinité.",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-masks-theater",
+            details: [
+                "Erreur : Une seule personne divine sous trois aspects",
+                "Autres noms : Sabellianisme, Patripassianisme, Monarchianisme modaliste",
+                "Principal représentant : Sabellius (IIIe siècle)",
+                "Conséquence : Le Père lui-même aurait souffert (patripassianisme)",
+                "Opposants : Tertullien, Hippolyte de Rome, Denys de Rome",
+                "Vérité catholique : Un Dieu en trois Personnes réellement distinctes"
+            ]
+        },
+        {
+            id: 707,
+            year: "~200",
+            date: "IIe-IIIe siècle",
+            title: "⚠️ Subordinatianisme",
+            summary: "Le Fils et l'Esprit sont inférieurs au Père, subordonnés à lui.",
+            description: "Le subordinatianisme affirmait que le Fils et l'Esprit Saint, bien que divins, sont inférieurs et subordonnés au Père. Cette tendance, présente chez certains Pères avant Nicée (Origène, Justin), préparait l'arianisme. Le concile de Nicée (325) affirma l'égalité absolue des Personnes : le Fils est « consubstantiel » au Père.",
+            period: "ancient",
+            type: "heresy",
+            icon: "fa-sort-amount-down",
+            details: [
+                "Erreur : Le Fils est inférieur au Père",
+                "Tendance pré-arienne chez certains Pères (avant définition dogmatique)",
+                "Préparation de l'arianisme",
+                "Condamnation implicite : Concile de Nicée (325) - homoousios",
+                "Vérité catholique : Les trois Personnes sont égales en divinité"
+            ]
+        },
+
+        // ==================== HÉRÉSIES CHRISTOLOGIQUES (IVe-VIIe s.) ====================
+        {
+            id: 708,
+            year: "318",
+            date: "IVe siècle",
+            title: "⚠️ Arianisme - La plus grande hérésie",
+            summary: "Le Fils n'est pas Dieu : « Il fut un temps où il n'était pas. »",
+            description: "L'arianisme, fondé par le prêtre Arius d'Alexandrie, est la plus grave hérésie de l'histoire. Arius enseignait que le Verbe (Logos) n'est pas éternel mais créé : « Il fut un temps où il n'était pas. » Le Fils serait la première et plus parfaite des créatures, mais pas Dieu. Cette hérésie faillit submerger l'Église : empereurs ariens, évêques ariens, peuples barbares ariens. Le concile de Nicée (325) la condamna en proclamant le Fils « consubstantiel (homoousios) au Père ».",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-exclamation-circle",
+            details: [
+                "Erreur fondamentale : Le Fils est une créature, pas Dieu",
+                "Fondateur : Arius, prêtre d'Alexandrie (~256-336)",
+                "Formule arienne : « Il fut un temps où il n'était pas »",
+                "Condamnation : Concile de Nicée (325)",
+                "Défenseur de la foi : Saint Athanase d'Alexandrie (exilé 5 fois)",
+                "Réponse catholique : « Homoousios » - consubstantiel au Père",
+                "Persistance : Arianisme des Goths, Vandales, Lombards jusqu'au VIIe siècle",
+                "Conséquence positive : Formulation précise du dogme trinitaire"
+            ]
+        },
+        {
+            id: 709,
+            year: "~360",
+            date: "IVe siècle",
+            title: "⚠️ Macédonianisme (Pneumatomaques)",
+            summary: "Le Saint-Esprit n'est pas Dieu, il est une créature du Fils.",
+            description: "Macedonius, évêque de Constantinople, et ses partisans (« pneumatomaques » = combattants de l'Esprit) niaient la divinité du Saint-Esprit. Acceptant Nicée sur le Fils, ils refusaient d'étendre la consubstantialité à l'Esprit. Le concile de Constantinople I (381) les condamna en ajoutant au Credo : l'Esprit Saint est « Seigneur et donne la vie ».",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-wind",
+            details: [
+                "Erreur : Le Saint-Esprit est une créature, pas Dieu",
+                "Autre nom : Pneumatomaques (« combattants de l'Esprit »)",
+                "Fondateur : Macedonius de Constantinople",
+                "Condamnation : Concile de Constantinople I (381)",
+                "Défenseurs de la foi : Les Cappadociens (Basile, Grégoire de Nazianze)",
+                "Réponse catholique : L'Esprit est « Seigneur et qui donne la vie »",
+                "Symbole complété : Credo de Nicée-Constantinople"
+            ]
+        },
+        {
+            id: 710,
+            year: "~375",
+            date: "IVe siècle",
+            title: "⚠️ Apollinarisme",
+            summary: "Le Christ n'avait pas d'âme humaine rationnelle, le Logos en tenait lieu.",
+            description: "Apollinaire de Laodicée, pour garantir l'unité du Christ contre les ariens, enseignait que le Verbe divin remplaçait l'âme rationnelle humaine dans le Christ. Ainsi Jésus n'aurait pas eu d'intelligence humaine. Cette erreur mutilait l'humanité du Christ : « Ce qui n'est pas assumé n'est pas sauvé » (Grégoire de Nazianze). Condamné à Constantinople I (381).",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-brain",
+            details: [
+                "Erreur : Le Christ n'avait pas d'âme humaine rationnelle",
+                "Fondateur : Apollinaire de Laodicée (~310-390)",
+                "Logique : Le Logos remplace l'intellect humain",
+                "Réfutation : « Ce qui n'est pas assumé n'est pas sauvé » (Grégoire de Nazianze)",
+                "Condamnation : Concile de Constantinople I (381)",
+                "Vérité catholique : Le Christ a une nature humaine complète (corps, âme, intellect)"
+            ]
+        },
+        {
+            id: 711,
+            year: "428",
+            date: "Ve siècle",
+            title: "⚠️ Nestorianisme",
+            summary: "Marie n'est pas Mère de Dieu mais seulement mère de l'homme Jésus ; deux personnes dans le Christ.",
+            description: "Nestorius, patriarche de Constantinople, refusait d'appeler Marie « Theotokos » (Mère de Dieu), préférant « Christotokos » (Mère du Christ). Pour lui, il y avait en Jésus deux personnes (divine et humaine) simplement unies moralement. Le concile d'Éphèse (431), sous l'impulsion de saint Cyrille d'Alexandrie, condamna cette erreur : Marie est bien Theotokos car celui qu'elle a enfanté est une seule personne divine.",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-user-slash",
+            details: [
+                "Erreur : Deux personnes dans le Christ (divine et humaine)",
+                "Conséquence : Marie n'est pas Mère de Dieu (Theotokos)",
+                "Fondateur : Nestorius, patriarche de Constantinople (428-431)",
+                "Condamnation : Concile d'Éphèse (431)",
+                "Champion de l'orthodoxie : Saint Cyrille d'Alexandrie",
+                "Réponse catholique : Une seule personne (divine) en deux natures",
+                "Église nestorienne : Survit aujourd'hui (Église d'Orient, Assyriens)",
+                "Titre défini : Marie est THEOTOKOS (Mère de Dieu)"
+            ]
+        },
+        {
+            id: 712,
+            year: "448",
+            date: "Ve siècle",
+            title: "⚠️ Monophysisme (Eutychianisme)",
+            summary: "Une seule nature dans le Christ : la nature humaine est absorbée dans la divine.",
+            description: "Eutychès, archimandrite de Constantinople, en réaction contre Nestorius, tomba dans l'erreur opposée : après l'union, il n'y aurait plus qu'une seule nature (physis) dans le Christ, la nature humaine étant absorbée dans la divine « comme une goutte d'eau dans l'océan ». Le concile de Chalcédoine (451) définit la foi orthodoxe : deux natures (divine et humaine) en une seule personne, « sans confusion, sans changement, sans division, sans séparation ».",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-compress-arrows-alt",
+            details: [
+                "Erreur : Une seule nature dans le Christ après l'union",
+                "Fondateur : Eutychès, archimandrite de Constantinople (~378-454)",
+                "Image : La nature humaine dissoute dans la divine",
+                "Condamnation : Concile de Chalcédoine (451)",
+                "Champion de l'orthodoxie : Pape saint Léon le Grand (Tome à Flavien)",
+                "Formule de Chalcédoine : Deux natures « sans confusion, sans changement, sans division, sans séparation »",
+                "Églises monophysites : Coptes, Éthiopiens, Arméniens (aujourd'hui « miaphysites »)"
+            ]
+        },
+        {
+            id: 713,
+            year: "~630",
+            date: "VIIe siècle",
+            title: "⚠️ Monothélisme",
+            summary: "Une seule volonté dans le Christ, niant sa volonté humaine.",
+            description: "Pour réconcilier les monophysites avec l'Église, l'empereur Héraclius et le patriarche Sergius proposèrent un compromis : une seule volonté (thelema) et une seule opération (energeia) dans le Christ. Mais cette position niait la pleine humanité du Christ. Le concile de Constantinople III (680-681) condamna cette erreur, affirmant deux volontés (divine et humaine) dans le Christ, la volonté humaine se soumettant librement à la divine.",
+            period: "medieval",
+            type: "heresy",
+            icon: "fa-hand-paper",
+            details: [
+                "Erreur : Une seule volonté dans le Christ",
+                "Variante : Monoénergisme (une seule opération/énergie)",
+                "Origine politique : Tentative de réconcilier les monophysites",
+                "Promoteurs : Empereur Héraclius, Patriarche Sergius de Constantinople",
+                "Condamnation : Concile de Constantinople III (680-681)",
+                "Pape condamné : Honorius I (pour ambiguïté, pas pour hérésie formelle)",
+                "Vérité catholique : Deux volontés, humaine et divine, en harmonie"
+            ]
+        },
+
+        // ==================== HÉRÉSIES SOTÉRIOLOGIQUES (Ve s.) ====================
+        {
+            id: 714,
+            year: "~411",
+            date: "Ve siècle",
+            title: "⚠️ Pélagianisme",
+            summary: "L'homme peut se sauver par ses propres forces sans la grâce divine.",
+            description: "Pélage, moine breton, enseignait que l'homme peut, par ses propres forces naturelles, éviter le péché et mériter le salut. Le péché originel n'aurait pas corrompu la nature humaine mais seulement donné un mauvais exemple. La grâce ne serait qu'une aide extérieure. Saint Augustin combattit vigoureusement cette erreur, affirmant la nécessité absolue de la grâce pour tout bien surnaturel.",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-fist-raised",
+            details: [
+                "Erreur : L'homme peut se sauver sans la grâce",
+                "Négation du péché originel comme corruption de la nature",
+                "Fondateur : Pélage, moine d'origine britannique (~354-420)",
+                "Disciple : Célestius",
+                "Champion de l'orthodoxie : Saint Augustin d'Hippone",
+                "Condamnations : Conciles de Carthage (411, 416, 418), Éphèse (431)",
+                "Œuvres d'Augustin : « De la grâce et du libre arbitre », « De la nature et de la grâce »",
+                "Vérité catholique : La grâce est absolument nécessaire pour le salut"
+            ]
+        },
+        {
+            id: 715,
+            year: "~430",
+            date: "Ve siècle",
+            title: "⚠️ Semi-pélagianisme",
+            summary: "L'homme peut faire le premier pas vers le salut, la grâce complète ensuite.",
+            description: "Après la condamnation du pélagianisme, certains moines de Gaule (Cassien, Fauste de Riez) proposèrent un compromis : l'homme peut faire le premier pas vers Dieu (initium fidei), et la grâce vient ensuite aider. Saint Augustin puis le concile d'Orange (529) condamnèrent cette erreur : même le début de la foi est un don de la grâce.",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-shoe-prints",
+            details: [
+                "Erreur : L'homme peut initier le mouvement vers le salut",
+                "Autre nom : Semipélagianisme, Massilianisme",
+                "Principaux représentants : Jean Cassien, Fauste de Riez",
+                "Condamnation : Concile d'Orange (529)",
+                "Vérité catholique : Même l'initium fidei (début de la foi) est un don de la grâce",
+                "Citation du concile : « En toute œuvre bonne, ce n'est pas nous qui commençons »"
+            ]
+        },
+
+        // ==================== HÉRÉSIES ECCLÉSIOLOGIQUES ====================
+        {
+            id: 716,
+            year: "~311",
+            date: "IVe siècle",
+            title: "⚠️ Donatisme",
+            summary: "Les sacrements sont invalides s'ils sont administrés par des prêtres pécheurs.",
+            description: "Le donatisme (de l'évêque Donat) affirmait que les sacrements administrés par des « traditores » (ceux qui avaient livré les Écritures pendant la persécution) étaient invalides. Seule l'Église des « purs » pouvait donner des sacrements valides. Saint Augustin réfuta cette erreur : la validité des sacrements ne dépend pas de la sainteté du ministre mais du Christ qui agit à travers eux (ex opere operato).",
+            period: "imperial",
+            type: "heresy",
+            icon: "fa-hand-holding-water",
+            details: [
+                "Erreur : Sacrements invalides si le ministre est pécheur",
+                "Origine : Controverse sur les « traditores » d'Afrique du Nord",
+                "Fondateur : Donat de Casae Nigrae, évêque de Carthage (~313)",
+                "Caractère : Schisme ET hérésie, rigorisme extrême",
+                "Champion de l'orthodoxie : Saint Augustin",
+                "Principe catholique : Validité ex opere operato (par l'action accomplie)",
+                "Condamnations : Conciles de Rome (313), Arles (314)"
+            ]
+        },
+
+        // ==================== HÉRÉSIES MÉDIÉVALES ====================
+        {
+            id: 717,
+            year: "~726",
+            date: "VIIIe-IXe siècle",
+            title: "⚠️ Iconoclasme",
+            summary: "Destruction des images saintes, accusées d'être des idoles.",
+            description: "L'iconoclasme (« briseurs d'images ») fut une crise majeure de l'Empire byzantin. Les empereurs Léon III et Constantin V interdirent et détruisirent les icônes, les assimilant à des idoles. Le concile de Nicée II (787) rétablit le culte des images en distinguant la « vénération » (proskynèsis) due aux images de l'« adoration » (latreia) due à Dieu seul.",
+            period: "medieval",
+            type: "heresy",
+            icon: "fa-image",
+            details: [
+                "Erreur : Les images sont des idoles à détruire",
+                "Empereurs iconoclastes : Léon III (726), Constantin V",
+                "Persécution : Destruction d'icônes, martyrs iconodoules",
+                "Défenseurs des icônes : Saint Jean Damascène, Saint Germain de Constantinople",
+                "Condamnation : Concile de Nicée II (787)",
+                "Distinction : Latreia (adoration à Dieu) vs Proskynèsis (vénération aux images)",
+                "Argument théologique : L'Incarnation justifie les images du Christ"
+            ]
+        },
+        {
+            id: 718,
+            year: "~1140",
+            date: "XIIe-XIIIe siècle",
+            title: "⚠️ Catharisme (Albigeois)",
+            summary: "Dualisme radical : le monde matériel est l'œuvre du Mal, rejet des sacrements.",
+            description: "Le catharisme (du grec katharos, « pur ») était une religion dualiste présentant deux dieux : un dieu bon (esprit) et un dieu mauvais (matière). Le monde visible, création du Mal, devait être rejeté. Les « Parfaits » pratiquaient un ascétisme extrême. L'Église fut contrainte de réagir par la prédication (Dominicains) puis par la croisade des Albigeois (1209-1229) et l'Inquisition.",
+            period: "schism",
+            type: "heresy",
+            icon: "fa-yin-yang",
+            details: [
+                "Erreur : Dualisme radical (Bien vs Mal, Esprit vs Matière)",
+                "Autres noms : Albigeois (d'Albi), Manichéens",
+                "Le monde matériel est mauvais, créé par le « démiurge »",
+                "Structure : « Parfaits » (élite ascétique) vs « Croyants »",
+                "Rite : Consolamentum (baptême spirituel)",
+                "Régions touchées : Languedoc, Italie du Nord",
+                "Réponse : Prédication dominicaine, Croisade des Albigeois (1209-1229)",
+                "Fin : Chute de Montségur (1244), Inquisition"
+            ]
+        },
+        {
+            id: 719,
+            year: "~1170",
+            date: "XIIe siècle",
+            title: "⚠️ Valdéisme",
+            summary: "Pauvreté évangélique radicale, rejet de la hiérarchie, prédication laïque.",
+            description: "Pierre Valdès, riche marchand de Lyon, distribua ses biens et prêcha la pauvreté évangélique. Ses disciples (« Pauvres de Lyon ») furent d'abord approuvés puis condamnés pour avoir prêché sans autorisation et rejeté certains sacrements. Contrairement aux Cathares, les Vaudois étaient chrétiens orthodoxes à l'origine. Une partie rejoignit le protestantisme au XVIe siècle.",
+            period: "schism",
+            type: "heresy",
+            icon: "fa-hand-holding-heart",
+            details: [
+                "Erreur : Rejet de l'autorité ecclésiastique, prédication laïque sans mandat",
+                "Fondateur : Pierre Valdès (ou Valdo) de Lyon (~1140-1205)",
+                "Autre nom : Pauvres de Lyon",
+                "Position : Pauvreté radicale, lecture de la Bible en langue vulgaire",
+                "Condamnation : Concile de Vérone (1184), Latran IV (1215)",
+                "Différence avec Cathares : Pas de dualisme, foi chrétienne de base",
+                "Évolution : Rapprochement avec le protestantisme au XVIe siècle",
+                "Aujourd'hui : Église évangélique vaudoise (Italie, protestante)"
+            ]
+        },
+        {
+            id: 720,
+            year: "~1380",
+            date: "XIVe siècle",
+            title: "⚠️ Wycliffisme",
+            summary: "Prédestination stricte, rejet de la transsubstantiation, autorité de l'Écriture seule.",
+            description: "John Wyclif, théologien anglais, anticipa de nombreuses positions protestantes : autorité de l'Écriture seule (sola scriptura), prédestination, rejet de la transsubstantiation, critique du pouvoir temporel du pape. Il traduisit la Bible en anglais. Ses idées influencèrent Jan Hus et, plus tard, Luther. Condamné post mortem à Constance (1415), ses restes furent exhumés et brûlés.",
+            period: "schism",
+            type: "heresy",
+            icon: "fa-book-bible",
+            details: [
+                "Erreurs : Sola scriptura, rejet de la transsubstantiation, prédestination stricte",
+                "Fondateur : John Wyclif (~1330-1384), théologien d'Oxford",
+                "Traduction de la Bible en anglais",
+                "Disciples : Lollards (Angleterre)",
+                "Influence sur Jan Hus et le protestantisme",
+                "Condamnation : Concile de Constance (1415) - 45 propositions",
+                "Exhumation et crémation des restes (1428)"
+            ]
+        },
+        {
+            id: 721,
+            year: "~1400",
+            date: "XVe siècle",
+            title: "⚠️ Hussitisme",
+            summary: "Communion sous les deux espèces, réforme radicale, proto-protestantisme tchèque.",
+            description: "Jan Hus, recteur de l'Université de Prague, reprit les idées de Wyclif et critiqua vivement les abus de l'Église. Son point central était la communion sous les deux espèces (pain ET vin) pour les laïcs. Malgré un sauf-conduit, il fut brûlé vif au concile de Constance (1415). Sa mort déclencha les guerres hussites en Bohême (1419-1434).",
+            period: "schism",
+            type: "heresy",
+            icon: "fa-wine-glass-alt",
+            details: [
+                "Erreurs : Communion sous les deux espèces obligatoire, ecclésiologie réformée",
+                "Fondateur : Jan Hus (~1369-1415), recteur de l'Université de Prague",
+                "Influence de Wyclif",
+                "Point central : Utraquisme (communion sous les deux espèces)",
+                "Condamnation : Concile de Constance (1415)",
+                "Martyre : Brûlé vif le 6 juillet 1415",
+                "Conséquences : Guerres hussites (1419-1434)",
+                "Branches : Utraquistes (modérés), Taborites (radicaux)"
+            ]
+        },
+
+        // ==================== HÉRÉSIES DE LA RÉFORME (XVIe s.) ====================
+        {
+            id: 722,
+            year: "1517",
+            date: "XVIe siècle",
+            title: "⚠️ Protestantisme - Luther, Calvin, Zwingli",
+            summary: "Sola fide, sola scriptura, rejet des sacrements et de l'autorité papale.",
+            description: "La Réforme protestante, déclenchée par les 95 thèses de Luther (1517), constitue la plus grande rupture doctrinale depuis l'arianisme. Les « 5 sola » résument la doctrine protestante : sola scriptura (Écriture seule), sola fide (foi seule), sola gratia (grâce seule), solus Christus (Christ seul), soli Deo gloria (à Dieu seul la gloire). Le concile de Trente (1545-1563) répondit point par point.",
+            period: "schism",
+            type: "heresy",
+            icon: "fa-church",
+            details: [
+                "=== LES CINQ SOLA ===",
+                "Sola scriptura : L'Écriture seule est autorité (rejet de la Tradition)",
+                "Sola fide : Justification par la foi seule (rejet des œuvres)",
+                "Sola gratia : Salut par la grâce seule",
+                "Solus Christus : Christ seul médiateur (rejet des saints, de Marie)",
+                "Soli Deo gloria : À Dieu seul la gloire",
+                "",
+                "=== PRINCIPAUX RÉFORMATEURS ===",
+                "Martin Luther (1483-1546) : Justification par la foi, 2 sacrements",
+                "Jean Calvin (1509-1564) : Prédestination, théocratie à Genève",
+                "Ulrich Zwingli (1484-1531) : Eucharistie symbolique",
+                "",
+                "=== RÉPONSE CATHOLIQUE ===",
+                "Concile de Trente (1545-1563) : Écriture ET Tradition, foi ET œuvres, 7 sacrements"
+            ]
+        },
+
+        // ==================== HÉRÉSIES MODERNES ====================
+        {
+            id: 723,
+            year: "~1640",
+            date: "XVIIe siècle",
+            title: "⚠️ Jansénisme",
+            summary: "Grâce irrésistible, prédestination, rigorisme moral extrême.",
+            description: "Le jansénisme (de Jansénius, évêque d'Ypres) reprenait une lecture rigoriste de saint Augustin : la grâce efficace est irrésistible, l'homme est totalement corrompu, peu sont prédestinés au salut. Cette doctrine, proche du calvinisme, s'accompagnait d'un rigorisme moral et d'une communion rare. Le centre en France était l'abbaye de Port-Royal. Condamné par plusieurs papes, le jansénisme influença durablement la spiritualité française.",
+            period: "modern",
+            type: "heresy",
+            icon: "fa-lock",
+            details: [
+                "Erreurs : Grâce irrésistible, double prédestination, rigorisme",
+                "Fondateur : Cornelius Jansénius (1585-1638), évêque d'Ypres",
+                "Œuvre : « Augustinus » (1640, posthume)",
+                "Centre français : Port-Royal (Arnauld, Pascal, Racine)",
+                "Condamnations : « Cum occasione » (1653), « Unigenitus » (1713)",
+                "5 propositions condamnées par Innocent X",
+                "Influence : Rigorisme moral, communion rare, spiritualité austère"
+            ]
+        },
+        {
+            id: 724,
+            year: "~1675",
+            date: "XVIIe siècle",
+            title: "⚠️ Quiétisme",
+            summary: "Passivité totale de l'âme, abandon de toute activité spirituelle volontaire.",
+            description: "Le quiétisme (de Miguel de Molinos, puis Madame Guyon et Fénelon) enseignait une passivité totale de l'âme dans la prière : aucun effort, aucun désir, même du salut, « pur amour » désintéressé jusqu'à accepter sa propre damnation. Cette doctrine détruisait la vie morale et sacramentelle. Condamné par Innocent XI (1687) et Innocent XII (1699).",
+            period: "modern",
+            type: "heresy",
+            icon: "fa-bed",
+            details: [
+                "Erreur : Passivité totale, suppression de tout acte volontaire de l'âme",
+                "Fondateur : Miguel de Molinos (1628-1696), prêtre espagnol",
+                "En France : Madame Guyon, Fénelon (archevêque de Cambrai)",
+                "Opposition : Bossuet (évêque de Meaux)",
+                "« Pur amour » : Aimer Dieu sans aucun désir, même du salut",
+                "Condamnations : Innocent XI (1687), Innocent XII (1699)",
+                "68 propositions de Molinos condamnées"
+            ]
+        },
+        {
+            id: 725,
+            year: "~1907",
+            date: "XXe siècle",
+            title: "⚠️ Modernisme",
+            summary: "Adaptation de la foi au monde moderne, relativisme dogmatique, évolutionnisme religieux.",
+            description: "Le modernisme, condamné par saint Pie X (« Pascendi », 1907), est une tentative d'adapter radicalement la foi catholique à la pensée moderne. Il affirme l'évolution des dogmes, le subjectivisme de la foi, la critique historique radicale des Écritures, la séparation entre le « Christ de la foi » et le « Jésus de l'histoire ». Pie X le qualifia de « synthèse de toutes les hérésies ».",
+            period: "modern",
+            type: "heresy",
+            icon: "fa-sync-alt",
+            details: [
+                "Erreurs : Évolution des dogmes, subjectivisme, critique radicale de la Bible",
+                "Principaux représentants : Alfred Loisy, George Tyrrell, Édouard Le Roy",
+                "Condamnations : « Lamentabili » (1907), « Pascendi » (1907) - Saint Pie X",
+                "Pie X : « Le modernisme est la synthèse de toutes les hérésies »",
+                "Serment antimoderniste (1910-1967)",
+                "Influence persistante : Débats sur Vatican II et l'herméneutique",
+                "65 propositions condamnées dans « Lamentabili »"
+            ]
+        },
+
+        // ==================== TABLEAU RÉCAPITULATIF DES HÉRÉSIES ====================
+        {
+            id: 799,
+            year: "2024",
+            date: "Synthèse",
+            title: "📊 Tableau récapitulatif des hérésies",
+            summary: "Vue d'ensemble des principales hérésies classées par thème et par siècle.",
+            description: "Ce tableau synthétise les grandes hérésies de l'histoire de l'Église, leurs erreurs principales, leurs condamnations et les vérités catholiques correspondantes. Chaque hérésie a contribué, par sa condamnation, à la formulation précise du dogme catholique.",
+            period: "contemporary",
+            type: "heresy",
+            icon: "fa-table",
+            details: [
+                "=== HÉRÉSIES TRINITAIRES ===",
+                "ARIANISME (IVe s.) : Le Fils est créature → Nicée : « Consubstantiel »",
+                "MACÉDONIANISME (IVe s.) : L'Esprit est créature → Constantinople I : « Seigneur »",
+                "MODALISME (IIIe s.) : Un Dieu, trois masques → Trois personnes distinctes",
+                "",
+                "=== HÉRÉSIES CHRISTOLOGIQUES ===",
+                "DOCÉTISME (Ier s.) : Corps apparent → Vraie humanité du Christ",
+                "APOLLINARISME (IVe s.) : Pas d'âme humaine → Humanité complète",
+                "NESTORIANISME (Ve s.) : Deux personnes → Une personne, deux natures",
+                "MONOPHYSISME (Ve s.) : Une nature → Deux natures sans confusion",
+                "MONOTHÉLISME (VIIe s.) : Une volonté → Deux volontés",
+                "",
+                "=== HÉRÉSIES SOTÉRIOLOGIQUES ===",
+                "PÉLAGIANISME (Ve s.) : Salut sans grâce → Nécessité de la grâce",
+                "SEMI-PÉLAGIANISME (Ve s.) : Initiative humaine → Tout vient de la grâce",
+                "JANSÉNISME (XVIIe s.) : Grâce irrésistible → Grâce et liberté",
+                "",
+                "=== HÉRÉSIES MÉDIÉVALES ===",
+                "CATHARISME (XIIe s.) : Dualisme → Un seul Dieu créateur",
+                "VALDÉISME (XIIe s.) : Prédication sans mandat → Autorité de l'Église",
+                "WYCLIFFISME/HUSSITISME (XIVe-XVe s.) : Proto-protestantisme",
+                "",
+                "=== PROTESTANTISME ET SUITE ===",
+                "PROTESTANTISME (XVIe s.) : Sola fide/scriptura → Foi + œuvres, Écriture + Tradition",
+                "MODERNISME (XXe s.) : Évolution des dogmes → Immutabilité de la foi"
+            ]
         }
     ]
 };

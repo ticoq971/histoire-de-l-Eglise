@@ -132,7 +132,34 @@ Chaque concile œcuménique affiche désormais :
 | **Habit** | Coule noire | Bure brune | Blanc/noir | Soutane/civil | Soutane | Soutane |
 | **Statut** | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ✅ Communion | ⚠️ Irrégulier |
 
-### 🆕 Guide détaillé des grandes différences (NOUVEAU)
+### ⚠️ Les Hérésies au cours de l'Histoire (NOUVEAU)
+
+L'application inclut désormais **26 hérésies détaillées** avec leurs erreurs, condamnations et réponses catholiques :
+
+| Siècle | Hérésie | Erreur principale | Condamnation |
+|--------|---------|-------------------|--------------|
+| Ier-IIe | **Docétisme** | Corps du Christ illusoire | Écrits de Jean |
+| IIe | **Gnosticisme** | Salut par la connaissance secrète | Pères de l'Église |
+| IIe | **Marcionisme** | Deux dieux (AT vs NT) | Tertullien, Irénée |
+| IIe | **Montanisme** | Nouvelle révélation de l'Esprit | Conciles locaux |
+| IIIe | **Modalisme** | Une personne, trois masques | Pères |
+| **IVe** | **ARIANISME** | Le Fils est une créature | **Nicée (325)** |
+| IVe | Macédonianisme | L'Esprit est une créature | Constantinople I (381) |
+| IVe | Apollinarisme | Pas d'âme humaine dans le Christ | Constantinople I (381) |
+| **Ve** | **Nestorianisme** | Deux personnes dans le Christ | **Éphèse (431)** |
+| **Ve** | **Monophysisme** | Une seule nature | **Chalcédoine (451)** |
+| Ve | **Pélagianisme** | Salut sans la grâce | Carthage, Éphèse |
+| VIIe | Monothélisme | Une seule volonté | Constantinople III (681) |
+| VIIIe | **Iconoclasme** | Images = idoles | **Nicée II (787)** |
+| XIIe | **Catharisme** | Dualisme Bien/Mal | Latran IV, Croisade |
+| XIVe | Wycliffisme | Proto-protestantisme | Constance (1415) |
+| XVe | Hussitisme | Communion sous les deux espèces | Constance (1415) |
+| **XVIe** | **Protestantisme** | Sola fide, sola scriptura | **Trente (1545-63)** |
+| XVIIe | Jansénisme | Grâce irrésistible | Papes Innocent X, Clément XI |
+| XVIIe | Quiétisme | Passivité totale | Innocent XI, XII |
+| **XXe** | **Modernisme** | Évolution des dogmes | **Pascendi (1907)** |
+
+### 🆕 Guide détaillé des grandes différences
 
 L'application inclut désormais **4 fiches thématiques approfondies** pour comprendre les différences entre communautés :
 
@@ -218,7 +245,18 @@ L'application inclut désormais **4 fiches thématiques approfondies** pour comp
 
 ## 🆕 Changelog
 
-### v3.1 - Guide des Grandes Différences entre Communautés (NOUVEAU)
+### v3.2 - Les Hérésies au cours de l'Histoire (NOUVEAU)
+- **26 hérésies détaillées** du Ier au XXe siècle
+- **Nouveau filtre "Hérésies"** pour filtrer les événements
+- **Hérésies trinitaires** : Arianisme, Macédonianisme, Modalisme
+- **Hérésies christologiques** : Nestorianisme, Monophysisme, Monothélisme
+- **Hérésies sotériologiques** : Pélagianisme, Semi-pélagianisme, Jansénisme
+- **Hérésies médiévales** : Catharisme, Valdéisme, Hussitisme
+- **Protestantisme et Modernisme** détaillés avec les 5 Sola
+- **Tableau récapitulatif** par thème et par siècle
+- **Liens avec les conciles** qui les ont condamnées
+
+### v3.1 - Guide des Grandes Différences entre Communautés
 - **4 fiches thématiques approfondies** pour comprendre les différences
 - **Focus Traditionalistes** : FSSPX vs FSSP vs IBP vs ICRSP expliqué en détail
 - **Focus Contemplatifs** : Bénédictins vs Cisterciens vs Chartreux vs Carmes
