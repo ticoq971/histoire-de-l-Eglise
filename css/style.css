@@ -1236,7 +1236,7 @@ body {
 
 @media (max-width: 600px) {
     .header {
-        padding: 40px 15px;
+        padding: 30px 15px;
     }
 
     .header h1 {
@@ -1304,19 +1304,37 @@ body {
     }
 
     .modal-content {
-        border-radius: 15px;
+        border-radius: 15px 15px 0 0;
+        max-height: 90vh;
+    }
+
+    .modal {
+        align-items: flex-end;
+        padding: 0;
     }
 
     .modal-header {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        border-radius: 15px 15px 0 0;
     }
 
     .modal-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .modal-body {
-        padding: 20px;
+        padding: 15px;
+    }
+
+    .modal-description {
+        font-size: 0.95rem;
+    }
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
     }
 
     /* Toggle button mobile */
@@ -1337,6 +1355,135 @@ body {
 
     .filters-nav.collapsed .toggle-filters-btn::after {
         content: 'Filtres';
+    }
+
+    /* Modal canons mobile */
+    .modal-canons {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .modal-canons h4 {
+        font-size: 1rem;
+    }
+
+    .modal-canons li {
+        font-size: 0.85rem;
+    }
+
+    .modal-canons li.canon-section-title {
+        margin: 10px -15px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Modal quote mobile */
+    .modal-quote {
+        padding: 15px 18px;
+        margin: 15px 0;
+    }
+
+    .modal-quote p {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+
+    .modal-quote::before {
+        font-size: 3rem;
+    }
+
+    /* Community info mobile */
+    .modal-community-info {
+        padding: 15px;
+    }
+
+    .community-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .community-item {
+        padding: 8px 12px;
+    }
+
+    .community-differences li {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .event {
+        padding: 15px;
+        width: calc(100% - 40px);
+        margin-left: 40px !important;
+    }
+
+    .timeline::before {
+        left: 15px;
+    }
+
+    .event::after {
+        left: -30px !important;
+        width: 14px;
+        height: 14px;
+    }
+
+    .event::before {
+        left: -22px !important;
+        width: 18px !important;
+    }
+
+    .event-title {
+        font-size: 1rem;
+    }
+
+    .event-summary {
+        font-size: 0.85rem;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+    }
+
+    .period-btn,
+    .filter-btn {
+        padding: 4px 8px;
+        font-size: 0.65rem;
+    }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+    .event {
+        min-height: 80px;
+    }
+
+    .filter-btn,
+    .period-btn {
+        min-height: 36px;
+        min-width: 44px;
+    }
+
+    .modal-close {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .reset-filters-btn {
+        min-height: 36px;
+    }
+
+    .toggle-filters-btn {
+        min-height: 36px;
     }
 }
 
