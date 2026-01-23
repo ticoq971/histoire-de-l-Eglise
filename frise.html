@@ -181,10 +181,10 @@
         }
 
         /* =====================================================
-           TIMELINE VERTICALE SIMPLE - STYLE LISTE
+           TIMELINE EN GRILLE 2 COLONNES
            ===================================================== */
         .timeline-container {
-            max-width: 900px;
+            max-width: 1200px;
             padding: 30px 20px;
         }
 
@@ -193,24 +193,53 @@
             display: none;
         }
 
-        /* Reset de la timeline - plus de float, plus de colonnes */
+        /* Grille 2 colonnes */
         .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: start;
         }
 
-        /* Style carte verticale pour chaque événement */
+        /* Marqueurs de période sur toute la largeur */
+        .period-marker {
+            grid-column: 1 / -1;
+            padding: 0;
+            margin: 30px 0 10px 0;
+            text-align: center;
+        }
+
+        .period-marker h2 {
+            font-size: 1.3rem;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            color: white;
+            border-radius: 10px;
+            display: inline-block;
+            border: none;
+        }
+
+        .period-marker .period-years {
+            font-size: 0.85rem;
+            color: var(--color-gold-light);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Style carte pour chaque événement */
         .event,
         .event.left,
         .event.right {
             width: 100% !important;
-            margin: 0 0 20px 0 !important;
+            margin: 0 !important;
             float: none !important;
-            padding: 25px 30px;
+            padding: 20px 25px;
             border-radius: 12px;
-            border-left-width: 6px;
+            border-left-width: 5px;
             position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Supprimer les éléments de connexion timeline */
@@ -228,70 +257,47 @@
         .event.left .event-icon,
         .event.right .event-icon {
             position: absolute;
-            top: 20px;
-            right: 20px !important;
+            top: 15px;
+            right: 15px !important;
             left: auto !important;
-            font-size: 2rem;
+            font-size: 1.6rem;
             opacity: 0.15;
         }
 
         /* Date en évidence */
         .event-date {
-            font-size: 1rem;
+            font-size: 0.85rem;
             margin-bottom: 8px;
             font-weight: 600;
             display: inline-block;
             background: linear-gradient(135deg, var(--color-gold) 0%, #d4a83a 100%);
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 3px 10px;
+            border-radius: 15px;
         }
 
         /* Titre bien visible */
         .event-title {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            padding-right: 50px;
-            line-height: 1.4;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            padding-right: 35px;
+            line-height: 1.35;
         }
 
         /* Résumé lisible */
         .event-summary {
-            font-size: 1rem;
-            line-height: 1.75;
+            font-size: 0.92rem;
+            line-height: 1.65;
             color: var(--color-text-light);
+            flex-grow: 1;
         }
 
         /* Citation si présente */
         .event-quote {
-            font-size: 0.9rem;
-            margin-top: 12px;
-            padding-top: 12px;
+            font-size: 0.82rem;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px dashed var(--color-bg-dark);
-        }
-
-        /* Marqueurs de période - style bandeau */
-        .period-marker {
-            padding: 0;
-            margin: 40px 0 25px 0;
-            text-align: left;
-        }
-
-        .period-marker h2 {
-            font-size: 1.3rem;
-            padding: 15px 25px;
-            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
-            color: white;
-            border-radius: 10px;
-            display: inline-block;
-            border: none;
-        }
-
-        .period-marker .period-years {
-            font-size: 0.85rem;
-            color: var(--color-gold-light);
-            display: block;
-            margin-top: 5px;
         }
 
         /* Légende masquée par défaut pour plus d'espace */
@@ -311,8 +317,31 @@
             box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Responsive - Tablette */
+        @media (max-width: 900px) {
+            .timeline-container {
+                max-width: 100%;
+                padding: 20px 15px;
+            }
+
+            .event,
+            .event.left,
+            .event.right {
+                padding: 18px 20px;
+                min-height: 160px;
+            }
+
+            .event-title {
+                font-size: 1.05rem;
+            }
+
+            .event-summary {
+                font-size: 0.88rem;
+            }
+        }
+
+        /* Responsive - Mobile : une seule colonne */
+        @media (max-width: 700px) {
             .main-nav {
                 padding: 10px 15px;
             }
@@ -345,68 +374,77 @@
                 top: 48px;
             }
 
-            /* Timeline mobile - style liste */
+            /* Timeline mobile - 1 colonne */
+            .timeline {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
             .timeline-container {
-                padding: 20px 15px;
+                padding: 15px 12px;
             }
 
             .event,
             .event.left,
             .event.right {
-                width: 100% !important;
-                margin: 0 0 15px 0 !important;
-                padding: 18px 20px;
+                padding: 16px 18px;
+                min-height: auto;
             }
 
             .event-title {
-                font-size: 1.15rem;
-                padding-right: 40px;
+                font-size: 1.1rem;
+                padding-right: 35px;
             }
 
             .event-summary {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
 
             .event-date {
-                font-size: 0.85rem;
-                padding: 3px 10px;
+                font-size: 0.8rem;
+                padding: 3px 8px;
             }
 
             .event .event-icon {
-                font-size: 1.5rem;
-                top: 15px;
-                right: 15px !important;
+                font-size: 1.4rem;
+                top: 12px;
+                right: 12px !important;
             }
 
             .period-marker {
-                margin: 30px 0 20px 0;
+                margin: 25px 0 10px 0;
             }
 
             .period-marker h2 {
-                font-size: 1.1rem;
-                padding: 12px 20px;
+                font-size: 1rem;
+                padding: 10px 18px;
             }
         }
 
         /* Grand écran - plus d'espace */
-        @media (min-width: 1200px) {
+        @media (min-width: 1400px) {
             .timeline-container {
-                max-width: 950px;
+                max-width: 1300px;
+            }
+
+            .timeline {
+                gap: 25px;
             }
 
             .event,
             .event.left,
             .event.right {
-                padding: 30px 40px;
+                padding: 25px 30px;
+                min-height: 200px;
             }
 
             .event-title {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
 
             .event-summary {
-                font-size: 1.1rem;
-                line-height: 1.8;
+                font-size: 0.98rem;
+                line-height: 1.7;
             }
         }
     </style>
