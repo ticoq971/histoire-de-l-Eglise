@@ -264,16 +264,85 @@
             opacity: 0.15;
         }
 
+        /* Header de l'événement (date + tag) */
+        .event-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
         /* Date en évidence */
         .event-date {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
             display: inline-block;
             background: linear-gradient(135deg, var(--color-gold) 0%, #d4a83a 100%);
             color: white;
             padding: 3px 10px;
             border-radius: 15px;
+        }
+
+        /* Tag de type */
+        .event-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+        }
+
+        .event-tag i {
+            font-size: 0.7rem;
+        }
+
+        /* Couleurs des tags par type */
+        .event-tag[data-type="major"] {
+            background: rgba(201, 162, 39, 0.15);
+            color: #a68b1d;
+        }
+        .event-tag[data-type="council"] {
+            background: rgba(30, 58, 95, 0.12);
+            color: var(--color-navy);
+        }
+        .event-tag[data-type="apostle"] {
+            background: rgba(139, 0, 0, 0.1);
+            color: var(--color-apostle);
+        }
+        .event-tag[data-type="father"] {
+            background: rgba(74, 103, 65, 0.12);
+            color: var(--color-father);
+        }
+        .event-tag[data-type="doctor"] {
+            background: rgba(112, 66, 20, 0.12);
+            color: var(--color-doctor);
+        }
+        .event-tag[data-type="saint"] {
+            background: rgba(45, 90, 74, 0.12);
+            color: var(--color-green);
+        }
+        .event-tag[data-type="heresy"] {
+            background: rgba(139, 0, 0, 0.1);
+            color: #8B0000;
+        }
+        .event-tag[data-type="schism"] {
+            background: rgba(107, 45, 45, 0.12);
+            color: var(--color-burgundy);
+        }
+        .event-tag[data-type="movement"] {
+            background: rgba(74, 58, 107, 0.12);
+            color: var(--color-purple);
+        }
+        .event-tag[data-type="community"] {
+            background: rgba(91, 58, 140, 0.12);
+            color: var(--color-community);
         }
 
         /* Titre bien visible */
@@ -338,6 +407,11 @@
             .event-summary {
                 font-size: 0.88rem;
             }
+
+            .event-tag {
+                font-size: 0.68rem;
+                padding: 2px 8px;
+            }
         }
 
         /* Responsive - Mobile : une seule colonne */
@@ -401,8 +475,17 @@
             }
 
             .event-date {
-                font-size: 0.8rem;
-                padding: 3px 8px;
+                font-size: 0.75rem;
+                padding: 2px 8px;
+            }
+
+            .event-tag {
+                font-size: 0.65rem;
+                padding: 2px 6px;
+            }
+
+            .event-header {
+                gap: 6px;
             }
 
             .event .event-icon {

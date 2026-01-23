@@ -283,6 +283,20 @@ document.addEventListener('DOMContentLoaded', function () {
         return marker;
     }
 
+    // Mapping des types vers leurs labels et icônes
+    const typeLabels = {
+        'major': { label: 'Événement majeur', icon: 'fa-star' },
+        'council': { label: 'Concile', icon: 'fa-landmark' },
+        'apostle': { label: 'Apôtre', icon: 'fa-cross' },
+        'father': { label: 'Père de l\'Église', icon: 'fa-scroll' },
+        'doctor': { label: 'Docteur', icon: 'fa-book' },
+        'saint': { label: 'Saint', icon: 'fa-pray' },
+        'heresy': { label: 'Hérésie', icon: 'fa-exclamation-triangle' },
+        'schism': { label: 'Schisme', icon: 'fa-divide' },
+        'movement': { label: 'Ordre/Mouvement', icon: 'fa-users' },
+        'community': { label: 'Communauté', icon: 'fa-church' }
+    };
+
     function createEventElement(event, isLeft) {
         const eventDiv = document.createElement('div');
         eventDiv.className = `event ${isLeft ? 'left' : 'right'}`;
@@ -308,9 +322,24 @@ document.addEventListener('DOMContentLoaded', function () {
             quoteHtml = `<p class="event-quote">${shortQuote}</p>`;
         }
 
+        // Créer le tag de type
+        let typeTag = '';
+        if (currentData.types && currentData.types[event.type]) {
+            // Pour protestantHistory
+            const typeInfo = currentData.types[event.type];
+            typeTag = `<span class="event-tag" data-type="${event.type}"><i class="fas ${typeInfo.icon}"></i> ${typeInfo.label}</span>`;
+        } else if (typeLabels[event.type]) {
+            // Pour churchHistory
+            const typeInfo = typeLabels[event.type];
+            typeTag = `<span class="event-tag" data-type="${event.type}"><i class="fas ${typeInfo.icon}"></i> ${typeInfo.label}</span>`;
+        }
+
         eventDiv.innerHTML = `
             <i class="fas ${event.icon} event-icon"></i>
-            <span class="event-date">${event.date}</span>
+            <div class="event-header">
+                <span class="event-date">${event.date}</span>
+                ${typeTag}
+            </div>
             <h3 class="event-title">${event.title}</h3>
             <p class="event-summary">${event.summary}</p>
             ${quoteHtml}
