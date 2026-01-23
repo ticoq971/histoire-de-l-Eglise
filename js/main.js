@@ -212,49 +212,63 @@ document.addEventListener('DOMContentLoaded', function () {
     // =====================================================
     // GÉNÉRATION DE LA TIMELINE
     // =====================================================
+    
+    // Fonction pour extraire l'année d'une chaîne
+    function getYear(str) {
+        if (!str) return 0;
+        // Enlever le tilde ~
+        const clean = str.toString().replace('~', '').trim();
+        // Prendre le premier nombre trouvé
+        const match = clean.match(/-?\d+/);
+        return match ? parseInt(match[0]) : 0;
+    }
+
     function generateTimeline() {
         timeline.innerHTML = '';
-        let currentPeriod = null;
         let isLeft = true;
 
-        // Trier les événements par année
-        const sortedEvents = [...currentData.events].sort((a, b) => {
-            // Extraction robuste de l'année (gestion de 'vers 30', '30-33', etc.)
-            const getYear = (str) => {
-                if (!str) return 0;
-                // Enlever le tilde ~
-                const clean = str.toString().replace('~', '').trim();
-                // Prendre le premier nombre trouvé
-                const match = clean.match(/-?\d+/);
-                return match ? parseInt(match[0]) : 0;
-            };
-
-            const yearA = getYear(a.year);
-            const yearB = getYear(b.year);
-
-            if (yearA !== yearB) return yearA - yearB;
-            return (a.id < b.id) ? -1 : 1; // Tri stable par ID si même année
+        // Regrouper les événements par période dans l'ordre des périodes définies
+        const periodOrder = currentData.periods.map(p => p.id);
+        
+        // Créer un map des événements par période
+        const eventsByPeriod = {};
+        currentData.events.forEach(event => {
+            if (!eventsByPeriod[event.period]) {
+                eventsByPeriod[event.period] = [];
+            }
+            eventsByPeriod[event.period].push(event);
         });
 
-        sortedEvents.forEach((event, index) => {
-            // Vérifier que l'événement appartient bien à une période définie
-            // Si on change de période (ou au début)
-            if (event.period !== currentPeriod) {
-                currentPeriod = event.period;
-                const periodData = currentData.periods.find(p => p.id === currentPeriod);
-                if (periodData) {
-                    const periodMarker = createPeriodMarker(periodData);
-                    timeline.appendChild(periodMarker);
-                }
-                isLeft = true; // Reset alternance pour chaque nouvelle période
+        // Trier les événements de chaque période par année
+        Object.keys(eventsByPeriod).forEach(periodId => {
+            eventsByPeriod[periodId].sort((a, b) => {
+                const yearA = getYear(a.year);
+                const yearB = getYear(b.year);
+                if (yearA !== yearB) return yearA - yearB;
+                return (a.id < b.id) ? -1 : 1;
+            });
+        });
+
+        // Parcourir les périodes dans l'ordre
+        periodOrder.forEach(periodId => {
+            const periodData = currentData.periods.find(p => p.id === periodId);
+            const periodEvents = eventsByPeriod[periodId] || [];
+
+            // Ne pas afficher la période si elle n'a pas d'événements
+            if (periodEvents.length === 0) return;
+
+            // Créer le marqueur de période
+            if (periodData) {
+                const periodMarker = createPeriodMarker(periodData);
+                timeline.appendChild(periodMarker);
             }
 
-            // Créer l'événement
-            const eventElement = createEventElement(event, isLeft);
-            timeline.appendChild(eventElement);
-
-            // Alterner gauche/droite
-            isLeft = !isLeft;
+            // Créer les événements de cette période
+            periodEvents.forEach((event) => {
+                const eventElement = createEventElement(event, isLeft);
+                timeline.appendChild(eventElement);
+                isLeft = !isLeft;
+            });
         });
 
         // Ajouter le clearfix à la fin
