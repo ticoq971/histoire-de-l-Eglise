@@ -3626,45 +3626,7 @@ const churchHistory = {
         // =====================================================
 
         // ==================== INTRODUCTION AUX HÉRÉSIES ====================
-        {
-            id: 700,
-            year: "30",
-            date: "Synthèse historique",
-            title: "⚠️ Les Hérésies dans l'Histoire de l'Église",
-            summary: "Panorama des erreurs doctrinales qui ont menacé la foi catholique au cours des siècles.",
-            description: "Une hérésie (du grec hairesis, « choix ») est une doctrine qui contredit un dogme défini par l'Église. Contrairement à l'apostasie (abandon total de la foi) ou au schisme (rupture de communion), l'hérésie maintient une partie de la foi tout en niant une vérité essentielle. Les conciles œcuméniques ont souvent été convoqués pour condamner les hérésies et définir la vraie doctrine. Comprendre les hérésies permet de mieux saisir le développement du dogme catholique.",
-            period: "ancient",
-            type: "heresy",
-            icon: "fa-exclamation-triangle",
-            details: [
-                "=== QU'EST-CE QU'UNE HÉRÉSIE ? ===",
-                "Définition : Négation obstinée d'une vérité de foi définie par l'Église",
-                "Différence avec l'erreur : L'hérésie suppose la connaissance et le refus volontaire",
-                "Différence avec le schisme : Le schisme est une rupture de communion, pas de doctrine",
-                "Différence avec l'apostasie : L'apostasie est l'abandon total de la foi chrétienne",
-                "",
-                "=== GRANDES CATÉGORIES D'HÉRÉSIES ===",
-                "TRINITAIRES : Sur la nature de Dieu (arianisme, modalisme, subordinatianisme)",
-                "CHRISTOLOGIQUES : Sur la personne du Christ (nestorianisme, monophysisme)",
-                "SOTÉRIOLOGIQUES : Sur le salut (pélagianisme, semi-pélagianisme)",
-                "ECCLÉSIOLOGIQUES : Sur l'Église (donatisme, conciliarisme)",
-                "SACRAMENTELLES : Sur les sacrements (iconoclasme, protestantisme)",
-                "ESCHATOLOGIQUES : Sur la fin des temps (millénarisme, montanisme)",
-                "",
-                "=== CHRONOLOGIE DES PRINCIPALES HÉRÉSIES ===",
-                "Ier-IIe s. : Gnosticisme, Docétisme, Marcionisme",
-                "IIe-IIIe s. : Montanisme, Modalisme, Subordinatianisme",
-                "IVe s. : Arianisme (la plus grave), Macédonianisme, Apollinarisme",
-                "Ve s. : Nestorianisme, Monophysisme (Eutychianisme), Pélagianisme",
-                "VIe-VIIe s. : Monothélisme, Monoénergisme",
-                "VIIIe-IXe s. : Iconoclasme, Adoptianisme",
-                "XIe-XIIIe s. : Catharisme, Valdéisme (partiellement)",
-                "XIVe-XVe s. : Wycliffisme, Hussitisme",
-                "XVIe s. : Protestantisme (Luther, Calvin, Zwingli)",
-                "XVIIe-XVIIIe s. : Jansénisme, Quiétisme",
-                "XIXe-XXe s. : Modernisme"
-            ]
-        },
+        
 
         // ==================== HÉRÉSIES DE L'ÉGLISE PRIMITIVE (Ier-IIIe s.) ====================
         {
@@ -4186,43 +4148,6 @@ const churchHistory = {
         },
 
         // ==================== TABLEAU RÉCAPITULATIF DES HÉRÉSIES ====================
-        {
-            id: 799,
-            year: "2024",
-            date: "Synthèse",
-            title: "📊 Tableau récapitulatif des hérésies",
-            summary: "Vue d'ensemble des principales hérésies classées par thème et par siècle.",
-            description: "Ce tableau synthétise les grandes hérésies de l'histoire de l'Église, leurs erreurs principales, leurs condamnations et les vérités catholiques correspondantes. Chaque hérésie a contribué, par sa condamnation, à la formulation précise du dogme catholique.",
-            period: "contemporary",
-            type: "heresy",
-            icon: "fa-table",
-            details: [
-                "=== HÉRÉSIES TRINITAIRES ===",
-                "ARIANISME (IVe s.) : Le Fils est créature → Nicée : « Consubstantiel »",
-                "MACÉDONIANISME (IVe s.) : L'Esprit est créature → Constantinople I : « Seigneur »",
-                "MODALISME (IIIe s.) : Un Dieu, trois masques → Trois personnes distinctes",
-                "",
-                "=== HÉRÉSIES CHRISTOLOGIQUES ===",
-                "DOCÉTISME (Ier s.) : Corps apparent → Vraie humanité du Christ",
-                "APOLLINARISME (IVe s.) : Pas d'âme humaine → Humanité complète",
-                "NESTORIANISME (Ve s.) : Deux personnes → Une personne, deux natures",
-                "MONOPHYSISME (Ve s.) : Une nature → Deux natures sans confusion",
-                "MONOTHÉLISME (VIIe s.) : Une volonté → Deux volontés",
-                "",
-                "=== HÉRÉSIES SOTÉRIOLOGIQUES ===",
-                "PÉLAGIANISME (Ve s.) : Salut sans grâce → Nécessité de la grâce",
-                "SEMI-PÉLAGIANISME (Ve s.) : Initiative humaine → Tout vient de la grâce",
-                "JANSÉNISME (XVIIe s.) : Grâce irrésistible → Grâce et liberté",
-                "",
-                "=== HÉRÉSIES MÉDIÉVALES ===",
-                "CATHARISME (XIIe s.) : Dualisme → Un seul Dieu créateur",
-                "VALDÉISME (XIIe s.) : Prédication sans mandat → Autorité de l'Église",
-                "WYCLIFFISME/HUSSITISME (XIVe-XVe s.) : Proto-protestantisme",
-                "",
-                "=== PROTESTANTISME ET SUITE ===",
-                "PROTESTANTISME (XVIe s.) : Sola fide/scriptura → Foi + œuvres, Écriture + Tradition",
-                "MODERNISME (XXe s.) : Évolution des dogmes → Immutabilité de la foi"
-            ]
-        }
+
     ]
 };
