@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire de l'Église - Frise Chronologique</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        /* Navigation principale */
+        .main-nav {
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo i {
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        .nav-logo span {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active {
+            background: var(--color-gold);
+            color: var(--color-navy);
+            font-weight: 600;
+        }
+
+        /* Barre de recherche */
+        .search-container {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--color-bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--color-bg);
+            border-radius: 30px;
+            padding: 8px 20px;
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+        }
+
+        .search-box i {
+            color: var(--color-text-light);
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-text);
+            width: 100%;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: var(--color-text-light);
+            opacity: 0.7;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: var(--color-text-light);
+            cursor: pointer;
+            padding: 5px;
+            display: none;
+            transition: color 0.3s ease;
+        }
+
+        .search-clear:hover {
+            color: var(--color-burgundy);
+        }
+
+        .search-clear.visible {
+            display: block;
+        }
+
+        .search-results-info {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .search-results-info strong {
+            color: var(--color-gold);
+        }
+
+        /* Header réduit */
+        .header {
+            height: 140px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .view-switcher {
+            margin-top: 10px;
+        }
+
+        .view-btn {
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        /* Ajustement filtres sticky */
+        .filters-nav {
+            top: 52px; /* Hauteur de la nav */
+        }
+
+        /* Timeline plus compacte */
+        .timeline-container {
+            max-width: 1000px;
+            padding: 20px 10px;
+        }
+
+        .event {
+            width: 43%;
+            padding: 18px;
+            margin-bottom: 30px;
+        }
+
+        .event-title {
+            font-size: 1.15rem;
+        }
+
+        .event-summary {
+            font-size: 0.9rem;
+        }
+
+        .event-date {
+            font-size: 0.8rem;
+        }
+
+        .event-icon {
+            font-size: 1.3rem;
+        }
+
+        .period-marker h2 {
+            font-size: 1.3rem;
+            padding: 12px 30px;
+        }
+
+        .period-marker .period-years {
+            font-size: 0.8rem;
+        }
+
+        .period-marker {
+            padding: 20px 0;
+        }
+
+        /* Highlight recherche */
+        .search-highlight {
+            background: rgba(201, 162, 39, 0.3);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .event.search-match {
+            border-left-width: 8px;
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 10px 15px;
+            }
+
+            .nav-logo span {
+                display: none;
+            }
+
+            .nav-link span {
+                display: none;
+            }
+
+            .search-container {
+                padding: 10px 15px;
+            }
+
+            .search-box {
+                padding: 6px 15px;
+            }
+
+            .header {
+                height: 120px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .filters-nav {
+                top: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo">
+            <i class="fas fa-cross"></i>
+            <span>Histoire de l'Église</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="frise.html" class="nav-link active">
+                <i class="fas fa-stream"></i>
+                <span>Frise</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Histoire de l'Église</h1>
+            <p class="subtitle">2000 ans de christianisme</p>
+
+            <div class="view-switcher">
+                <button class="view-btn active" data-source="church" title="Histoire de l'Église Catholique">
+                    <i class="fas fa-church"></i> Catholicisme
+                </button>
+                <button class="view-btn" data-source="protestant" title="Histoire du Protestantisme">
+                    <i class="fas fa-bible"></i> Protestantisme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barre de recherche -->
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Rechercher un événement, une date, un personnage...">
+            <button class="search-clear" id="searchClear" title="Effacer la recherche">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <span class="search-results-info" id="searchResultsInfo"></span>
+    </div>
+
+    <!-- Navigation des filtres -->
+    <nav class="filters-nav collapsed" id="filtersNav">
+        <button class="toggle-filters-btn" id="toggleFilters" title="Réduire/Développer les filtres">
+            <i class="fas fa-chevron-up"></i>
+            <span>Afficher les filtres</span>
+        </button>
+        <!-- Filtres par période -->
+        <div class="filter-section">
+            <h3 class="filter-title"><i class="fas fa-clock"></i> Par Période</h3>
+            <div class="filter-buttons" id="periodFilters">
+                <!-- Généré dynamiquement -->
+                <button class="filter-btn period-btn active" data-period="all">Toutes</button>
+                <button class="filter-btn period-btn" data-period="ancient">Église Primitive (30-313)</button>
+                <button class="filter-btn period-btn" data-period="imperial">Église Impériale (313-476)</button>
+                <button class="filter-btn period-btn" data-period="medieval">Moyen Âge (476-1054)</button>
+                <button class="filter-btn period-btn" data-period="schism">Schismes & Réforme (1054-1648)</button>
+                <button class="filter-btn period-btn" data-period="modern">Époque Moderne (1648-1962)</button>
+                <button class="filter-btn period-btn" data-period="contemporary">Contemporain (1962-)</button>
+            </div>
+        </div>
+
+        <!-- Filtres par thème/type -->
+        <div class="filter-section">
+            <h3 class="filter-title"><i class="fas fa-tags"></i> Par Thème</h3>
+            <div class="filter-buttons theme-filters" id="typeFilters">
+                <!-- Généré dynamiquement -->
+                <button class="filter-btn type-btn active" data-type="all">
+                    <i class="fas fa-globe"></i> Tous
+                </button>
+                <button class="filter-btn type-btn" data-type="major" style="--btn-color: #c9a227;">
+                    <i class="fas fa-star"></i> Événements majeurs
+                </button>
+                <!-- D'autres boutons seront générés ici -->
+            </div>
+        </div>
+
+        <!-- Compteur de résultats -->
+        <div class="filter-results">
+            <span id="resultsCount">0</span> événement(s) affiché(s)
+            <button class="reset-filters-btn" id="resetFilters">
+                <i class="fas fa-undo"></i> Réinitialiser les filtres
+            </button>
+        </div>
+    </nav>
+
+    <!-- Légende compacte -->
+    <div class="legend" id="legendContainer">
+        <!-- Généré dynamiquement -->
+    </div>
+
+    <!-- Timeline principale -->
+    <main class="timeline-container">
+        <div class="timeline">
+            <!-- Les événements seront générés par JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal pour les détails -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <span class="modal-date"></span>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description"></p>
+                <div class="modal-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Frise chronologique de l'histoire de l'Église chrétienne</p>
+        <p class="footer-note">Des origines à nos jours</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/protestant-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleFiltersBtn = document.getElementById('toggleFilters');
     const filtersNav = document.getElementById('filtersNav');
     const viewButtons = document.querySelectorAll('.view-btn');
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const searchResultsInfo = document.getElementById('searchResultsInfo');
     const periodFiltersContainer = document.getElementById('periodFilters');
     const typeFiltersContainer = document.getElementById('typeFilters');
     const legendContainer = document.getElementById('legendContainer');
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         period: 'all',
         type: 'all'
     };
+    let currentSearchTerm = '';
 
     // =====================================================
     // GESTION DU CHANGEMENT DE VUE (Source de données)
@@ -509,6 +513,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // FILTRAGE
     // =====================================================
     function applyFilters() {
+        // Si une recherche est active, utiliser la fonction de recherche à la place
+        if (currentSearchTerm) {
+            performSearch(currentSearchTerm);
+            return;
+        }
+
         const events = document.querySelectorAll('.event');
         const markers = document.querySelectorAll('.period-marker');
         const { period, type } = currentFilters;
@@ -517,6 +527,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let count = 0;
 
         events.forEach(event => {
+            event.classList.remove('search-match'); // Enlever les highlights de recherche
             const matchesPeriod = period === 'all' || event.dataset.period === period;
             const matchesType = type === 'all' || event.dataset.type === type;
 
@@ -555,6 +566,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (resetFiltersBtn) {
         resetFiltersBtn.addEventListener('click', () => {
             currentFilters = { period: 'all', type: 'all' };
+            currentSearchTerm = '';
+            
+            // Réinitialiser la barre de recherche
+            if (searchInput) searchInput.value = '';
+            if (searchResultsInfo) searchResultsInfo.textContent = '';
+            if (searchClear) searchClear.classList.remove('visible');
 
             document.querySelectorAll('.period-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.period === 'all'));
             document.querySelectorAll('.type-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.type === 'all'));
@@ -583,11 +600,148 @@ document.addEventListener('DOMContentLoaded', function () {
     // TOGGLE FILTRES
     // =====================================================
     if (toggleFiltersBtn && filtersNav) {
+        // S'assurer que les filtres sont masqués au chargement
+        filtersNav.classList.add('collapsed');
+        const btnText = toggleFiltersBtn.querySelector('span');
+        if (btnText) btnText.textContent = 'Afficher les filtres';
+        
         toggleFiltersBtn.addEventListener('click', () => {
             const isCollapsed = filtersNav.classList.toggle('collapsed');
             const btnText = toggleFiltersBtn.querySelector('span');
             if (btnText) btnText.textContent = isCollapsed ? 'Afficher les filtres' : 'Masquer les filtres';
         });
+    }
+
+    // =====================================================
+    // RECHERCHE
+    // =====================================================
+    function normalizeText(text) {
+        return text
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .trim();
+    }
+
+    function performSearch(searchTerm) {
+        currentSearchTerm = searchTerm;
+        const normalizedSearch = normalizeText(searchTerm);
+        const events = document.querySelectorAll('.event');
+        let matchCount = 0;
+
+        // Clear previous highlights
+        events.forEach(event => {
+            event.classList.remove('search-match');
+        });
+
+        if (!normalizedSearch) {
+            // Si pas de recherche, afficher selon les filtres actuels
+            if (searchResultsInfo) searchResultsInfo.textContent = '';
+            if (searchClear) searchClear.classList.remove('visible');
+            applyFilters();
+            return;
+        }
+
+        if (searchClear) searchClear.classList.add('visible');
+
+        events.forEach(event => {
+            const eventId = event.dataset.id;
+            const eventData = currentData.events.find(e => e.id === eventId);
+            
+            if (!eventData) return;
+
+            // Chercher dans tous les champs pertinents
+            const searchFields = [
+                eventData.title,
+                eventData.summary,
+                eventData.description,
+                eventData.date,
+                eventData.year?.toString(),
+                ...(eventData.details || []),
+                eventData.quote || ''
+            ].join(' ');
+
+            const normalizedFields = normalizeText(searchFields);
+            const matches = normalizedFields.includes(normalizedSearch);
+
+            // Appliquer également les filtres de période et type
+            const matchesPeriod = currentFilters.period === 'all' || event.dataset.period === currentFilters.period;
+            const matchesType = currentFilters.type === 'all' || event.dataset.type === currentFilters.type;
+
+            if (matches && matchesPeriod && matchesType) {
+                event.classList.remove('hidden');
+                event.classList.add('search-match');
+                matchCount++;
+                // Re-trigger animation
+                event.classList.remove('visible');
+                setTimeout(() => {
+                    if (!event.classList.contains('hidden')) event.classList.add('visible');
+                }, 50);
+            } else {
+                event.classList.add('hidden');
+                event.classList.remove('visible', 'search-match');
+            }
+        });
+
+        // Mettre à jour les marqueurs de période
+        updatePeriodMarkers();
+
+        // Afficher les résultats
+        if (searchResultsInfo) {
+            searchResultsInfo.innerHTML = `<strong>${matchCount}</strong> résultat(s) pour "${searchTerm}"`;
+        }
+        if (resultsCount) resultsCount.textContent = matchCount;
+    }
+
+    function updatePeriodMarkers() {
+        const markers = document.querySelectorAll('.period-marker');
+        const events = document.querySelectorAll('.event');
+        const visiblePeriods = new Set();
+
+        events.forEach(event => {
+            if (!event.classList.contains('hidden')) {
+                visiblePeriods.add(event.dataset.period);
+            }
+        });
+
+        markers.forEach(marker => {
+            if (visiblePeriods.has(marker.dataset.period)) {
+                marker.classList.remove('hidden');
+                marker.classList.add('visible');
+            } else {
+                marker.classList.add('hidden');
+                marker.classList.remove('visible');
+            }
+        });
+    }
+
+    function clearSearch() {
+        if (searchInput) searchInput.value = '';
+        currentSearchTerm = '';
+        if (searchResultsInfo) searchResultsInfo.textContent = '';
+        if (searchClear) searchClear.classList.remove('visible');
+        applyFilters();
+    }
+
+    // Event listeners pour la recherche
+    if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(e.target.value);
+            }, 300); // Debounce de 300ms
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                clearSearch();
+            }
+        });
+    }
+
+    if (searchClear) {
+        searchClear.addEventListener('click', clearSearch);
     }
 
     // =====================================================

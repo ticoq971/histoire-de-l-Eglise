@@ -4,116 +4,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histoire de l'Église - Frise Chronologique</title>
+    <title>Histoire de l'Église - Accueil</title>
     <link rel="stylesheet" href="css/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        /* Styles spécifiques à la page d'accueil */
+        .home-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-nav {
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo i {
+            font-size: 1.8rem;
+            color: var(--color-gold);
+        }
+
+        .nav-logo span {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active,
+        .nav-link.cta {
+            background: var(--color-gold);
+            color: var(--color-navy);
+            font-weight: 600;
+        }
+
+        .nav-link.cta:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 60%, var(--color-burgundy) 100%);
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5v50M5 30h50' stroke='%23ffffff' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            color: var(--color-gold);
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            }
+            to {
+                text-shadow: 0 0 50px rgba(201, 162, 39, 0.7);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--color-gold-light);
+            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-btn.primary {
+            background: var(--color-gold);
+            color: var(--color-navy);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .hero-btn.primary:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.5);
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: var(--color-bg);
+        }
+
+        .features-title {
+            text-align: center;
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--color-navy);
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-burgundy) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--color-gold);
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--color-navy);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* Timeline Preview */
+        .timeline-preview {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            text-align: center;
+        }
+
+        .timeline-preview h2 {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .timeline-preview p {
+            color: var(--color-gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .preview-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+
+        .preview-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .preview-card i {
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+
+        .preview-card h4 {
+            font-family: var(--font-title);
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .preview-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 45px;
+            background: var(--color-gold);
+            color: var(--color-navy);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .explore-btn:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Home Footer */
+        .home-footer {
+            background: var(--color-navy);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .home-footer p {
+            margin-bottom: 10px;
+        }
+
+        .home-footer .footer-note {
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 12px 15px;
+            }
+
+            .nav-logo span {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .nav-link span {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-icon {
+                font-size: 3.5rem;
+            }
+
+            .hero-btn {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+            }
+
+            .features-title,
+            .timeline-preview h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-        
-            <h1>Histoire de l'Église</h1>
-            <p class="subtitle">2000 ans de christianisme </p>
-
-            <div class="view-switcher">
-                <button class="view-btn active" data-source="church" title="Histoire de l'Église Catholique">
-                    <i class="fas fa-church"></i> Catholicisme
-                </button>
-                <button class="view-btn" data-source="protestant" title="Histoire du Protestantisme">
-                    <i class="fas fa-bible"></i> Protestantisme
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation des filtres -->
-    <nav class="filters-nav" id="filtersNav">
-        <button class="toggle-filters-btn" id="toggleFilters" title="Réduire/Développer les filtres">
-            <i class="fas fa-chevron-up"></i>
-            <span>Masquer les filtres</span>
-        </button>
-        <!-- Filtres par période -->
-        <div class="filter-section">
-            <h3 class="filter-title"><i class="fas fa-clock"></i> Par Période</h3>
-            <div class="filter-buttons" id="periodFilters">
-                <!-- Généré dynamiquement -->
-                <button class="filter-btn period-btn active" data-period="all">Toutes</button>
-                <button class="filter-btn period-btn" data-period="ancient">Église Primitive (30-313)</button>
-                <button class="filter-btn period-btn" data-period="imperial">Église Impériale (313-476)</button>
-                <button class="filter-btn period-btn" data-period="medieval">Moyen Âge (476-1054)</button>
-                <button class="filter-btn period-btn" data-period="schism">Schismes & Réforme (1054-1648)</button>
-                <button class="filter-btn period-btn" data-period="modern">Époque Moderne (1648-1962)</button>
-                <button class="filter-btn period-btn" data-period="contemporary">Contemporain (1962-)</button>
-            </div>
-        </div>
-
-        <!-- Filtres par thème/type -->
-        <div class="filter-section">
-            <h3 class="filter-title"><i class="fas fa-tags"></i> Par Thème</h3>
-            <div class="filter-buttons theme-filters" id="typeFilters">
-                <!-- Généré dynamiquement -->
-                <button class="filter-btn type-btn active" data-type="all">
-                    <i class="fas fa-globe"></i> Tous
-                </button>
-                <button class="filter-btn type-btn" data-type="major" style="--btn-color: #c9a227;">
-                    <i class="fas fa-star"></i> Événements majeurs
-                </button>
-                <!-- D'autres boutons seront générés ici -->
-            </div>
-        </div>
-
-        <!-- Compteur de résultats -->
-        <div class="filter-results">
-            <span id="resultsCount">0</span> événement(s) affiché(s)
-            <button class="reset-filters-btn" id="resetFilters">
-                <i class="fas fa-undo"></i> Réinitialiser les filtres
-            </button>
+<body class="home-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo">
+            <i class="fas fa-cross"></i>
+            <span>Histoire de l'Église</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">
+                <i class="fas fa-home"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="frise.html" class="nav-link cta">
+                <i class="fas fa-stream"></i>
+                <span>Voir la Frise</span>
+            </a>
         </div>
     </nav>
 
-    <!-- Légende compacte -->
-    <div class="legend" id="legendContainer">
-        <!-- Généré dynamiquement -->
-    </div>
-
-    <!-- Timeline principale -->
-    <main class="timeline-container">
-        <div class="timeline">
-            <!-- Les événements seront générés par JavaScript -->
-        </div>
-    </main>
-
-    <!-- Modal pour les détails -->
-    <div class="modal" id="eventModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-header">
-                <span class="modal-date"></span>
-                <h2 class="modal-title"></h2>
-            </div>
-            <div class="modal-body">
-                <p class="modal-description"></p>
-                <div class="modal-details"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <i class="fas fa-cross hero-icon"></i>
+            <h1>Histoire de l'Église</h1>
+            <p class="hero-subtitle">2000 ans de christianisme à travers le temps</p>
+            <p class="hero-description">
+                Explorez l'histoire fascinante de l'Église chrétienne depuis ses origines apostoliques 
+                jusqu'à nos jours. Découvrez les événements majeurs, les conciles, les saints, 
+                les Pères de l'Église et les moments qui ont façonné la foi chrétienne.
+            </p>
+            <div class="hero-buttons">
+                <a href="frise.html" class="hero-btn primary">
+                    <i class="fas fa-play"></i>
+                    Explorer la Frise
+                </a>
+                <a href="#features" class="hero-btn secondary">
+                    <i class="fas fa-info-circle"></i>
+                    En savoir plus
+                </a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="features-title">Découvrez notre Frise Chronologique</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <h3>Filtres Avancés</h3>
+                <p>Filtrez les événements par période historique ou par type (conciles, saints, événements majeurs, etc.) pour une exploration ciblée.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Recherche Intuitive</h3>
+                <p>Trouvez rapidement n'importe quel événement, personnage ou date grâce à notre barre de recherche intégrée.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Détails Complets</h3>
+                <p>Cliquez sur chaque événement pour découvrir son histoire détaillée, citations, décrets et points clés.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Double Perspective</h3>
+                <p>Basculez entre l'histoire du Catholicisme et celle du Protestantisme pour une vue complète du christianisme.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Preview -->
+    <section class="timeline-preview">
+        <h2>Parcourez les Époques</h2>
+        <p>De l'Église primitive au christianisme contemporain</p>
+        <div class="preview-cards">
+            <div class="preview-card">
+                <i class="fas fa-dove"></i>
+                <h4>Église Primitive</h4>
+                <p>30 - 313 ap. J.-C.</p>
+            </div>
+            <div class="preview-card">
+                <i class="fas fa-landmark"></i>
+                <h4>Conciles Œcuméniques</h4>
+                <p>325 - 787 ap. J.-C.</p>
+            </div>
+            <div class="preview-card">
+                <i class="fas fa-crown"></i>
+                <h4>Moyen Âge</h4>
+                <p>476 - 1054 ap. J.-C.</p>
+            </div>
+        </div>
+        <a href="frise.html" class="explore-btn">
+            <i class="fas fa-compass"></i>
+            Commencer l'Exploration
+        </a>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="home-footer">
         <p>Frise chronologique de l'histoire de l'Église chrétienne</p>
         <p class="footer-note">Des origines à nos jours</p>
     </footer>
-
-    <script src="js/data.js"></script>
-    <script src="js/protestant-data.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>
