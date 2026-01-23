@@ -646,7 +646,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         events.forEach(event => {
             const eventId = event.dataset.id;
-            const eventData = currentData.events.find(e => e.id === eventId);
+            // Comparer en string car dataset retourne toujours une string
+            const eventData = currentData.events.find(e => String(e.id) === String(eventId));
             
             if (!eventData) return;
 

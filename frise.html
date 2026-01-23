@@ -181,102 +181,117 @@
         }
 
         /* =====================================================
-           TIMELINE PLUS LISIBLE - UNE SEULE COLONNE
+           TIMELINE VERTICALE SIMPLE - STYLE LISTE
            ===================================================== */
         .timeline-container {
-            max-width: 800px;
-            padding: 40px 20px;
+            max-width: 900px;
+            padding: 30px 20px;
         }
 
-        /* Masquer la ligne centrale par défaut */
+        /* Masquer la ligne centrale de la timeline */
         .timeline::before {
-            left: 40px;
-            width: 4px;
+            display: none;
         }
 
-        /* Tous les événements à droite, en colonne unique */
+        /* Reset de la timeline - plus de float, plus de colonnes */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Style carte verticale pour chaque événement */
         .event,
         .event.left,
         .event.right {
-            width: calc(100% - 80px) !important;
-            margin-left: 80px !important;
-            margin-right: 0 !important;
+            width: 100% !important;
+            margin: 0 0 20px 0 !important;
             float: none !important;
             padding: 25px 30px;
-            margin-bottom: 50px;
-            clear: both;
+            border-radius: 12px;
+            border-left-width: 6px;
+            position: relative;
         }
 
-        /* Point sur la timeline - toujours à gauche */
+        /* Supprimer les éléments de connexion timeline */
         .event::after,
         .event.left::after,
-        .event.right::after {
-            left: -48px !important;
-            right: auto !important;
-            transform: none !important;
-            width: 24px;
-            height: 24px;
-            border-width: 5px;
-        }
-
-        /* Ligne connectant l'événement */
+        .event.right::after,
         .event::before,
         .event.left::before,
         .event.right::before {
-            left: -40px !important;
-            right: auto !important;
-            width: 35px !important;
+            display: none !important;
         }
 
-        /* Icône toujours à droite */
+        /* Icône en haut à droite */
         .event .event-icon,
         .event.left .event-icon,
         .event.right .event-icon {
+            position: absolute;
+            top: 20px;
             right: 20px !important;
             left: auto !important;
+            font-size: 2rem;
+            opacity: 0.15;
         }
 
-        /* Texte plus grand et plus lisible */
-        .event-title {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            padding-right: 40px;
-        }
-
-        .event-summary {
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
+        /* Date en évidence */
         .event-date {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-gold) 0%, #d4a83a 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
-        .event-icon {
-            font-size: 1.8rem;
-            opacity: 0.25;
+        /* Titre bien visible */
+        .event-title {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            padding-right: 50px;
+            line-height: 1.4;
         }
 
+        /* Résumé lisible */
+        .event-summary {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--color-text-light);
+        }
+
+        /* Citation si présente */
         .event-quote {
-            font-size: 0.95rem;
-            margin-top: 15px;
-            padding-top: 15px;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--color-bg-dark);
         }
 
-        /* Marqueurs de période plus visibles */
+        /* Marqueurs de période - style bandeau */
         .period-marker {
-            padding: 50px 0 30px 0;
-            margin-left: 0;
+            padding: 0;
+            margin: 40px 0 25px 0;
+            text-align: left;
         }
 
         .period-marker h2 {
-            font-size: 1.5rem;
-            padding: 18px 40px;
+            font-size: 1.3rem;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            color: white;
+            border-radius: 10px;
+            display: inline-block;
+            border: none;
         }
 
         .period-marker .period-years {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            color: var(--color-gold-light);
+            display: block;
+            margin-top: 5px;
         }
 
         /* Légende masquée par défaut pour plus d'espace */
@@ -330,59 +345,59 @@
                 top: 48px;
             }
 
-            /* Timeline mobile */
-            .timeline::before {
-                left: 20px;
+            /* Timeline mobile - style liste */
+            .timeline-container {
+                padding: 20px 15px;
             }
 
             .event,
             .event.left,
             .event.right {
-                width: calc(100% - 50px) !important;
-                margin-left: 50px !important;
-                padding: 20px;
-                margin-bottom: 35px;
-            }
-
-            .event::after,
-            .event.left::after,
-            .event.right::after {
-                left: -35px !important;
-                width: 18px;
-                height: 18px;
-            }
-
-            .event::before,
-            .event.left::before,
-            .event.right::before {
-                left: -25px !important;
-                width: 20px !important;
+                width: 100% !important;
+                margin: 0 0 15px 0 !important;
+                padding: 18px 20px;
             }
 
             .event-title {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+                padding-right: 40px;
             }
 
             .event-summary {
                 font-size: 0.95rem;
             }
 
+            .event-date {
+                font-size: 0.85rem;
+                padding: 3px 10px;
+            }
+
+            .event .event-icon {
+                font-size: 1.5rem;
+                top: 15px;
+                right: 15px !important;
+            }
+
+            .period-marker {
+                margin: 30px 0 20px 0;
+            }
+
             .period-marker h2 {
-                font-size: 1.2rem;
-                padding: 12px 25px;
+                font-size: 1.1rem;
+                padding: 12px 20px;
             }
         }
 
         /* Grand écran - plus d'espace */
         @media (min-width: 1200px) {
             .timeline-container {
-                max-width: 900px;
+                max-width: 950px;
             }
 
             .event,
             .event.left,
             .event.right {
-                padding: 30px 35px;
+                padding: 30px 40px;
             }
 
             .event-title {
@@ -391,6 +406,7 @@
 
             .event-summary {
                 font-size: 1.1rem;
+                line-height: 1.8;
             }
         }
     </style>
