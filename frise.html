@@ -180,45 +180,108 @@
             top: 52px; /* Hauteur de la nav */
         }
 
-        /* Timeline plus compacte */
+        /* =====================================================
+           TIMELINE PLUS LISIBLE - UNE SEULE COLONNE
+           ===================================================== */
         .timeline-container {
-            max-width: 1000px;
-            padding: 20px 10px;
+            max-width: 800px;
+            padding: 40px 20px;
         }
 
-        .event {
-            width: 43%;
-            padding: 18px;
-            margin-bottom: 30px;
+        /* Masquer la ligne centrale par défaut */
+        .timeline::before {
+            left: 40px;
+            width: 4px;
         }
 
+        /* Tous les événements à droite, en colonne unique */
+        .event,
+        .event.left,
+        .event.right {
+            width: calc(100% - 80px) !important;
+            margin-left: 80px !important;
+            margin-right: 0 !important;
+            float: none !important;
+            padding: 25px 30px;
+            margin-bottom: 50px;
+            clear: both;
+        }
+
+        /* Point sur la timeline - toujours à gauche */
+        .event::after,
+        .event.left::after,
+        .event.right::after {
+            left: -48px !important;
+            right: auto !important;
+            transform: none !important;
+            width: 24px;
+            height: 24px;
+            border-width: 5px;
+        }
+
+        /* Ligne connectant l'événement */
+        .event::before,
+        .event.left::before,
+        .event.right::before {
+            left: -40px !important;
+            right: auto !important;
+            width: 35px !important;
+        }
+
+        /* Icône toujours à droite */
+        .event .event-icon,
+        .event.left .event-icon,
+        .event.right .event-icon {
+            right: 20px !important;
+            left: auto !important;
+        }
+
+        /* Texte plus grand et plus lisible */
         .event-title {
-            font-size: 1.15rem;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            padding-right: 40px;
         }
 
         .event-summary {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
         .event-date {
-            font-size: 0.8rem;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
 
         .event-icon {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
+            opacity: 0.25;
+        }
+
+        .event-quote {
+            font-size: 0.95rem;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        /* Marqueurs de période plus visibles */
+        .period-marker {
+            padding: 50px 0 30px 0;
+            margin-left: 0;
         }
 
         .period-marker h2 {
-            font-size: 1.3rem;
-            padding: 12px 30px;
+            font-size: 1.5rem;
+            padding: 18px 40px;
         }
 
         .period-marker .period-years {
-            font-size: 0.8rem;
+            font-size: 0.95rem;
         }
 
-        .period-marker {
-            padding: 20px 0;
+        /* Légende masquée par défaut pour plus d'espace */
+        .legend {
+            display: none;
         }
 
         /* Highlight recherche */
@@ -265,6 +328,69 @@
 
             .filters-nav {
                 top: 48px;
+            }
+
+            /* Timeline mobile */
+            .timeline::before {
+                left: 20px;
+            }
+
+            .event,
+            .event.left,
+            .event.right {
+                width: calc(100% - 50px) !important;
+                margin-left: 50px !important;
+                padding: 20px;
+                margin-bottom: 35px;
+            }
+
+            .event::after,
+            .event.left::after,
+            .event.right::after {
+                left: -35px !important;
+                width: 18px;
+                height: 18px;
+            }
+
+            .event::before,
+            .event.left::before,
+            .event.right::before {
+                left: -25px !important;
+                width: 20px !important;
+            }
+
+            .event-title {
+                font-size: 1.2rem;
+            }
+
+            .event-summary {
+                font-size: 0.95rem;
+            }
+
+            .period-marker h2 {
+                font-size: 1.2rem;
+                padding: 12px 25px;
+            }
+        }
+
+        /* Grand écran - plus d'espace */
+        @media (min-width: 1200px) {
+            .timeline-container {
+                max-width: 900px;
+            }
+
+            .event,
+            .event.left,
+            .event.right {
+                padding: 30px 35px;
+            }
+
+            .event-title {
+                font-size: 1.5rem;
+            }
+
+            .event-summary {
+                font-size: 1.1rem;
             }
         }
     </style>
