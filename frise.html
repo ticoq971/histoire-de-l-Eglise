@@ -5,823 +5,831 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histoire de l'Église - Frise Chronologique</title>
-    <link rel="stylesheet" href="css/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
-        /* Navigation principale */
-        .main-nav {
-            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
-            padding: 12px 30px;
+        :root {
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Lora', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: #1a2433;
+            line-height: 1.6;
+        }
+
+        body.ui-church {
+            background: #f4f1ed;
+        }
+
+        .ui-church .main-nav {
+            background: linear-gradient(90deg, #2a0f32 0%, #3b1445 55%, #2a0f32 100%);
+            border-bottom: 1px solid rgba(216, 177, 106, 0.35);
+            box-shadow: 0 10px 25px rgba(18, 8, 24, 0.25);
+            backdrop-filter: none;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 30px;
+            padding-right: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 200;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .nav-logo {
+        .ui-church .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
-            color: white;
         }
 
-        .nav-logo i {
-            font-size: 1.5rem;
-            color: var(--color-gold);
-        }
-
-        .nav-logo span {
+        .ui-church .nav-logo span {
             font-family: var(--font-title);
-            font-size: 1.1rem;
-            font-weight: 600;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 1rem;
         }
 
-        .nav-links {
+        .ui-church .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
         }
 
-        .nav-link {
-            color: white;
+        .ui-church .nav-link {
             text-decoration: none;
-            font-family: var(--font-body);
             font-size: 0.9rem;
-            padding: 8px 18px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            display: flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
-        .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .ui-church .nav-logo,
+        .ui-church .nav-link {
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        .nav-link.active {
-            background: var(--color-gold);
-            color: var(--color-navy);
-            font-weight: 600;
+        .ui-church .nav-logo i {
+            color: #d8b16a;
         }
 
-        /* Barre de recherche */
-        .search-container {
-            background: white;
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--color-bg-dark);
+        .ui-church .nav-link:hover {
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .ui-church .nav-link.active {
+            background: rgba(216, 177, 106, 0.95);
+            color: #2a0f32;
+        }
+
+        .ui-church .header {
+            background: linear-gradient(90deg, rgba(15, 6, 20, 0.95) 0%, rgba(59, 20, 69, 0.92) 45%, rgba(15, 6, 20, 0.95) 100%);
+            color: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid rgba(216, 177, 106, 0.30);
+            height: auto;
+            padding: 24px 20px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ui-church .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='240' viewBox='0 0 480 240'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='40%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%23d8b16a' stop-opacity='.22'/%3E%3Cstop offset='55%25' stop-color='%233b1445' stop-opacity='.10'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg opacity='.85'%3E%3Cpath d='M20 220 L90 20 L160 220 Z' fill='%231f0b26'/%3E%3Cpath d='M95 220 L165 20 L235 220 Z' fill='%232a0f32'/%3E%3Cpath d='M170 220 L240 20 L310 220 Z' fill='%233b1445'/%3E%3Cpath d='M245 220 L315 20 L385 220 Z' fill='%232a0f32'/%3E%3Cpath d='M320 220 L390 20 L460 220 Z' fill='%231f0b26'/%3E%3Ccircle cx='240' cy='95' r='110' fill='url(%23g)'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 560px 280px;
+            background-repeat: no-repeat;
+            background-position: left 14% center;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .ui-church .header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.60) 100%);
+            pointer-events: none;
+        }
+
+        .ui-church .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ui-church .header h1 {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 5vw, 3.1rem);
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.96);
+        }
+
+        .ui-church .subtitle {
+            color: rgba(216, 177, 106, 0.92);
+            font-style: italic;
+            letter-spacing: 0.3px;
+            margin-bottom: 16px;
+        }
+
+        .ui-church .view-switcher {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .search-box {
+        .ui-church .view-btn {
+            border: 1px solid rgba(26, 12, 34, 0.18);
+            background: rgba(255, 255, 255, 0.10);
+            color: rgba(255, 255, 255, 0.92);
+            padding: 8px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ui-church .view-btn.active {
+            background: rgba(216, 177, 106, 0.95);
+            border-color: rgba(216, 177, 106, 0.95);
+            color: #2a0f32;
+        }
+
+        .ui-church .timeline-container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 26px 22px 50px;
+            background: #f7f5f3;
+            box-shadow: 0 18px 50px rgba(22, 14, 30, 0.10);
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ui-church .content-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 20px 0;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 16px;
+            align-items: start;
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(26, 12, 34, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 22px 70px rgba(22, 14, 30, 0.10);
+            padding-bottom: 18px;
+        }
+
+        .ui-church .main-col {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .ui-church .search-container {
+            position: sticky;
+            top: 72px;
+            width: 100%;
+            max-height: calc(100vh - 96px);
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(26, 12, 34, 0.10);
+            padding: 20px 16px;
+            box-shadow: 0 12px 30px rgba(22, 14, 30, 0.10);
+            z-index: 150;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border-radius: 18px;
+        }
+
+        .ui-church .timeline-container {
+            border-radius: 18px;
+        }
+
+        .ui-church .search-box {
             display: flex;
             align-items: center;
-            background: var(--color-bg);
-            border-radius: 30px;
-            padding: 8px 20px;
-            max-width: 500px;
-            width: 100%;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            background: #f3f1ee;
+            border-radius: 14px;
+            padding: 10px 12px;
+            gap: 10px;
+            border: 1px solid rgba(26, 12, 34, 0.10);
         }
 
-        .search-box:focus-within {
-            border-color: var(--color-gold);
-            box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+        .ui-church .search-box i {
+            color: rgba(59, 20, 69, 0.75);
         }
 
-        .search-box i {
-            color: var(--color-text-light);
-            margin-right: 12px;
-            font-size: 1rem;
-        }
-
-        .search-box input {
+        .ui-church .search-box input {
             border: none;
+            outline: none;
             background: transparent;
+            width: 100%;
             font-family: var(--font-body);
             font-size: 0.95rem;
-            color: var(--color-text);
-            width: 100%;
-            outline: none;
         }
 
-        .search-box input::placeholder {
-            color: var(--color-text-light);
-            opacity: 0.7;
-        }
-
-        .search-clear {
-            background: none;
+        .ui-church .search-clear {
             border: none;
-            color: var(--color-text-light);
+            background: transparent;
             cursor: pointer;
-            padding: 5px;
+            color: rgba(59, 20, 69, 0.75);
             display: none;
-            transition: color 0.3s ease;
         }
 
-        .search-clear:hover {
-            color: var(--color-burgundy);
+        .ui-church .search-clear.visible {
+            display: inline-flex;
         }
 
-        .search-clear.visible {
-            display: block;
+        .ui-church .search-results-info {
+            font-size: 0.8rem;
+            color: #6a5a73;
         }
 
-        .search-results-info {
+        .ui-church .filters-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .ui-church .toggle-filters-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(26, 12, 34, 0.12);
+            background: linear-gradient(90deg, rgba(59, 20, 69, 0.08) 0%, rgba(216, 177, 106, 0.10) 100%);
+            cursor: pointer;
+            font-family: var(--font-body);
             font-size: 0.85rem;
-            color: var(--color-text-light);
+            color: #2a0f32;
         }
 
-        .search-results-info strong {
-            color: var(--color-gold);
+        .ui-church .filter-section {
+            padding-top: 6px;
         }
 
-        /* Header réduit */
-        .header {
-            height: 140px;
-            padding: 20px;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
+        .ui-church .filter-title {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            color: rgba(59, 20, 69, 0.85);
+            display: flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 10px;
         }
 
-        .view-switcher {
-            margin-top: 10px;
+        .ui-church .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .view-btn {
-            padding: 6px 14px;
+        .ui-church .filter-btn {
+            border: 1px solid rgba(59, 20, 69, 0.25);
+            background: #fff;
+            color: #2a0f32;
+            padding: 7px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ui-church .filter-btn.active {
+            background: rgba(59, 20, 69, 0.95);
+            color: #fff;
+            border-color: rgba(59, 20, 69, 0.95);
+        }
+
+        .ui-church .filter-results {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid rgba(26, 12, 34, 0.10);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #6a5a73;
             font-size: 0.85rem;
         }
 
-        /* Ajustement filtres sticky */
-        .filters-nav {
-            top: 52px; /* Hauteur de la nav */
+        .ui-church .reset-filters-btn {
+            border: 1px solid rgba(59, 20, 69, 0.25);
+            background: #fff;
+            color: #2a0f32;
+            padding: 8px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .ui-church .reset-filters-btn:hover {
+            background: rgba(216, 177, 106, 0.20);
+        }
+
+        .ui-church .filters-nav.collapsed .filter-section,
+        .ui-church .filters-nav.collapsed .filter-results {
+            display: none;
         }
 
         /* =====================================================
-           TIMELINE EN GRILLE 2 COLONNES
+           UI "CHURCH HISTORY TIMELINE" (axe vertical + cartes)
            ===================================================== */
-        .timeline-container {
-            max-width: 1200px;
-            padding: 30px 20px;
+        .ui-church .timeline-container {
+            --ui-axis-width: 8px;
+            --ui-year-col: 180px;
+            --ui-gap: 52px;
+            --ui-card: 560px;
+            --ui-purple: #3b1445;
+            --ui-purple-2: #2a0f32;
+            --ui-gold: #d8b16a;
+            --ui-axis-x: calc(var(--ui-year-col) + (var(--ui-gap) * 0.5));
         }
 
-        /* Masquer la ligne centrale de la timeline */
-        .timeline::before {
+        .ui-church .timeline-container {
+            background: #f7f5f3;
+        }
+
+        .ui-church .timeline-container::before {
             display: none;
         }
 
-        /* Grille 2 colonnes */
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            align-items: start;
-        }
-
-        /* Marqueurs de période sur toute la largeur */
-        .period-marker {
-            grid-column: 1 / -1;
-            padding: 0;
-            margin: 30px 0 10px 0;
-            text-align: center;
-        }
-
-        .period-marker h2 {
-            font-size: 1.3rem;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
-            color: white;
-            border-radius: 10px;
-            display: inline-block;
-            border: none;
-        }
-
-        .period-marker .period-years {
-            font-size: 0.85rem;
-            color: var(--color-gold-light);
-            display: block;
-            margin-top: 5px;
-        }
-
-        /* Style carte pour chaque événement */
-        .event,
-        .event.left,
-        .event.right {
-            width: 100% !important;
-            margin: 0 !important;
-            float: none !important;
-            padding: 20px 25px;
-            border-radius: 12px;
-            border-left-width: 5px;
+        .ui-church .timeline {
             position: relative;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
+            padding: 30px 0 60px;
+            min-height: 0;
+            z-index: 0;
         }
 
-        /* Supprimer les éléments de connexion timeline */
-        .event::after,
-        .event.left::after,
-        .event.right::after,
-        .event::before,
-        .event.left::before,
-        .event.right::before {
+        /* Couper l'axe diagonale de la version précédente */
+        .ui-church .timeline::before {
+            content: '';
+            position: absolute;
+            display: block;
+            left: var(--ui-axis-x);
+            top: 20px;
+            width: 6px;
+            height: calc(100% - 40px);
+            transform: none;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--ui-purple) 0%, #6b2b74 55%, var(--ui-purple-2) 100%);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(26, 12, 34, 0.25);
+            z-index: 0;
+        }
+
+        /* Marqueurs de période => libellé à droite de l'axe */
+        .ui-church .period-marker {
+            width: auto;
+            margin: 16px 0 8px 0;
+        }
+
+        .ui-church .period-marker.left,
+        .ui-church .period-marker.right {
+            margin: 18px 0 8px 0;
+            text-align: left;
+        }
+
+        .ui-church .period-marker::before,
+        .ui-church .period-marker::after {
+            display: none;
+        }
+
+        .ui-church .period-marker h2 {
+            margin-left: calc(var(--ui-axis-x) + 24px);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            color: #3b2b44;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .ui-church .period-marker h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(216, 177, 106, 0.95);
+            box-shadow: 0 0 0 4px rgba(216, 177, 106, 0.12);
+        }
+
+        .ui-church .period-icon {
+            background: rgba(59, 20, 69, 0.08);
+            color: var(--ui-purple);
+            border: 1px solid rgba(59, 20, 69, 0.18);
+        }
+
+        .ui-church .period-marker .period-years {
+            color: #6a5a73;
+            margin-top: 0;
+        }
+
+        /* Event layout en 3 colonnes */
+        .ui-church .event,
+        .ui-church .event.left,
+        .ui-church .event.right {
+            float: none !important;
+            width: 100% !important;
+            margin: 0 0 14px 0 !important;
+            padding: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            display: grid;
+            grid-template-columns: var(--ui-year-col) var(--ui-gap) minmax(320px, var(--ui-card));
+            align-items: start;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Désactiver les anciens connecteurs/dots */
+        .ui-church .event::before,
+        .ui-church .event::after {
             display: none !important;
         }
 
-        /* Icône en haut à droite */
-        .event .event-icon,
-        .event.left .event-icon,
-        .event.right .event-icon {
-            position: absolute;
-            top: 15px;
-            right: 15px !important;
-            left: auto !important;
-            font-size: 1.6rem;
-            opacity: 0.15;
+        .ui-church .event-year-col {
+            text-align: right;
+            padding-right: 10px;
+            color: #3b2b44;
         }
 
-        /* Header de l'événement (date + tag) */
-        .event-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
+        .ui-church .event-year {
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            color: #2d2332;
         }
 
-        /* Date en évidence */
-        .event-date {
+        .ui-church .event-year-label {
+            margin-top: 6px;
             font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            background: linear-gradient(135deg, var(--color-gold) 0%, #d4a83a 100%);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
+            color: #6a5a73;
+            line-height: 1.3;
         }
 
-        /* Tag de type */
-        .event-tag {
-            font-size: 0.72rem;
-            font-weight: 600;
+        .ui-church .event-axis-col {
+            position: relative;
+            min-height: 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ui-church .event-axis-icon {
+            position: relative;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--ui-purple) 0%, var(--ui-purple-2) 100%);
+            border: 2px solid rgba(216, 177, 106, 0.95);
+            box-shadow: 0 8px 18px rgba(18, 8, 24, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ui-gold);
+            z-index: 2;
+        }
+
+        .ui-church .event-axis-icon::after {
+            content: '';
+            position: absolute;
+            inset: -7px;
+            border-radius: 999px;
+            box-shadow: 0 0 0 7px rgba(216, 177, 106, 0.12);
+            pointer-events: none;
+        }
+
+        .ui-church .event-axis-icon i {
+            font-size: 0.95rem;
+        }
+
+        .ui-church .event-card {
+            background: #fff;
+            border: 1px solid rgba(26, 12, 34, 0.10);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 22px rgba(22, 14, 30, 0.10);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .ui-church .event:hover .event-card {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(22, 14, 30, 0.14);
+        }
+
+        .ui-church .event-card::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * (var(--ui-gap) * 0.5));
+            top: 20px;
+            width: calc(var(--ui-gap) * 0.5);
+            height: 2px;
+            background: rgba(216, 177, 106, 0.35);
+        }
+
+        .ui-church .event-card-header {
+            background: linear-gradient(90deg, var(--ui-purple) 0%, #5b1e69 55%, var(--ui-purple-2) 100%);
+            color: #fff;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-bottom: 2px solid rgba(216, 177, 106, 0.9);
+        }
+
+        .ui-church .event-card-top {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.88);
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: 3px 10px;
-            border-radius: 15px;
+            gap: 8px;
+            width: fit-content;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.18);
+            border: 1px solid rgba(216, 177, 106, 0.28);
+        }
+
+        .ui-church .event-card-title {
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 0.6px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            background: var(--color-bg-dark);
-            color: var(--color-text-light);
         }
 
-        .event-tag i {
-            font-size: 0.7rem;
+        .ui-church .event-card-body {
+            padding: 12px 14px 14px;
         }
 
-        /* Couleurs des tags par type */
-        .event-tag[data-type="major"] {
-            background: rgba(201, 162, 39, 0.15);
-            color: #a68b1d;
-        }
-        .event-tag[data-type="council"] {
-            background: rgba(30, 58, 95, 0.12);
-            color: var(--color-navy);
-        }
-        .event-tag[data-type="apostle"] {
-            background: rgba(139, 0, 0, 0.1);
-            color: var(--color-apostle);
-        }
-        .event-tag[data-type="father"] {
-            background: rgba(74, 103, 65, 0.12);
-            color: var(--color-father);
-        }
-        .event-tag[data-type="doctor"] {
-            background: rgba(112, 66, 20, 0.12);
-            color: var(--color-doctor);
-        }
-        .event-tag[data-type="saint"] {
-            background: rgba(45, 90, 74, 0.12);
-            color: var(--color-green);
-        }
-        .event-tag[data-type="heresy"] {
-            background: rgba(139, 0, 0, 0.1);
-            color: #8B0000;
-        }
-        .event-tag[data-type="schism"] {
-            background: rgba(107, 45, 45, 0.12);
-            color: var(--color-burgundy);
-        }
-        .event-tag[data-type="movement"] {
-            background: rgba(74, 58, 107, 0.12);
-            color: var(--color-purple);
-        }
-        .event-tag[data-type="community"] {
-            background: rgba(91, 58, 140, 0.12);
-            color: var(--color-community);
-        }
-
-        /* Titre bien visible */
-        .event-title {
-            font-size: 1.15rem;
+        .ui-church .event-header {
             margin-bottom: 10px;
-            padding-right: 35px;
-            line-height: 1.35;
         }
 
-        /* Résumé lisible */
-        .event-summary {
-            font-size: 0.92rem;
-            line-height: 1.65;
-            color: var(--color-text-light);
-            flex-grow: 1;
+        .ui-church .event-date {
+            background: rgba(59, 20, 69, 0.08);
+            color: var(--ui-purple);
         }
 
-        /* Citation si présente */
-        .event-quote {
-            font-size: 0.82rem;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed var(--color-bg-dark);
+        .ui-church .event-tag {
+            background: rgba(0, 0, 0, 0.04);
         }
 
-        /* Légende masquée par défaut pour plus d'espace */
-        .legend {
+        .ui-church .event-title {
             display: none;
         }
 
-        /* Highlight recherche */
-        .search-highlight {
-            background: rgba(201, 162, 39, 0.3);
-            padding: 0 2px;
-            border-radius: 2px;
+        .ui-church .event-summary {
+            color: #3a3341;
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
 
-        .event.search-match {
-            border-left-width: 8px;
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
-        }
-
-        /* Responsive - Tablette */
-        @media (max-width: 900px) {
-            .timeline-container {
-                max-width: 100%;
-                padding: 20px 15px;
-            }
-
-            .event,
-            .event.left,
-            .event.right {
-                padding: 18px 20px;
-                min-height: 160px;
-            }
-
-            .event-title {
-                font-size: 1.05rem;
-            }
-
-            .event-summary {
-                font-size: 0.88rem;
-            }
-
-            .event-tag {
-                font-size: 0.68rem;
-                padding: 2px 8px;
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .ui-church .timeline-container {
+                --ui-year-col: 170px;
+                --ui-card: 520px;
             }
         }
 
-        /* Responsive - Mobile : une seule colonne */
-        @media (max-width: 700px) {
-            .main-nav {
-                padding: 10px 15px;
-            }
+        .ui-church .legend {
+            display: none;
+        }
 
-            .nav-logo span {
-                display: none;
-            }
+        .ui-church .event.hidden,
+        .ui-church .period-marker.hidden {
+            display: none;
+        }
 
-            .nav-link span {
-                display: none;
-            }
+        .ui-church .event {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
 
-            .nav-link {
-                padding: 8px 12px;
-            }
+        .ui-church .event.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .search-container {
-                padding: 10px 12px;
-                flex-direction: column;
-                gap: 8px;
-            }
+        .ui-church .period-marker {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
 
-            .search-box {
-                padding: 10px 15px;
-                max-width: 100%;
-            }
+        .ui-church .period-marker.visible {
+            opacity: 1;
+        }
 
-            .search-box input {
-                font-size: 16px; /* Empêche le zoom sur iOS */
-            }
+        .ui-church .event.search-match .event-card {
+            box-shadow: 0 14px 32px rgba(59, 20, 69, 0.18);
+            border-color: rgba(216, 177, 106, 0.55);
+        }
 
-            .search-results-info {
-                font-size: 0.8rem;
-            }
+        .ui-church .footer {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 26px;
+            padding-bottom: 26px;
+            background: linear-gradient(90deg, #2a0f32 0%, #3b1445 55%, #2a0f32 100%);
+            color: rgba(255, 255, 255, 0.92);
+            text-align: center;
+            margin-top: 40px;
+        }
 
-            .header {
-                height: auto;
-                min-height: 100px;
-                padding: 15px;
-            }
+        .ui-church .footer-note {
+            opacity: 0.75;
+            font-style: italic;
+            margin-top: 6px;
+        }
 
-            .header h1 {
-                font-size: 1.3rem;
-                letter-spacing: 1px;
-            }
+        .ui-church .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 6, 12, 0.72);
+            z-index: 1200;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
 
-            .subtitle {
-                font-size: 0.9rem;
-                margin-bottom: 8px;
-            }
+        .ui-church .modal.active {
+            display: flex;
+        }
 
-            .view-switcher {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                margin-top: 10px;
-            }
+        .ui-church .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 760px;
+            max-height: 85vh;
+            overflow: auto;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        }
 
-            .view-btn {
-                padding: 6px 12px;
-                font-size: 0.75rem;
-            }
+        .ui-church .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.92);
+            cursor: pointer;
+        }
 
-            .view-btn i {
-                font-size: 0.9rem;
-            }
+        .ui-church .modal-header {
+            background: linear-gradient(90deg, #2a0f32 0%, #3b1445 55%, #2a0f32 100%);
+            color: #fff;
+            padding: 26px 22px;
+            border-bottom: 2px solid rgba(216, 177, 106, 0.9);
+        }
 
-            .filters-nav {
-                top: 44px;
-                padding: 10px;
-            }
+        .ui-church .modal-date {
+            display: block;
+            color: rgba(216, 177, 106, 0.95);
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
 
-            .filters-nav.collapsed {
-                padding: 8px 10px;
-            }
+        .ui-church .modal-title {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            line-height: 1.25;
+        }
 
-            .toggle-filters-btn {
-                font-size: 0.75rem;
-                padding: 6px 12px;
-                margin-bottom: 10px;
-            }
+        .ui-church .modal-body {
+            padding: 18px 22px 22px;
+        }
 
-            .filter-section {
-                margin-bottom: 12px;
-            }
-
-            .filter-title {
-                font-size: 0.7rem;
-                margin-bottom: 8px;
-            }
-
-            .filter-buttons {
-                gap: 5px;
-            }
-
-            .filter-btn {
-                padding: 5px 10px;
-                font-size: 0.7rem;
-                border-width: 1px;
-            }
-
-            .filter-btn i {
-                display: none;
-            }
-
-            .period-btn {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 120px;
-            }
-
-            .filter-results {
-                flex-direction: column;
-                gap: 8px;
-                padding-top: 10px;
-                margin-top: 10px;
-                font-size: 0.8rem;
-            }
-
-            .reset-filters-btn {
-                padding: 5px 12px;
-                font-size: 0.75rem;
-            }
-
-            /* Timeline mobile - 1 colonne */
-            .timeline {
+        @media (max-width: 960px) {
+            .ui-church .content-grid {
                 grid-template-columns: 1fr;
+                padding: 12px 10px 0;
                 gap: 12px;
             }
 
-            .timeline-container {
-                padding: 12px 10px;
-            }
-
-            .event,
-            .event.left,
-            .event.right {
-                padding: 14px 15px;
-                min-height: auto;
-                border-left-width: 4px;
-                border-radius: 10px;
-            }
-
-            .event-header {
-                gap: 5px;
-                flex-wrap: wrap;
-            }
-
-            .event-title {
-                font-size: 1rem;
-                padding-right: 30px;
-                margin-bottom: 8px;
-                line-height: 1.3;
-            }
-
-            .event-summary {
-                font-size: 0.85rem;
-                line-height: 1.5;
-            }
-
-            .event-date {
-                font-size: 0.7rem;
-                padding: 2px 8px;
-            }
-
-            .event-tag {
-                font-size: 0.6rem;
-                padding: 2px 6px;
-            }
-
-            .event .event-icon,
-            .event.left .event-icon,
-            .event.right .event-icon {
-                font-size: 1.2rem;
-                top: 10px;
-                right: 10px !important;
-                opacity: 0.12;
-            }
-
-            .event-quote {
-                font-size: 0.78rem;
-                margin-top: 8px;
-                padding-top: 8px;
-            }
-
-            .period-marker {
-                margin: 20px 0 8px 0;
-            }
-
-            .period-marker h2 {
-                font-size: 0.9rem;
-                padding: 10px 15px;
-                width: calc(100% - 20px);
-                max-width: none;
-            }
-
-            .period-marker .period-years {
-                font-size: 0.75rem;
-            }
-
-            /* Modal mobile */
-            .modal {
-                padding: 10px;
-                align-items: flex-end;
-            }
-
-            .modal-content {
-                max-height: 90vh;
-                border-radius: 15px 15px 0 0;
-                margin-bottom: 0;
-            }
-
-            .modal-close {
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .modal-header {
-                padding: 25px 15px;
-                border-radius: 15px 15px 0 0;
-            }
-
-            .modal-date {
-                font-size: 0.85rem;
-            }
-
-            .modal-title {
-                font-size: 1.3rem;
-                line-height: 1.25;
-            }
-
-            .modal-body {
-                padding: 15px;
-            }
-
-            .modal-description {
-                font-size: 0.95rem;
-                line-height: 1.7;
-            }
-
-            .modal-details {
-                padding: 15px;
-            }
-
-            .modal-details h4 {
-                font-size: 1rem;
-            }
-
-            .modal-details li {
-                font-size: 0.9rem;
-            }
-
-            /* Footer mobile */
-            .footer {
-                padding: 25px 15px;
-                margin-top: 30px;
-            }
-
-            .footer p {
-                font-size: 0.85rem;
-            }
-
-            .footer-note {
-                font-size: 0.8rem !important;
-            }
-        }
-
-        /* Extra petit écran (iPhone SE, etc.) */
-        @media (max-width: 380px) {
-            .header h1 {
-                font-size: 1.1rem;
-            }
-
-            .subtitle {
-                font-size: 0.8rem;
-            }
-
-            .view-btn {
-                padding: 5px 10px;
-                font-size: 0.7rem;
-            }
-
-            .event-title {
-                font-size: 0.95rem;
-            }
-
-            .event-summary {
-                font-size: 0.8rem;
-            }
-
-            .filter-btn {
-                padding: 4px 8px;
-                font-size: 0.65rem;
-            }
-
-            .period-btn {
-                max-width: 100px;
-            }
-
-            .period-marker h2 {
-                font-size: 0.85rem;
-                padding: 8px 12px;
-            }
-
-            .modal-title {
-                font-size: 1.15rem;
-            }
-        }
-
-        /* Orientation paysage sur mobile */
-        @media (max-width: 900px) and (orientation: landscape) {
-            .header {
+            .ui-church .search-container {
+                position: static;
                 height: auto;
-                min-height: 80px;
-                padding: 10px 15px;
+                border-right: 1px solid rgba(26, 12, 34, 0.10);
+                border-radius: 16px;
             }
 
-            .header h1 {
-                font-size: 1.2rem;
-                margin-bottom: 5px;
+            .ui-church .main-nav {
+                padding-left: 12px;
+                padding-right: 12px;
             }
 
-            .subtitle {
-                font-size: 0.85rem;
-                margin-bottom: 5px;
-            }
-
-            .view-switcher {
-                margin-top: 5px;
-            }
-
-            .filters-nav {
-                padding: 8px 15px;
-            }
-
-            .modal-content {
-                max-height: 95vh;
+            .ui-church .timeline-container {
+                margin: 0;
+                border-radius: 16px;
+                padding: 16px 10px 28px;
             }
         }
 
-        /* Améliorations tactiles */
-        @media (hover: none) and (pointer: coarse) {
-            .event {
-                /* Plus grande zone de tap */
-                min-height: 80px;
+        @media (max-width: 960px) {
+            .ui-church .timeline-container {
+                --ui-year-col: 0px;
+                --ui-gap: 18px;
+                --ui-card: 1fr;
             }
 
-            .filter-btn {
-                min-height: 36px;
-                min-width: 44px;
+            .ui-church .timeline::before {
+                left: var(--ui-axis-x);
             }
 
-            .nav-link {
-                min-height: 44px;
-                min-width: 44px;
+            .ui-church .period-marker h2 {
+                margin-left: calc(var(--ui-axis-x) + 20px);
             }
 
-            .view-btn {
-                min-height: 40px;
+            .ui-church .event,
+            .ui-church .event.left,
+            .ui-church .event.right {
+                grid-template-columns: 0px 22px 1fr;
             }
 
-            .reset-filters-btn {
-                min-height: 36px;
+            .ui-church .event-year-col {
+                display: none;
             }
 
-            .search-clear {
-                min-width: 44px;
-                min-height: 44px;
-            }
-        }
-
-        /* Grand écran - plus d'espace */
-        @media (min-width: 1400px) {
-            .timeline-container {
-                max-width: 1300px;
+            .ui-church .event-axis-col::before {
+                display: none;
             }
 
-            .timeline {
-                gap: 25px;
+            .ui-church .event-axis-icon {
+                left: auto;
             }
 
-            .event,
-            .event.left,
-            .event.right {
-                padding: 25px 30px;
-                min-height: 200px;
-            }
-
-            .event-title {
-                font-size: 1.25rem;
-            }
-
-            .event-summary {
-                font-size: 0.98rem;
-                line-height: 1.7;
+            .ui-church .event-card::before {
+                left: calc(-1 * (var(--ui-gap) * 0.5));
+                width: calc(var(--ui-gap) * 0.5);
             }
         }
     </style>
 </head>
 
-<body>
+<body class="ui-church">
     <!-- Navigation principale -->
     <nav class="main-nav">
         <a href="index.html" class="nav-logo">
@@ -857,74 +865,78 @@
         </div>
     </header>
 
-    <!-- Barre de recherche -->
-    <div class="search-container">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Rechercher un événement, une date, un personnage...">
-            <button class="search-clear" id="searchClear" title="Effacer la recherche">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <span class="search-results-info" id="searchResultsInfo"></span>
-    </div>
-
-    <!-- Navigation des filtres -->
-    <nav class="filters-nav collapsed" id="filtersNav">
-        <button class="toggle-filters-btn" id="toggleFilters" title="Réduire/Développer les filtres">
-            <i class="fas fa-chevron-up"></i>
-            <span>Afficher les filtres</span>
-        </button>
-        <!-- Filtres par période -->
-        <div class="filter-section">
-            <h3 class="filter-title"><i class="fas fa-clock"></i> Par Période</h3>
-            <div class="filter-buttons" id="periodFilters">
-                <!-- Généré dynamiquement -->
-                <button class="filter-btn period-btn active" data-period="all">Toutes</button>
-                <button class="filter-btn period-btn" data-period="ancient">Église Primitive (30-313)</button>
-                <button class="filter-btn period-btn" data-period="imperial">Église Impériale (313-476)</button>
-                <button class="filter-btn period-btn" data-period="medieval">Moyen Âge (476-1054)</button>
-                <button class="filter-btn period-btn" data-period="schism">Schismes & Réforme (1054-1648)</button>
-                <button class="filter-btn period-btn" data-period="modern">Époque Moderne (1648-1962)</button>
-                <button class="filter-btn period-btn" data-period="contemporary">Contemporain (1962-)</button>
-            </div>
-        </div>
-
-        <!-- Filtres par thème/type -->
-        <div class="filter-section">
-            <h3 class="filter-title"><i class="fas fa-tags"></i> Par Thème</h3>
-            <div class="filter-buttons theme-filters" id="typeFilters">
-                <!-- Généré dynamiquement -->
-                <button class="filter-btn type-btn active" data-type="all">
-                    <i class="fas fa-globe"></i> Tous
+    <div class="content-grid">
+        <!-- Barre de recherche -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un événement, une date, un personnage...">
+                <button class="search-clear" id="searchClear" title="Effacer la recherche">
+                    <i class="fas fa-times"></i>
                 </button>
-                <button class="filter-btn type-btn" data-type="major" style="--btn-color: #c9a227;">
-                    <i class="fas fa-star"></i> Événements majeurs
-                </button>
-                <!-- D'autres boutons seront générés ici -->
             </div>
+            <span class="search-results-info" id="searchResultsInfo"></span>
+
+            <!-- Navigation des filtres -->
+            <nav class="filters-nav collapsed" id="filtersNav">
+                <button class="toggle-filters-btn" id="toggleFilters" title="Réduire/Développer les filtres">
+                    <i class="fas fa-chevron-up"></i>
+                    <span>Afficher les filtres</span>
+                </button>
+                <!-- Filtres par période -->
+                <div class="filter-section">
+                    <h3 class="filter-title"><i class="fas fa-clock"></i> Par Période</h3>
+                    <div class="filter-buttons" id="periodFilters">
+                        <!-- Généré dynamiquement -->
+                        <button class="filter-btn period-btn active" data-period="all">Toutes</button>
+                        <button class="filter-btn period-btn" data-period="ancient">Église Primitive (30-313)</button>
+                        <button class="filter-btn period-btn" data-period="imperial">Église Impériale (313-476)</button>
+                        <button class="filter-btn period-btn" data-period="medieval">Moyen Âge (476-1054)</button>
+                        <button class="filter-btn period-btn" data-period="schism">Schismes & Réforme (1054-1648)</button>
+                        <button class="filter-btn period-btn" data-period="modern">Époque Moderne (1648-1962)</button>
+                        <button class="filter-btn period-btn" data-period="contemporary">Contemporain (1962-)</button>
+                    </div>
+                </div>
+
+                <!-- Filtres par thème/type -->
+                <div class="filter-section">
+                    <h3 class="filter-title"><i class="fas fa-tags"></i> Par Thème</h3>
+                    <div class="filter-buttons theme-filters" id="typeFilters">
+                        <!-- Généré dynamiquement -->
+                        <button class="filter-btn type-btn active" data-type="all">
+                            <i class="fas fa-globe"></i> Tous
+                        </button>
+                        <button class="filter-btn type-btn" data-type="major" style="--btn-color: #c9a227;">
+                            <i class="fas fa-star"></i> Événements majeurs
+                        </button>
+                        <!-- D'autres boutons seront générés ici -->
+                    </div>
+                </div>
+
+                <!-- Compteur de résultats -->
+                <div class="filter-results">
+                    <span id="resultsCount">0</span> événement(s) affiché(s)
+                    <button class="reset-filters-btn" id="resetFilters">
+                        <i class="fas fa-undo"></i> Réinitialiser les filtres
+                    </button>
+                </div>
+            </nav>
         </div>
 
-        <!-- Compteur de résultats -->
-        <div class="filter-results">
-            <span id="resultsCount">0</span> événement(s) affiché(s)
-            <button class="reset-filters-btn" id="resetFilters">
-                <i class="fas fa-undo"></i> Réinitialiser les filtres
-            </button>
-        </div>
-    </nav>
+        <div class="main-col">
+            <!-- Légende compacte -->
+            <div class="legend" id="legendContainer">
+                <!-- Généré dynamiquement -->
+            </div>
 
-    <!-- Légende compacte -->
-    <div class="legend" id="legendContainer">
-        <!-- Généré dynamiquement -->
+            <!-- Timeline principale -->
+            <main class="timeline-container">
+                <div class="timeline">
+                    <!-- Les événements seront générés par JavaScript -->
+                </div>
+            </main>
+        </div>
     </div>
-
-    <!-- Timeline principale -->
-    <main class="timeline-container">
-        <div class="timeline">
-            <!-- Les événements seront générés par JavaScript -->
-        </div>
-    </main>
 
     <!-- Modal pour les détails -->
     <div class="modal" id="eventModal">

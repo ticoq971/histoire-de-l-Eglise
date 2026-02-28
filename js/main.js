@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function generateTimeline() {
         timeline.innerHTML = '';
         let isLeft = true;
+        let isMarkerLeft = true;
 
         // Regrouper les événements par période dans l'ordre des périodes définies
         const periodOrder = currentData.periods.map(p => p.id);
@@ -259,8 +260,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer le marqueur de période
             if (periodData) {
-                const periodMarker = createPeriodMarker(periodData);
+                const periodMarker = createPeriodMarker(periodData, isMarkerLeft);
                 timeline.appendChild(periodMarker);
+                isMarkerLeft = !isMarkerLeft;
             }
 
             // Créer les événements de cette période
@@ -284,13 +286,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // =====================================================
     // CRÉATION DES ÉLÉMENTS UI
     // =====================================================
-    function createPeriodMarker(period) {
+    const periodIcons = {
+        'ancient': 'fa-cross',
+        'imperial': 'fa-crown',
+        'medieval': 'fa-landmark',
+        'schism': 'fa-code-branch',
+        'modern': 'fa-industry',
+        'contemporary': 'fa-globe',
+        'pre-reformation': 'fa-seedling',
+        'reformation': 'fa-book-bible',
+        'orthodoxy-pietism': 'fa-dove',
+        'awakenings': 'fa-fire-flame-simple',
+        'modern-protestantism': 'fa-earth-europe'
+    };
+
+    function createPeriodMarker(period, isLeftAligned) {
         const marker = document.createElement('div');
-        marker.className = 'period-marker';
+        marker.className = `period-marker ${isLeftAligned ? 'left' : 'right'}`;
         marker.dataset.period = period.id;
+        const iconClass = periodIcons[period.id] || 'fa-circle';
         marker.innerHTML = `
             <h2>
-                ${period.name}
+                <span class="period-label"><i class="fas ${iconClass} period-icon"></i> ${period.name}</span>
                 <span class="period-years">${period.years}</span>
             </h2>
         `;
@@ -348,15 +365,33 @@ document.addEventListener('DOMContentLoaded', function () {
             typeTag = `<span class="event-tag" data-type="${event.type}"><i class="fas ${typeInfo.icon}"></i> ${typeInfo.label}</span>`;
         }
 
+        const leftYearText = event.year ? String(event.year).replace('~', '').trim() : '';
+        const leftLabelText = event.title ? String(event.title).replace(/^⚔️\s*/g, '').trim() : '';
+        const shortLeftLabel = leftLabelText.length > 26 ? `${leftLabelText.substring(0, 23)}...` : leftLabelText;
+        const cardTopText = leftYearText ? `${leftYearText}` : event.date;
+
         eventDiv.innerHTML = `
-            <i class="fas ${event.icon} event-icon"></i>
-            <div class="event-header">
-                <span class="event-date">${event.date}</span>
-                ${typeTag}
+            <div class="event-year-col">
+                <div class="event-year">${leftYearText}</div>
+                <div class="event-year-label">${shortLeftLabel}</div>
             </div>
-            <h3 class="event-title">${event.title}</h3>
-            <p class="event-summary">${event.summary}</p>
-            ${quoteHtml}
+            <div class="event-axis-col" aria-hidden="true">
+                <div class="event-axis-icon"><i class="fas ${event.icon}"></i></div>
+            </div>
+            <div class="event-card">
+                <div class="event-card-header">
+                    <span class="event-card-top">${cardTopText}</span>
+                    <span class="event-card-title">${event.title}</span>
+                </div>
+                <div class="event-card-body">
+                    <div class="event-header">
+                        <span class="event-date">${event.date}</span>
+                        ${typeTag}
+                    </div>
+                    <p class="event-summary">${event.summary}</p>
+                    ${quoteHtml}
+                </div>
+            </div>
         `;
 
         eventDiv.addEventListener('click', () => openModal(event));
