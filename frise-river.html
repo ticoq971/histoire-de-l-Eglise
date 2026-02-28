@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire de l'Église - Rivière du Temps</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        /* =====================================================
+           RIVER TIMELINE — MISE EN PAGE GLOBALE
+           ===================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        /* ---- Navigation top ---- */
+        .main-nav {
+            height: 52px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 300;
+            box-shadow: 0 2px 15px rgba(0,0,0,.35);
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: white;
+        }
+        .nav-logo i { color: var(--color-gold); font-size: 1.3rem; }
+        .nav-logo span {
+            font-family: var(--font-title); font-size: 1rem;
+            font-weight: 600; letter-spacing: 1px;
+        }
+        .nav-links { display: flex; gap: 10px; align-items: center; }
+        .nav-link {
+            color: white; text-decoration: none;
+            font-family: var(--font-body); font-size: .85rem;
+            padding: 6px 14px; border-radius: 20px;
+            transition: background .3s; display: flex; align-items: center; gap: 7px;
+        }
+        .nav-link:hover { background: rgba(255,255,255,.1); }
+        .nav-link.active { background: var(--color-gold); color: var(--color-navy); font-weight: 600; }
+
+        /* ---- App Shell ---- */
+        .app-shell {
+            display: flex;
+            height: 100vh;
+            padding-top: 52px;
+        }
+
+        /* =====================================================
+           PANNEAU LATÉRAL GAUCHE
+           ===================================================== */
+        .sidebar {
+            width: 270px;
+            min-width: 270px;
+            background: white;
+            border-right: 1px solid var(--color-bg-dark);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 2px 0 12px rgba(0,0,0,.08);
+            z-index: 100;
+            transition: width .3s ease, min-width .3s ease;
+        }
+        .sidebar.collapsed {
+            width: 48px;
+            min-width: 48px;
+        }
+
+        .sidebar-header {
+            padding: 14px 16px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, #0d1f33 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .sidebar-title {
+            font-family: var(--font-title);
+            font-size: .8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-gold-light);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .sidebar-toggle {
+            background: none; border: none; color: white;
+            cursor: pointer; font-size: 1rem; padding: 4px;
+            border-radius: 4px; transition: background .2s;
+            flex-shrink: 0;
+        }
+        .sidebar-toggle:hover { background: rgba(255,255,255,.15); }
+
+        .sidebar-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .sidebar.collapsed .sidebar-body,
+        .sidebar.collapsed .sidebar-title { display: none; }
+
+        /* Source switcher */
+        .source-switcher {
+            display: flex;
+            gap: 6px;
+        }
+        .source-btn {
+            flex: 1;
+            padding: 7px 6px;
+            border: 2px solid var(--color-navy);
+            background: transparent;
+            color: var(--color-navy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: .72rem;
+            font-weight: 600;
+            transition: all .3s;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .source-btn:hover { background: var(--color-navy); color: white; }
+        .source-btn.active {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-navy);
+        }
+
+        /* Section filtre */
+        .filter-group { display: flex; flex-direction: column; gap: 8px; }
+        .filter-group-title {
+            font-family: var(--font-title);
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-light);
+            display: flex; align-items: center; gap: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--color-bg-dark);
+        }
+        .filter-group-title i { color: var(--color-gold); }
+
+        /* Pill filtres période */
+        .period-pills { display: flex; flex-direction: column; gap: 4px; }
+        .period-pill {
+            display: flex; align-items: center; gap: 8px;
+            padding: 7px 10px; border-radius: 8px;
+            cursor: pointer; transition: all .2s;
+            border: none; background: transparent;
+            font-family: var(--font-body); font-size: .78rem;
+            text-align: left; width: 100%; color: var(--color-text);
+        }
+        .period-pill:hover { background: var(--color-bg); }
+        .period-pill.active {
+            background: var(--color-navy);
+            color: white;
+        }
+        .period-pill .period-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .period-pill .period-pill-name { flex: 1; font-weight: 500; }
+        .period-pill .period-pill-count {
+            font-size: .68rem; opacity: .7;
+            background: rgba(0,0,0,.08);
+            padding: 1px 5px; border-radius: 8px;
+        }
+        .period-pill.active .period-pill-count { background: rgba(255,255,255,.2); }
+
+        /* Type filters */
+        .type-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+        .type-chip {
+            padding: 4px 9px; border-radius: 12px;
+            border: 1.5px solid var(--chip-color, #888);
+            color: var(--chip-color, #888);
+            background: transparent;
+            font-family: var(--font-body); font-size: .68rem;
+            cursor: pointer; transition: all .2s;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .type-chip:hover, .type-chip.active {
+            background: var(--chip-color, #888);
+            color: white;
+        }
+
+        /* Recherche sidebar */
+        .search-wrap {
+            position: relative;
+        }
+        .search-wrap i {
+            position: absolute; left: 10px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-light); font-size: .85rem;
+        }
+        .search-input {
+            width: 100%; padding: 8px 30px 8px 32px;
+            border: 1.5px solid var(--color-bg-dark);
+            border-radius: 20px;
+            font-family: var(--font-body); font-size: .82rem;
+            background: var(--color-bg); color: var(--color-text);
+            outline: none; transition: border-color .3s;
+        }
+        .search-input:focus { border-color: var(--color-gold); }
+        .search-clear-btn {
+            position: absolute; right: 8px; top: 50%;
+            transform: translateY(-50%);
+            background: none; border: none; cursor: pointer;
+            color: var(--color-text-light); font-size: .8rem;
+            display: none;
+        }
+        .search-clear-btn.visible { display: block; }
+
+        /* Compteur résultats */
+        .results-info {
+            font-size: .75rem; color: var(--color-text-light);
+            text-align: center; padding: 6px;
+            background: var(--color-bg); border-radius: 8px;
+        }
+        .results-info strong { color: var(--color-gold); font-size: .9rem; }
+
+        /* Reset btn */
+        .reset-btn {
+            width: 100%; padding: 7px;
+            border: 1px solid var(--color-burgundy);
+            background: transparent; color: var(--color-burgundy);
+            border-radius: 20px; cursor: pointer;
+            font-family: var(--font-body); font-size: .75rem;
+            transition: all .3s; display: flex; align-items: center;
+            justify-content: center; gap: 5px;
+        }
+        .reset-btn:hover { background: var(--color-burgundy); color: white; }
+
+        /* =====================================================
+           ZONE PRINCIPALE — RIVER CANVAS
+           ===================================================== */
+        .river-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Barre de titre + minimap */
+        .river-topbar {
+            height: 44px;
+            background: white;
+            border-bottom: 1px solid var(--color-bg-dark);
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 16px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 6px rgba(0,0,0,.06);
+        }
+        .river-topbar-title {
+            font-family: var(--font-title);
+            font-size: .82rem;
+            color: var(--color-navy);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .river-topbar-title span {
+            color: var(--color-gold);
+            font-size: .75rem;
+            margin-left: 6px;
+        }
+
+        /* Minimap horizons */
+        .minimap {
+            flex: 1;
+            height: 24px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--color-bg-dark);
+        }
+        .minimap-track {
+            display: flex;
+            height: 100%;
+        }
+        .minimap-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .6rem;
+            color: white;
+            font-family: var(--font-title);
+            font-weight: 600;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: opacity .2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 4px;
+        }
+        .minimap-segment:hover { opacity: .85; }
+        .minimap-viewport {
+            position: absolute;
+            top: 0; bottom: 0;
+            border: 2px solid white;
+            border-radius: 10px;
+            background: rgba(255,255,255,.2);
+            pointer-events: none;
+            transition: left .15s ease;
+        }
+
+        /* Scroll hint arrows */
+        .scroll-hint {
+            display: flex; align-items: center;
+            gap: 4px;
+            font-size: .72rem;
+            color: var(--color-text-light);
+            white-space: nowrap;
+        }
+        .scroll-hint i { color: var(--color-gold); }
+
+        /* =====================================================
+           RIVIÈRE HORIZONTALE
+           ===================================================== */
+        .river-scroll {
+            flex: 1;
+            overflow-x: auto;
+            overflow-y: hidden;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+        }
+        .river-scroll:active { cursor: grabbing; }
+        .river-scroll::-webkit-scrollbar { height: 8px; }
+        .river-scroll::-webkit-scrollbar-track { background: var(--color-bg); }
+        .river-scroll::-webkit-scrollbar-thumb {
+            background: var(--color-navy); border-radius: 4px;
+        }
+        .river-scroll::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+        .river-canvas {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Zones au-dessus et en dessous du ruban */
+        .river-top { flex: 1; position: relative; }
+        .river-bottom { flex: 1; position: relative; }
+
+        /* Le Ruban central */
+        .river-band {
+            position: relative;
+            height: 64px;
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        /* Segments colorés du ruban (par période) */
+        .band-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: filter .2s;
+        }
+        .band-segment:hover { filter: brightness(1.1); }
+
+        .band-segment-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            padding: 0 12px;
+            text-align: center;
+        }
+        .band-segment-name {
+            font-family: var(--font-title);
+            font-size: .7rem;
+            color: white;
+            letter-spacing: .8px;
+            text-shadow: 0 1px 4px rgba(0,0,0,.4);
+            white-space: nowrap;
+        }
+        .band-segment-years {
+            font-size: .6rem;
+            color: rgba(255,255,255,.8);
+            margin-top: 2px;
+        }
+
+        /* Marqueurs d'années sur le ruban */
+        .band-year-tick {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .band-year-tick .tick-line {
+            width: 1px;
+            height: 8px;
+            background: rgba(255,255,255,.5);
+        }
+        .band-year-tick .tick-label {
+            font-family: var(--font-title);
+            font-size: .55rem;
+            color: rgba(255,255,255,.7);
+            margin-top: 1px;
+            white-space: nowrap;
+        }
+
+        /* Trait vertical de connexion événement → ruban */
+        .event-connector {
+            position: absolute;
+            width: 2px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* =====================================================
+           BULLES D'ÉVÉNEMENTS
+           ===================================================== */
+        .river-event {
+            position: absolute;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.12);
+            padding: 13px 15px;
+            cursor: pointer;
+            transition: box-shadow .25s, transform .25s;
+            border-left: 4px solid var(--event-color, var(--color-gold));
+            overflow: hidden;
+            z-index: 10;
+        }
+        .river-event:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,.2);
+            transform: translateY(-3px);
+            z-index: 20;
+        }
+        .river-event.hidden { display: none; }
+        .river-event.search-match {
+            border-left-width: 6px;
+            box-shadow: 0 0 0 2px rgba(201,162,39,.4), 0 6px 20px rgba(0,0,0,.15);
+        }
+
+        /* Taille des bulles */
+        .river-event.size-large  { width: 220px; }
+        .river-event.size-medium { width: 185px; }
+        .river-event.size-small  { width: 155px; }
+
+        .river-event-icon {
+            position: absolute; top: 10px; right: 10px;
+            font-size: 1.4rem;
+            opacity: .1;
+        }
+        .river-event-date {
+            font-size: .68rem; font-weight: 700;
+            background: var(--event-color, var(--color-gold));
+            color: white;
+            padding: 2px 8px; border-radius: 10px;
+            display: inline-block; margin-bottom: 6px;
+        }
+        .river-event-title {
+            font-family: var(--font-title);
+            font-size: .82rem;
+            color: var(--color-navy);
+            line-height: 1.3;
+            padding-right: 22px;
+            margin-bottom: 5px;
+        }
+        .river-event-summary {
+            font-size: .72rem;
+            color: var(--color-text-light);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .river-event-type {
+            margin-top: 7px;
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: .62rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .5px;
+            color: var(--event-color, var(--color-gold));
+            opacity: .8;
+        }
+
+        /* Animation d'entrée */
+        .river-event {
+            opacity: 0;
+            animation: bubbleIn .4s ease forwards;
+        }
+        @keyframes bubbleIn {
+            from { opacity: 0; transform: scale(.9) translateY(6px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* =====================================================
+           MINI NAV TEMPORELLE EN BAS
+           ===================================================== */
+        .river-footer {
+            height: 36px;
+            background: white;
+            border-top: 1px solid var(--color-bg-dark);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 6px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .footer-label {
+            font-family: var(--font-title);
+            font-size: .65rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+        .footer-jump-btn {
+            padding: 3px 10px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            font-family: var(--font-title);
+            font-size: .65rem;
+            cursor: pointer;
+            transition: all .2s;
+            white-space: nowrap;
+            color: white;
+            font-weight: 600;
+        }
+        .footer-jump-btn:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+        /* =====================================================
+           MODAL (réutilisé depuis style.css)
+           ===================================================== */
+
+        /* =====================================================
+           RESPONSIVE : sidebar rétractable sur mobile
+           ===================================================== */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: 0; top: 52px; bottom: 0;
+                z-index: 200;
+                transform: translateX(0);
+                transition: transform .3s ease, width .3s ease, min-width .3s ease;
+            }
+            .sidebar.mobile-hidden {
+                transform: translateX(-100%);
+            }
+            .sidebar.collapsed {
+                width: 270px;
+                min-width: 270px;
+                transform: translateX(-100%);
+            }
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,.4);
+                z-index: 150;
+            }
+            .mobile-overlay.visible { display: block; }
+            .nav-link.sidebar-toggle-mobile {
+                display: flex;
+            }
+        }
+        @media (min-width: 769px) {
+            .nav-link.sidebar-toggle-mobile { display: none; }
+            .mobile-overlay { display: none !important; }
+        }
+
+        /* =====================================================
+           LOADER
+           ===================================================== */
+        .river-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+            z-index: 50;
+            font-family: var(--font-title);
+            color: var(--color-navy);
+            gap: 12px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .river-loading i { color: var(--color-gold); animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* =====================================================
+           TOOLTIP info bulle survolée
+           ===================================================== */
+        .river-tooltip {
+            position: fixed;
+            background: var(--color-navy);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: .72rem;
+            font-family: var(--font-body);
+            pointer-events: none;
+            z-index: 500;
+            opacity: 0;
+            transition: opacity .2s;
+            max-width: 200px;
+            line-height: 1.4;
+        }
+        .river-tooltip.visible { opacity: 1; }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation principale -->
+<nav class="main-nav">
+    <a href="index.html" class="nav-logo">
+        <i class="fas fa-cross"></i>
+        <span>Histoire de l'Église</span>
+    </a>
+    <div class="nav-links">
+        <!-- Toggle sidebar (mobile) -->
+        <button class="nav-link sidebar-toggle-mobile" id="mobileSidebarToggle" title="Filtres">
+            <i class="fas fa-sliders-h"></i>
+            <span>Filtres</span>
+        </button>
+        <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="frise.html" class="nav-link">
+            <i class="fas fa-th"></i>
+            <span>Vue Grille</span>
+        </a>
+        <a href="frise-river.html" class="nav-link active">
+            <i class="fas fa-water"></i>
+            <span>Rivière</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Overlay mobile -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- App Shell -->
+<div class="app-shell">
+
+    <!-- ====================== SIDEBAR ====================== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title"><i class="fas fa-filter"></i> &nbsp;Filtres & Navigation</span>
+            <button class="sidebar-toggle" id="sidebarToggle" title="Réduire">
+                <i class="fas fa-chevron-left" id="sidebarToggleIcon"></i>
+            </button>
+        </div>
+        <div class="sidebar-body" id="sidebarBody">
+
+            <!-- Source switcher -->
+            <div class="filter-group">
+                <div class="filter-group-title">
+                    <i class="fas fa-church"></i> Tradition
+                </div>
+                <div class="source-switcher">
+                    <button class="source-btn active" data-source="church">
+                        <i class="fas fa-church"></i> Catholique
+                    </button>
+                    <button class="source-btn" data-source="protestant">
+                        <i class="fas fa-bible"></i> Protestant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recherche -->
+            <div class="filter-group">
+                <div class="filter-group-title">
+                    <i class="fas fa-search"></i> Recherche
+                </div>
+                <div class="search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-input" id="searchInput"
+                           placeholder="Nom, date, personnage…">
+                    <button class="search-clear-btn" id="searchClear">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtres par période -->
+            <div class="filter-group">
+                <div class="filter-group-title">
+                    <i class="fas fa-clock"></i> Période
+                </div>
+                <div class="period-pills" id="periodPills">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Filtres par type -->
+            <div class="filter-group">
+                <div class="filter-group-title">
+                    <i class="fas fa-tags"></i> Thème
+                </div>
+                <div class="type-chips" id="typeChips">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Résultats & reset -->
+            <div class="filter-group">
+                <div class="results-info" id="resultsInfo">
+                    <strong id="resultsCount">—</strong> événement(s)
+                </div>
+                <button class="reset-btn" id="resetFilters">
+                    <i class="fas fa-undo"></i> Réinitialiser
+                </button>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- ====================== ZONE RIVER ====================== -->
+    <div class="river-area" id="riverArea">
+
+        <!-- Topbar avec minimap -->
+        <div class="river-topbar">
+            <span class="river-topbar-title">
+                Rivière du Temps
+                <span id="topbarInfo">— 2 000 ans de christianisme</span>
+            </span>
+            <div class="minimap" id="minimap">
+                <div class="minimap-track" id="minimapTrack"></div>
+                <div class="minimap-viewport" id="minimapViewport"></div>
+            </div>
+            <div class="scroll-hint">
+                <i class="fas fa-arrows-left-right"></i>
+                <span>Défilement horizontal</span>
+            </div>
+        </div>
+
+        <!-- Canvas scrollable -->
+        <div class="river-scroll" id="riverScroll">
+            <div class="river-canvas" id="riverCanvas">
+                <div class="river-top" id="riverTop"></div>
+                <div class="river-band" id="riverBand"></div>
+                <div class="river-bottom" id="riverBottom"></div>
+
+                <!-- Loader -->
+                <div class="river-loading" id="riverLoading">
+                    <i class="fas fa-spinner"></i>
+                    Chargement de la rivière…
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer : sauts rapides -->
+        <div class="river-footer" id="riverFooter">
+            <span class="footer-label">Aller à →</span>
+            <!-- Boutons générés dynamiquement -->
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal détails -->
+<div class="modal" id="eventModal">
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+            <span class="modal-date"></span>
+            <h2 class="modal-title"></h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-description"></p>
+            <div class="modal-details"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Tooltip -->
+<div class="river-tooltip" id="riverTooltip"></div>
+
+<script src="js/data.js"></script>
+<script src="js/protestant-data.js"></script>
+<script>
+/* =====================================================
+   RIVER TIMELINE — SCRIPT PRINCIPAL
+   ===================================================== */
+(function () {
+
+// ── Couleurs par période ──────────────────────────────
+const PERIOD_COLORS = {
+    ancient:     '#8B1A1A',
+    imperial:    '#1e3a5f',
+    medieval:    '#4a3a6b',
+    schism:      '#6b2d2d',
+    modern:      '#2d5a4a',
+    contemporary:'#c9a227'
+};
+
+// Couleurs par type (fallback church)
+const TYPE_COLORS = {
+    major:     '#c9a227',
+    council:   '#1e3a5f',
+    apostle:   '#8B0000',
+    father:    '#4a6741',
+    doctor:    '#704214',
+    saint:     '#2d5a4a',
+    heresy:    '#8B0000',
+    schism:    '#6b2d2d',
+    movement:  '#4a3a6b',
+    community: '#5B3A8C'
+};
+
+const TYPE_LABELS = {
+    major:     { label: 'Événement majeur', icon: 'fa-star' },
+    council:   { label: 'Concile',          icon: 'fa-landmark' },
+    apostle:   { label: 'Apôtre',           icon: 'fa-cross' },
+    father:    { label: "Père de l'Église", icon: 'fa-scroll' },
+    doctor:    { label: 'Docteur',          icon: 'fa-book' },
+    saint:     { label: 'Saint',            icon: 'fa-pray' },
+    heresy:    { label: 'Hérésie',          icon: 'fa-exclamation-triangle' },
+    schism:    { label: 'Schisme',          icon: 'fa-divide' },
+    movement:  { label: 'Ordre/Mouvement',  icon: 'fa-users' },
+    community: { label: 'Communauté',       icon: 'fa-church' }
+};
+
+// ── Paramètres layout ────────────────────────────────
+const PX_PER_YEAR = 5;      // pixels par année
+const YEAR_START   = 20;    // année de départ
+const YEAR_END     = 2030;  // année de fin
+const BAND_H       = 64;    // hauteur du ruban
+const TOP_PADDING  = 20;    // espace haut de la zone top
+const BOT_PADDING  = 20;    // espace bas de la zone bottom
+const EVENT_W_LG   = 220;   // largeur grande bulle
+const EVENT_W_MD   = 185;
+const EVENT_W_SM   = 155;
+const ZONE_GAP     = 12;    // espacement vertical entre bulles
+
+// ── État ─────────────────────────────────────────────
+let currentData = churchHistory;
+let currentFilters = { period: 'all', type: 'all' };
+let currentSearch = '';
+let allEventEls = [];   // { el, connectorEl, event, cx, isTop }
+let isDragging = false;
+let dragStartX = 0;
+let dragScrollLeft = 0;
+
+// ── DOM refs ─────────────────────────────────────────
+const riverScroll  = document.getElementById('riverScroll');
+const riverCanvas  = document.getElementById('riverCanvas');
+const riverTop     = document.getElementById('riverTop');
+const riverBand    = document.getElementById('riverBand');
+const riverBottom  = document.getElementById('riverBottom');
+const riverLoading = document.getElementById('riverLoading');
+const riverFooter  = document.getElementById('riverFooter');
+const minimap      = document.getElementById('minimap');
+const minimapTrack = document.getElementById('minimapTrack');
+const minimapVP    = document.getElementById('minimapViewport');
+const sidebar      = document.getElementById('sidebar');
+const sidebarToggle= document.getElementById('sidebarToggle');
+const sidebarToggleIcon = document.getElementById('sidebarToggleIcon');
+const periodPills  = document.getElementById('periodPills');
+const typeChips    = document.getElementById('typeChips');
+const resultsCount = document.getElementById('resultsCount');
+const resultsInfo  = document.getElementById('resultsInfo');
+const resetBtn     = document.getElementById('resetFilters');
+const searchInput  = document.getElementById('searchInput');
+const searchClear  = document.getElementById('searchClear');
+const topbarInfo   = document.getElementById('topbarInfo');
+const tooltip      = document.getElementById('riverTooltip');
+const modal        = document.getElementById('eventModal');
+const modalClose   = document.getElementById('modalClose');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+const sourceBtns   = document.querySelectorAll('.source-btn');
+
+// ── Helpers ───────────────────────────────────────────
+function getYear(str) {
+    if (!str) return YEAR_START;
+    const clean = str.toString().replace('~', '').trim();
+    const m = clean.match(/-?\d+/);
+    return m ? parseInt(m[0]) : YEAR_START;
+}
+
+function yearToX(year) {
+    return (year - YEAR_START) * PX_PER_YEAR;
+}
+
+function totalWidth() {
+    return (YEAR_END - YEAR_START) * PX_PER_YEAR;
+}
+
+function getTypeColor(type) {
+    if (currentData.types && currentData.types[type]) {
+        return currentData.types[type].color;
+    }
+    return TYPE_COLORS[type] || '#888';
+}
+function getTypeLabel(type) {
+    if (currentData.types && currentData.types[type]) {
+        return currentData.types[type].label;
+    }
+    return TYPE_LABELS[type] ? TYPE_LABELS[type].label : type;
+}
+function getTypeIcon(type) {
+    if (currentData.types && currentData.types[type]) {
+        return currentData.types[type].icon;
+    }
+    return TYPE_LABELS[type] ? TYPE_LABELS[type].icon : 'fa-circle';
+}
+
+// ── Taille de la bulle selon l'importance ─────────────
+function eventSize(ev) {
+    if (ev.type === 'major' || ev.type === 'council') return 'size-large';
+    if (ev.type === 'apostle' || ev.type === 'doctor') return 'size-medium';
+    return 'size-small';
+}
+function eventWidth(ev) {
+    const s = eventSize(ev);
+    return s === 'size-large' ? EVENT_W_LG : s === 'size-medium' ? EVENT_W_MD : EVENT_W_SM;
+}
+
+// ── Construction du ruban ────────────────────────────
+function buildBand() {
+    riverBand.innerHTML = '';
+    const total = totalWidth();
+    riverBand.style.width = total + 'px';
+
+    currentData.periods.forEach(period => {
+        const y0 = getYear(period.years.split(' - ')[0] || period.years.split('-')[0]);
+        const y1Raw = period.years.split(' - ')[1] || period.years.split('-')[1] || String(YEAR_END);
+        const y1 = y1Raw.includes('aujourd') ? YEAR_END : parseInt(y1Raw);
+
+        const x0 = yearToX(y0);
+        const w  = yearToX(y1) - x0;
+
+        const seg = document.createElement('div');
+        seg.className = 'band-segment';
+        seg.style.cssText = `
+            position: absolute;
+            left: ${x0}px;
+            width: ${w}px;
+            background: ${PERIOD_COLORS[period.id] || '#555'};
+        `;
+
+        // Label
+        const lbl = document.createElement('div');
+        lbl.className = 'band-segment-label';
+        lbl.innerHTML = `
+            <span class="band-segment-name">${period.name}</span>
+            <span class="band-segment-years">${period.years}</span>
+        `;
+        seg.appendChild(lbl);
+
+        // Ticks d'années (tous les 100 ans)
+        const tickStep = w > 400 ? 100 : 200;
+        const startTick = Math.ceil(y0 / tickStep) * tickStep;
+        for (let yr = startTick; yr < y1; yr += tickStep) {
+            const tick = document.createElement('div');
+            tick.className = 'band-year-tick';
+            tick.style.left = (yearToX(yr) - x0) + 'px';
+            tick.innerHTML = `
+                <div class="tick-line"></div>
+                <div class="tick-label">${yr > 0 ? yr : yr + ' av.J.C'}</div>
+            `;
+            seg.appendChild(tick);
+        }
+
+        seg.dataset.period = period.id;
+        seg.addEventListener('click', () => jumpToPeriod(period.id));
+        riverBand.appendChild(seg);
+    });
+}
+
+// ── Construction de la minimap ────────────────────────
+function buildMinimap() {
+    minimapTrack.innerHTML = '';
+    const total = totalWidth();
+
+    currentData.periods.forEach(period => {
+        const y0 = getYear(period.years.split(' - ')[0] || period.years.split('-')[0]);
+        const y1Raw = period.years.split(' - ')[1] || period.years.split('-')[1] || String(YEAR_END);
+        const y1 = y1Raw.includes('aujourd') ? YEAR_END : parseInt(y1Raw);
+
+        const pct = ((y1 - y0) / (YEAR_END - YEAR_START)) * 100;
+        const seg = document.createElement('div');
+        seg.className = 'minimap-segment';
+        seg.style.cssText = `
+            width: ${pct}%;
+            background: ${PERIOD_COLORS[period.id] || '#555'};
+        `;
+        seg.title = `${period.name} (${period.years})`;
+        seg.textContent = period.name.split(' ')[0];
+        seg.dataset.period = period.id;
+        seg.addEventListener('click', () => jumpToPeriod(period.id));
+        minimapTrack.appendChild(seg);
+    });
+
+    updateMinimapViewport();
+}
+
+function updateMinimapViewport() {
+    const scrollEl = riverScroll;
+    const canvasW  = totalWidth();
+    const viewW    = scrollEl.clientWidth;
+    const scrollX  = scrollEl.scrollLeft;
+    const mmW      = minimap.clientWidth;
+
+    const vpLeft  = (scrollX / canvasW) * mmW;
+    const vpWidth = (viewW / canvasW) * mmW;
+
+    minimapVP.style.left  = vpLeft  + 'px';
+    minimapVP.style.width = Math.max(vpWidth, 20) + 'px';
+}
+
+// ── Footer sauts rapides ──────────────────────────────
+function buildFooter() {
+    riverFooter.innerHTML = '<span class="footer-label">Aller à →</span>';
+    currentData.periods.forEach(period => {
+        const btn = document.createElement('button');
+        btn.className = 'footer-jump-btn';
+        btn.style.background = PERIOD_COLORS[period.id] || '#555';
+        btn.title = `${period.name} (${period.years})`;
+        btn.textContent = period.years.split(' - ')[0] || period.years.split('-')[0];
+        btn.addEventListener('click', () => jumpToPeriod(period.id));
+        riverFooter.appendChild(btn);
+    });
+}
+
+function jumpToPeriod(periodId) {
+    const period = currentData.periods.find(p => p.id === periodId);
+    if (!period) return;
+    const y0 = getYear(period.years.split(' - ')[0] || period.years.split('-')[0]);
+    const x = yearToX(y0);
+    riverScroll.scrollTo({ left: Math.max(0, x - 80), behavior: 'smooth' });
+    // Mettre en évidence la période
+    setPeriodFilter(periodId);
+}
+
+// ── Placement sans collision (greedy, colonnes de top/bottom) ─
+function buildEventsLayout() {
+    // Vider les containers
+    riverTop.innerHTML    = '';
+    riverBottom.innerHTML = '';
+    allEventEls = [];
+
+    const sorted = [...currentData.events].sort((a, b) => {
+        const ya = getYear(a.year), yb = getYear(b.year);
+        return ya !== yb ? ya - yb : a.id - b.id;
+    });
+
+    // Suivi des colonnes d'occupation (right boundary per row)
+    const topSlots    = [];  // chaque slot : { right, bottom }
+    const bottomSlots = [];
+
+    const riverH = riverScroll.clientHeight || 500;
+    const zoneH  = (riverH - BAND_H) / 2;  // hauteur zone top ou bottom
+
+    sorted.forEach((ev, idx) => {
+        const cx   = yearToX(getYear(ev.year)) + PX_PER_YEAR; // centre X sur ruban
+        const w    = eventWidth(ev);
+        const col  = getTypeColor(ev.type);
+
+        // Alterner top/bottom
+        const isTop = idx % 2 === 0;
+
+        // Calcul de la hauteur estimée de la bulle
+        const estimatedH = (ev.type === 'major' || ev.type === 'council') ? 120 : 100;
+
+        const slots = isTop ? topSlots : bottomSlots;
+
+        // Trouver la ligne verticale libre
+        let y = isTop ? (zoneH - estimatedH - TOP_PADDING) : TOP_PADDING;
+        let placed = false;
+
+        for (let attempt = 0; attempt < 8 && !placed; attempt++) {
+            const testTop  = isTop ? y : y;
+            const testLeft = cx - w / 2;
+            const testRight  = testLeft + w;
+            const testBottom = isTop ? (testTop + estimatedH) : (testTop + estimatedH);
+
+            // Vérifier les collisions
+            const collision = slots.some(s =>
+                testLeft < s.right + ZONE_GAP &&
+                testRight > s.left - ZONE_GAP &&
+                testTop < s.bottom + ZONE_GAP &&
+                testBottom > s.top - ZONE_GAP
+            );
+
+            if (!collision) {
+                slots.push({ left: testLeft, top: testTop, right: testRight, bottom: testBottom });
+                placed = true;
+            } else {
+                // Décaler horizontalement
+                if (attempt % 2 === 0) {
+                    y = isTop ? Math.max(8, y - 30) : Math.min(zoneH - estimatedH - 8, y + 30);
+                }
+            }
+        }
+
+        // ── Créer la bulle ──
+        const el = document.createElement('div');
+        el.className = `river-event ${eventSize(ev)}`;
+        el.dataset.id     = ev.id;
+        el.dataset.type   = ev.type;
+        el.dataset.period = ev.period;
+        el.style.setProperty('--event-color', col);
+        el.style.left = (cx - w / 2) + 'px';
+        el.style.animationDelay = (idx * 0.015) + 's';
+
+        // Positionnement vertical dans la zone
+        if (isTop) {
+            el.style.bottom = (zoneH - y - estimatedH) + 'px';
+        } else {
+            el.style.top = y + 'px';
+        }
+
+        const typeLabel = getTypeLabel(ev.type);
+        const typeIcon  = getTypeIcon(ev.type);
+
+        el.innerHTML = `
+            <i class="fas ${ev.icon} river-event-icon"></i>
+            <div class="river-event-date">${ev.date}</div>
+            <div class="river-event-title">${ev.title}</div>
+            <p class="river-event-summary">${ev.summary}</p>
+            <div class="river-event-type">
+                <i class="fas ${typeIcon}"></i> ${typeLabel}
+            </div>
+        `;
+
+        el.addEventListener('click', () => openModal(ev));
+
+        // ── Connecteur (trait vertical) ──
+        const conn = document.createElement('div');
+        conn.className = 'event-connector';
+        conn.style.cssText = `
+            background: ${col};
+            left: ${cx}px;
+            opacity: .4;
+            width: 2px;
+        `;
+
+        if (isTop) {
+            el.style.position = 'absolute';
+            riverTop.appendChild(el);
+            conn.style.bottom = '0';
+            conn.style.height = (zoneH - y - estimatedH + 10) + 'px';
+            riverTop.appendChild(conn);
+        } else {
+            el.style.position = 'absolute';
+            riverBottom.appendChild(el);
+            conn.style.top = '0';
+            conn.style.height = (y + 10) + 'px';
+            riverBottom.appendChild(conn);
+        }
+
+        allEventEls.push({ el, connectorEl: conn, event: ev, cx, isTop });
+    });
+}
+
+// ── Filtrage ──────────────────────────────────────────
+function applyFilters() {
+    let count = 0;
+
+    allEventEls.forEach(({ el, connectorEl, event }) => {
+        const matchesPeriod = currentFilters.period === 'all' || event.period === currentFilters.period;
+        const matchesType   = currentFilters.type === 'all'   || event.type   === currentFilters.type;
+        let   matchesSearch = true;
+
+        if (currentSearch) {
+            const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const haystack = norm([
+                event.title, event.summary, event.description,
+                event.date, String(event.year),
+                ...(event.details || []), event.quote || ''
+            ].join(' '));
+            matchesSearch = haystack.includes(norm(currentSearch));
+        }
+
+        const visible = matchesPeriod && matchesType && matchesSearch;
+        el.classList.toggle('hidden', !visible);
+        if (connectorEl) connectorEl.style.opacity = visible ? '.4' : '0';
+        if (visible) count++;
+
+        if (currentSearch && visible && matchesSearch) {
+            el.classList.add('search-match');
+        } else {
+            el.classList.remove('search-match');
+        }
+    });
+
+    resultsCount.textContent = count;
+}
+
+function setPeriodFilter(id) {
+    currentFilters.period = id;
+    document.querySelectorAll('.period-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.period === id);
+    });
+    applyFilters();
+}
+
+function setTypeFilter(id) {
+    currentFilters.type = id;
+    document.querySelectorAll('.type-chip').forEach(c => {
+        c.classList.toggle('active', c.dataset.type === id);
+    });
+    applyFilters();
+}
+
+// ── Génération des filtres sidebar ────────────────────
+function buildSidebarFilters() {
+    // Périodes
+    periodPills.innerHTML = '';
+    const allPill = document.createElement('button');
+    allPill.className = 'period-pill active';
+    allPill.dataset.period = 'all';
+    allPill.innerHTML = `
+        <span class="period-dot" style="background:#888"></span>
+        <span class="period-pill-name">Toutes les périodes</span>
+        <span class="period-pill-count">${currentData.events.length}</span>
+    `;
+    allPill.addEventListener('click', () => setPeriodFilter('all'));
+    periodPills.appendChild(allPill);
+
+    currentData.periods.forEach(period => {
+        const cnt = currentData.events.filter(e => e.period === period.id).length;
+        const pill = document.createElement('button');
+        pill.className = 'period-pill';
+        pill.dataset.period = period.id;
+        pill.innerHTML = `
+            <span class="period-dot" style="background:${PERIOD_COLORS[period.id] || '#888'}"></span>
+            <span class="period-pill-name">${period.name}</span>
+            <span class="period-pill-count">${cnt}</span>
+        `;
+        pill.addEventListener('click', () => setPeriodFilter(period.id));
+        periodPills.appendChild(pill);
+    });
+
+    // Types
+    typeChips.innerHTML = '';
+    const allChip = document.createElement('button');
+    allChip.className = 'type-chip active';
+    allChip.dataset.type = 'all';
+    allChip.style.setProperty('--chip-color', '#1e3a5f');
+    allChip.innerHTML = '<i class="fas fa-globe"></i> Tous';
+    allChip.addEventListener('click', () => setTypeFilter('all'));
+    typeChips.appendChild(allChip);
+
+    let types = [];
+    if (currentData.types) {
+        types = Object.entries(currentData.types).map(([id, v]) => ({ id, ...v }));
+    } else {
+        types = Object.entries(TYPE_LABELS).map(([id, v]) => ({
+            id, label: v.label, icon: v.icon, color: TYPE_COLORS[id] || '#888'
+        }));
+    }
+
+    types.forEach(t => {
+        const chip = document.createElement('button');
+        chip.className = 'type-chip';
+        chip.dataset.type = t.id;
+        chip.style.setProperty('--chip-color', t.color);
+        chip.innerHTML = `<i class="fas ${t.icon}"></i> ${t.label}`;
+        chip.addEventListener('click', () => setTypeFilter(t.id));
+        typeChips.appendChild(chip);
+    });
+}
+
+// ── Modal ─────────────────────────────────────────────
+function openModal(event) {
+    modal.querySelector('.modal-date').textContent = event.date;
+    modal.querySelector('.modal-title').textContent = event.title;
+
+    let typeLabel = getTypeLabel(event.type);
+    const typeBadge = `<span class="modal-type-badge ${event.type}">${typeLabel}</span>`;
+
+    let quoteHtml = '';
+    if (event.quote) {
+        quoteHtml = `<div class="modal-quote"><p>${event.quote}</p></div>`;
+    }
+
+    let canonsHtml = '';
+    if (event.canons && event.canons.length > 0) {
+        canonsHtml = `
+            <div class="modal-canons">
+                <h4><i class="fas fa-scroll"></i> Canons et Décrets Principaux</h4>
+                <ul>
+                    ${event.canons.map(c => {
+                        if (c.startsWith('===')) {
+                            return `<li class="canon-section-title"><strong>${c.replace(/===/g,'').trim()}</strong></li>`;
+                        }
+                        const h = c.replace(/\b([A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]{2,}(?:\s+[A-ZÀÂÄÉÈÊËÏÎÔÙÛÜÇ]+)*)\b/g, '<strong>$1</strong>');
+                        return `<li><i class="fas fa-gavel"></i> ${h}</li>`;
+                    }).join('')}
+                </ul>
+            </div>`;
+    }
+
+    let detailsHtml = '';
+    if (event.details && event.details.length > 0) {
+        detailsHtml = `
+            <div class="modal-details">
+                <h4><i class="fas fa-info-circle"></i> Points clés</h4>
+                <ul>
+                    ${event.details.map(d => `<li><i class="fas fa-chevron-right"></i> ${d}</li>`).join('')}
+                </ul>
+            </div>`;
+    }
+
+    modal.querySelector('.modal-body').innerHTML = `
+        ${typeBadge}
+        <p class="modal-description">${event.description}</p>
+        ${quoteHtml}
+        ${canonsHtml}
+        ${detailsHtml}
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Drag-scroll ───────────────────────────────────────
+riverScroll.addEventListener('mousedown', e => {
+    if (e.button !== 0) return;
+    isDragging = true;
+    dragStartX = e.pageX - riverScroll.offsetLeft;
+    dragScrollLeft = riverScroll.scrollLeft;
+    riverScroll.style.cursor = 'grabbing';
+});
+window.addEventListener('mouseup', () => {
+    isDragging = false;
+    riverScroll.style.cursor = 'grab';
+});
+window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x    = e.pageX - riverScroll.offsetLeft;
+    const walk = (x - dragStartX) * 1.5;
+    riverScroll.scrollLeft = dragScrollLeft - walk;
+});
+
+// Scroll sync minimap
+riverScroll.addEventListener('scroll', () => {
+    updateMinimapViewport();
+});
+
+// Clic minimap pour naviguer
+minimap.addEventListener('click', e => {
+    const rect = minimap.getBoundingClientRect();
+    const pct  = (e.clientX - rect.left) / rect.width;
+    riverScroll.scrollLeft = pct * totalWidth();
+});
+
+// ── Sidebar toggle ─────────────────────────────────────
+sidebarToggle.addEventListener('click', () => {
+    const collapsed = sidebar.classList.toggle('collapsed');
+    sidebarToggleIcon.className = collapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+});
+
+// Mobile sidebar
+mobileSidebarToggle && mobileSidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('mobile-hidden');
+    mobileOverlay.classList.toggle('visible');
+});
+mobileOverlay.addEventListener('click', () => {
+    sidebar.classList.add('mobile-hidden');
+    mobileOverlay.classList.remove('visible');
+});
+
+// ── Source switcher ────────────────────────────────────
+sourceBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        sourceBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentData = btn.dataset.source === 'protestant' ? protestantHistory : churchHistory;
+        currentFilters = { period: 'all', type: 'all' };
+        currentSearch = '';
+        searchInput.value = '';
+        searchClear.classList.remove('visible');
+        init();
+    });
+});
+
+// ── Reset filtres ─────────────────────────────────────
+resetBtn.addEventListener('click', () => {
+    currentFilters = { period: 'all', type: 'all' };
+    currentSearch  = '';
+    searchInput.value = '';
+    searchClear.classList.remove('visible');
+    document.querySelectorAll('.period-pill').forEach(p => p.classList.toggle('active', p.dataset.period === 'all'));
+    document.querySelectorAll('.type-chip').forEach(c => c.classList.toggle('active', c.dataset.type === 'all'));
+    applyFilters();
+});
+
+// ── Recherche ─────────────────────────────────────────
+let searchTimeout;
+searchInput.addEventListener('input', e => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        currentSearch = e.target.value.trim();
+        searchClear.classList.toggle('visible', currentSearch.length > 0);
+        applyFilters();
+    }, 280);
+});
+searchClear.addEventListener('click', () => {
+    currentSearch = '';
+    searchInput.value = '';
+    searchClear.classList.remove('visible');
+    applyFilters();
+});
+
+// ── Hauteur dynamique des zones ────────────────────────
+function setCanvasHeight() {
+    const avail = riverScroll.clientHeight;
+    riverCanvas.style.height = avail + 'px';
+    riverTop.style.height    = ((avail - BAND_H) / 2) + 'px';
+    riverBottom.style.height = ((avail - BAND_H) / 2) + 'px';
+}
+
+// ── Init principale ────────────────────────────────────
+function init() {
+    riverLoading.style.display = 'flex';
+
+    setTimeout(() => {
+        setCanvasHeight();
+        const total = totalWidth();
+        riverCanvas.style.width = total + 'px';
+        riverTop.style.width    = total + 'px';
+        riverBand.style.width   = total + 'px';
+        riverBottom.style.width = total + 'px';
+
+        buildBand();
+        buildMinimap();
+        buildFooter();
+        buildSidebarFilters();
+        buildEventsLayout();
+        applyFilters();
+
+        riverLoading.style.display = 'none';
+        topbarInfo.textContent = `— ${currentData.events.length} événements sur ${YEAR_END - YEAR_START} ans`;
+
+        // Scroller au début de l'ère chrétienne
+        riverScroll.scrollLeft = yearToX(20);
+    }, 50);
+}
+
+// ── Resize handler ────────────────────────────────────
+window.addEventListener('resize', () => {
+    setCanvasHeight();
+    updateMinimapViewport();
+});
+
+// ── Lancement ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {});
+init();
+
+})();
+</script>
+</body>
+</html>
